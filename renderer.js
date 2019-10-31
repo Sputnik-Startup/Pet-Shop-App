@@ -2,7 +2,7 @@ const loki = require('lokijs')
 const db = new loki(__dirname + '/db.json')
 const read = require('read-file-utf8')
 const fs = require('fs')
-const data={}
+var data={}
 
 if(fs.existsSync(__dirname + '/db.json')){
     data = read(__dirname + '/db.json')
@@ -29,21 +29,23 @@ var fun = {
 }
 
 var funcionarios = db.getCollection('funcionarios')
-funcionarios.insert(fun)
 
-db.save()
 
-// new Vue({
-//     el: "#app",
-//     data: {
-//         login: {
-//             nome: "",
-//             senha: "",
-//         }
-//     },
-//     methods: {
-//         loginValidation: function(nome, senha){
+new Vue({
+    el: "#app",
+    data: {
+        login: {
+            nome: "",
+            senha: "",
+        }
+    },
+    methods: {
+        loginValidation: function(){
+            const funcionario = funcionarios.find({'senha': this.login.senha})[0] || {nome: "", senha: ""};
 
-//         }
-//     }
-// })
+            if(funcionario.nome === this.login.nome && funcionario.senha === this.login.senha){
+                console.log("OK!")
+            }
+        }
+    }
+})

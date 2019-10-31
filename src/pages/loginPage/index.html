@@ -5,10 +5,12 @@
     <title>Entrar</title>
     <link rel="stylesheet" href="../../../css/photon.css">
     <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.8/vue.js"></script>
   </head>
   <body>
-    <div class="window">
+    <div class="window" id="app">
       <div class="window-content centralize">
+          <div id="error-msg"></div>
           <form>
               <div class="form-group">
                 <label>Nome de usuário</label>
@@ -18,10 +20,10 @@
                 <label>Senha</label>
                 <input type="password" class="form-control" placeholder="Sua senha" v-model="login.senha">
               </div>
-              <button type="button" class="btn btn-large btn-primary">Entrar</button>
+              <button type="button" class="btn btn-large btn-primary" @click="loginValidation()">Entrar</button>
           </form>
       </div>
     </div>
-    <script src="./renderer.js"></script>
+    <script src="../../../renderer.js"></script>
   </body>
 </html>
