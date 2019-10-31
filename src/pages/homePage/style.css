@@ -1,0 +1,58 @@
+* {
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    box-sizing: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+
+}
+
+.centralize {
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.box{
+    padding: 30px;
+    border-style: solid;
+    border-color: rgb(200, 200, 200) rgb(200, 200, 200) rgb(56, 149, 236);
+    border-width: 1px 1px 8px;
+    border-radius: 4px;
+}
+
+
+.box ul li{
+    width: 170px;   
+    height: 100px;
+    display: inline-block;
+    list-style: none;
+    text-align: center;
+    padding-top: 38px;
+    margin: 8px;
+    border: 1px solid rgb(200, 200, 200 );
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    background: rgb(243, 243, 243);
+
+    transition: .3s;
+}
+
+.box ul a:link {
+    color: rgb(78, 77, 77);
+    text-decoration: none;
+}
+
+.box ul li#agenda {
+    width: 100%;
+}
+
+.box ul li:hover {
+    color: rgb(255, 255, 255);
+    background: rgb(202, 202, 202);
+}

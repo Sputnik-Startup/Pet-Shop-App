@@ -15,7 +15,7 @@ function createWindow () {
   })
 
 
-  mainWindow.loadFile('./src/pages/homePage/index.html')
+  mainWindow.loadFile('./src/pages/loginPage/index.html')
 
 
   mainWindow.on('closed', function () {

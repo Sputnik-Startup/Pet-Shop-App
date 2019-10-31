@@ -1,0 +1,31 @@
+* {
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+}
+
+.centralize {
+    justify-content: center;
+    align-items: center;
+    background-image: url("../../assets/background.jpg");
+}
+
+.centralize form {
+    background: rgba(255, 255, 255, 0.904);
+    border-style: solid;
+    border-color: rgb(200, 200, 200) rgb(200, 200, 200) rgb(56, 149, 236);
+    border-width: 1px 1px 8px;
+    border-radius: 4px;
+    padding: 20px;
+    padding-bottom: 10px;
+}
+
+.centralize form button {
+    margin-left: 6.5rem;
+}
