@@ -30,7 +30,6 @@ var fun = {
 
 var funcionarios = db.getCollection('funcionarios')
 
-
 new Vue({
     el: "#app",
     data: {
@@ -41,12 +40,23 @@ new Vue({
     },
     methods: {
         loginValidation: function(){
-            const funcionario = funcionarios.find({'senha': this.login.senha})[0] || {nome: "", senha: ""};
+            const funcionario = funcionarios.find({'nome': this.login.nome})[0] || {nome: "vazio", senha: "vazio"};
 
             if(funcionario.nome === this.login.nome && funcionario.senha === this.login.senha){
-                console.log("OK!")
+                window.location.href = "../homePage/index.html"
             }else{
-                console.log("Errado!")
+                var text;
+                if(funcionario.nome === this.login.nome && funcionario.senha !== this.login.senha) {
+                    text = "A senha de usuário está incorreta."
+                }
+                if(this.login.nome === "" || this.login.senha === ""){
+                    text = "Por favor, preencha todos os campos."
+                } else {
+                    text = "Este usuário não existe."
+                }
+                let err = document.querySelector("div#err-msg");
+                err.className = ("err-msg");
+                err.innerHTML = `${text}`         
             }
         }
     }

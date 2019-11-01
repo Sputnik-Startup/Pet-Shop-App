@@ -1,0 +1,14 @@
+.centralize {
+    justify-content: top;
+    align-items: center;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    flex-direction: column;
+}
+
+.corpo {
+    width: auto;
+    height: 100%;
+    border: 1px solid rgb(182, 182, 182);
+    border-radius: 4px;
+}

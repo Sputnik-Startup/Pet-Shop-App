@@ -29,6 +29,21 @@ img {
     left: 0rem;
 }
 
+.err-msg {
+    position: relative;
+    top: 50px;
+    width: 340px;
+    height: 40px;
+    padding-top: 8px;
+    text-align: center;
+    background: rgb(253, 124, 124);
+    border: 0;
+    border-radius: 4px;
+    font-size: 14px;
+    color: white;
+    box-shadow: 0px 3px 6px #0000004B;
+}
+
 .centralize form {
     background: #349ED6 0% 0% no-repeat padding-box;
     box-shadow: 0px 3px 6px #0000004B;
