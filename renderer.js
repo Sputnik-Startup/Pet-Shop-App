@@ -45,6 +45,8 @@ new Vue({
 
             if(funcionario.nome === this.login.nome && funcionario.senha === this.login.senha){
                 console.log("OK!")
+            }else{
+                console.log("Errado!")
             }
         }
     }
