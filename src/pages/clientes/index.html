@@ -2,14 +2,18 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Entrar</title>
+    <title>Clientes</title>
     <link rel="stylesheet" href="../../../css/photon.css">
     <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.8/vue.js"></script>
   </head>
   <body>
-    <div class="window">
+    <div class="window" id="app">
+      <div id="loading">Carregando...</div>
       <div class="window-content centralize">
         <div class="corpo">
+          <button type="button" id="store" @click="storeClient()">Criar novo</button>
+          <a href="../homePage/index.html"><button>Home</button></a>
           <table class="table table-striped">
             <thead>
               <tr>
@@ -22,15 +26,40 @@
               </tr>
             </thead>
             <tbody>
-              <td>Nome do Cliente</td>
-              <td>E-mail do cliente</td>
-              <td>CPF do cliente</td>
-              <td>Telefone do cliente</td>
-              <td><button id="edit" type="button" @click="updateClient(this.cliente)">Editar</button></td>
-              <td><button id="edit" type="button" @click="destroyClient(this.cliente)">Deletar</button></td>
+              <tr v-for="client in clientes">
+                <td>{{client.nome}}</td>
+                <td>{{client.email}}</td>
+                <td>{{client.cpf}}</td>
+                <td>{{client.telefone}}</td>
+                <td><button id="edit" type="button" @click="updateClient(client)">Editar</button></td>
+                <td><button id="destroy" type="button" @click="destroyClient(client)">Deletar</button></td>
+              </tr>
             </tbody>
           </table>
         </div>
+        <div id="modal" v-if="openModal">
+        <div class="wrap">
+            <form id="cadastro-produto" action="" class="pane-body">
+                <h3 v-if="mode=='update'">Editar dados de Clientes</h3>
+                <h3 v-if="mode=='store'">Adicionar Cliente</h3>
+                <div class="form-group">
+                <input type="text" class="form-control" id="nome" placeholder="Nome" v-model="cliente.nome" required>
+                </div>
+                <div class="form-group">
+                <input type="email" class="form-control" id="email" placeholder="email" v-model="cliente.email" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="cpf" placeholder="CPF" v-model="cliente.cpf" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="tel" placeholder="telefone" v-model="cliente.telefone" required>
+                </div>
+                <button type="button" id="salvar" class="btn btn-positive" @click="clientStoreOrUpdate()">Salvar</button>
+                <button type="button" id="cancelar" class="btn btn-negative" @click="openModal=false">Cancelar</button>
+            </form>
+          </div>
+        </div>
+      </div>
         <!-- <footer class="toolbar toolbar-footer">
             <div class="toolbar-actions">
               <button class="btn btn-default">
@@ -44,5 +73,6 @@
           </footer> -->
       </div>
     </div>
+    <script src="app-cliente.js"></script>
   </body>
 </html>

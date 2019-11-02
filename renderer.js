@@ -28,7 +28,7 @@ var fun = {
     nivelDeAcesso: "admin"
 }
 
-var funcionarios = db.getCollection('funcionarios')
+var funcionarios = db.getCollection('funcionarios');
 
 new Vue({
     el: "#app",
@@ -51,7 +51,8 @@ new Vue({
                 }
                 if(this.login.nome === "" || this.login.senha === ""){
                     text = "Por favor, preencha todos os campos."
-                } else {
+                } 
+                if(funcionario.nome === "vazio"){
                     text = "Este usuário não existe."
                 }
                 let err = document.querySelector("div#err-msg");

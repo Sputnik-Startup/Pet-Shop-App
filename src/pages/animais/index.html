@@ -2,51 +2,100 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Entrar</title>
+    <title>Animais</title>
     <link rel="stylesheet" href="../../../css/photon.css">
     <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.8/vue.js"></script>
   </head>
   <body>
-    <div class="window">
-      <header class="toolbar toolbar-header">
-          <h1 class="title">Header with actions</h1>
-          
-          <div class="toolbar-actions">
-              <div class="btn-group">
-              <button class="btn btn-default">
-                  <span class="icon icon-home"></span>
-              </button>
-              <button class="btn btn-default">
-                  <span class="icon icon-folder"></span>
-              </button>
-              <button class="btn btn-default active">
-                  <span class="icon icon-cloud"></span>
-              </button>
-              <button class="btn btn-default">
-                  <span class="icon icon-popup"></span>
-              </button>
-              <button class="btn btn-default">
-                  <span class="icon icon-shuffle"></span>
-              </button>
-              </div>
-          
-              <button class="btn btn-default">
-              <span class="icon icon-home icon-text"></span>
-              Filters
-              </button>
-          
-              <button class="btn btn-default btn-dropdown pull-right">
-              <span class="icon icon-megaphone"></span>
-              </button>
-          </div>
-      </header>
-
+    <div class="window" id="app">
+      <div id="loading">Carregando...</div>
       <div class="window-content centralize">
+        <div style="flex-direction: row;">
+            <button type="button" id="store" @click="storeAnimal()">Criar novo</button>
+            <a href="../homePage/index.html"><button>Home</button></a>
+        </div>
+
+        <div class="corpo">
+          
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Nome</th>
+                <th>Tipo</th>
+                <th>Raça</th>
+                <th>Dono</th>
+                <th></th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="ani in animais">
+                <td>{{ani.nome}}</td>
+                <td>{{ani.tipo}}</td>
+                <td>{{ani.raca}}</td>
+                <td><button id="infoBtn" type="button" @click="ownerInfo(ani)">Info.Dono</button></td>
+                <td><button id="edit" type="button" @click="updateAnimal(ani)">Editar</button></td>
+                <td><button id="destroy" type="button" @click="destroyAnimal(ani)">Deletar</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div id="modal" v-if="openModal">
+          <div class="wrap">
+            <form id="cadastro-produto" action="" class="pane-body">
+                <h3 v-if="mode=='update'">Editar dados de Clientes</h3>
+                <h3 v-if="mode=='store'">Adicionar Cliente</h3>
+                <div class="form-group">
+                <input type="text" class="form-control" id="nome" placeholder="Nome" v-model="animal.nome" required>
+                </div>
+                <div class="form-group">
+                <input type="text" class="form-control" id="tipo" placeholder="tipo" v-model="animal.tipo" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="raca" placeholder="raca" v-model="animal.raca" required>
+                </div>
+                <div class="form-group">
+                    <select name="dono" id="dono" v-model="animal.dono" class="form-control">
+                        <option value="" disabled>Selecione o dono</option>
+                        <option :value="client.$loki" v-for="client in clientes">{{client.nome}}</option>
+                    </select>
+                </div>
+                <button type="button" id="salvar" class="btn btn-positive" @click="animalStoreOrUpdate()">Salvar</button>
+                <button type="button" id="cancelar" class="btn btn-negative" @click="closeModal()">Cancelar</button>
+            </form>
+          </div>
+        </div>
+        <div id="modal" v-if="infoOwnerModal">
+          <div class="wrap">
+            <div id="info">
+                <span><strong>Nome:</strong> 
+                    <br>{{owner.nome}}</span><br>
+                  <span><strong>E-mail:</strong>  
+                    <br>{{owner.email}}</span><br>
+                  <span><strong>CPF:</strong>  
+                    <br>{{owner.cpf}}</span><br>
+                  <span><strong>Telefone:</strong> 
+                    <br>{{owner.telefone}}</span><br>
+                <button id="fechar" type="button" @click="infoOwnerModal = false">Fechar</button>
+            </div>
+          </div>
+        </div>
       </div>
-        
-      <footer class="toolbar toolbar-footer">
-        <h1 class="title">Footer</h1>
-      </footer>
+        <!-- <footer class="toolbar toolbar-footer">
+            <div class="toolbar-actions">
+              <button class="btn btn-default">
+                Cancel
+              </button>
+          
+              <button class="btn btn-primary pull-right">
+                Save
+              </button>
+            </div>
+          </footer> -->
+      </div>
     </div>
+    <script src="app-animal.js"></script>
   </body>
 </html>
+
