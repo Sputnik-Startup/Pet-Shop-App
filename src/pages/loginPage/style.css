@@ -15,6 +15,7 @@ html, body {
 .centralize {
     background-image: url("../../assets/background_login.png");
     background-position: bottom;
+    background-size: cover;
     justify-content: center;
     align-items: center;
     padding-bottom: 80px;
@@ -36,7 +37,7 @@ img {
     height: 40px;
     padding-top: 8px;
     text-align: center;
-    background: rgb(253, 124, 124);
+    background: rgb(255, 94, 94);
     border: 0;
     border-radius: 4px;
     font-size: 14px;

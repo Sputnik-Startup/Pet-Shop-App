@@ -8,51 +8,160 @@
 body {
     font-family: Arial, Helvetica, sans-serif;
 
+
 }
 
 .centralize {
     justify-content: center;
     align-items: center;
+    background-image: url("../../assets/background_login-blur.jpg");
+    background-position: bottom;
+    background-size: cover;
     
 }
 
 .box{
     padding: 30px;
-    border-style: solid;
-    border-color: rgb(200, 200, 200) rgb(200, 200, 200) rgb(56, 149, 236);
-    border-width: 1px 1px 8px;
-    border-radius: 4px;
+}
+
+.box div#menu {
+    width: 600px;
+    height: 400px;
 }
 
 
-.box ul li{
-    width: 170px;   
-    height: 100px;
+.box div#menu div{
+    /* justify-content: center;
+    align-items: center; */
+    width: 181px;   
+    height: 120px;
     display: inline-block;
-    list-style: none;
-    text-align: center;
     padding-top: 38px;
     margin: 8px;
-    border: 1px solid rgb(200, 200, 200 );
-    border-radius: 4px;
     cursor: pointer;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: bold;
-    background: rgb(243, 243, 243);
+}
+
+.box dic#menu a div, span, img{
+    cursor: pointer;
+}
+
+/*Configurando svg e span*/
+.box div#menu div img {
+    width: 60px;
+    height: 60px;
+    position: relative;
+    bottom: 23px;
+    left: 60px;
+}
+
+.box div#menu div span {
+    color:white;
+    position: relative;
+    right: 4px;
+}
+
+
+/* Correções nos spans */
+.box div#menu div#agenda span{
+    right: 27px;
+}
+
+.box div#menu div#funcionarios span {
+    right: 20px;
+}
+
+.box div#menu div#financeiro span {
+    right: 14px;
+}
+
+.box div#menu div#servicos span {
+    right: 10px;
+}
+
+/*Personalização das Div's*/
+.box div#menu div#clientes {
+    background: #E69240 0% 0% no-repeat padding-box;
+    box-shadow: 0px 3px 6px #0000004B;
+    border-radius: 8px;
 
     transition: .3s;
 }
 
-.box ul a:link {
-    color: rgb(78, 77, 77);
-    text-decoration: none;
+.box div#menu div#clientes:hover {
+    background: rgb(206, 127, 48);
 }
 
-.box ul li#agenda {
-    width: 100%;
+.box div#menu div#animais {
+    background: #E8A23F 0% 0% no-repeat padding-box;
+    box-shadow: 0px 3px 6px #0000004B;
+    border-radius: 8px;
+
+    transition: .3s;
 }
 
-.box ul li:hover {
-    color: rgb(255, 255, 255);
-    background: rgb(202, 202, 202);
+.box div#menu div#animais:hover {
+    background: rgb(211, 149, 67);
+}
+
+.box div#menu div#funcionarios{
+    background: #EBB43C 0% 0% no-repeat padding-box;
+    box-shadow: 0px 3px 6px #0000004B;
+    border-radius: 8px;
+
+    transition: .3s;
+}
+.box div#menu div#funcionarios:hover {
+    background: rgb(211, 149, 67);
+}
+
+.box div#menu div#estoque {
+    background: #3C8AD5 0% 0% no-repeat padding-box;
+    box-shadow: 0px 3px 6px #0000004B;
+    border-radius: 8px;
+
+    transition: .3s;
+}
+
+.box div#menu div#estoque:hover {
+    background: rgb(52, 118, 180)
+}
+
+.box div#menu div#financeiro {
+    background: #45A0D4 0% 0% no-repeat padding-box;
+    box-shadow: 0px 3px 6px #0000004B;
+    border-radius: 8px;
+
+    transition: .3s;
+}
+
+.box div#menu div#financeiro:hover {
+    background: rgb(61, 144, 192)
+}
+
+
+.box div#menu div#servicos{
+    background: #60BCD1 0% 0% no-repeat padding-box;
+    box-shadow: 0px 3px 6px #0000004B;
+    border-radius: 8px;
+
+    transition: .3s;
+}
+
+.box div#menu div#servicos:hover {
+    background: rgb(79, 157, 175)
+}
+
+.box div#menu div#agenda {
+    background: #707070 0% 0% no-repeat padding-box;
+    box-shadow: 0px 3px 6px #0000004B;
+    border-radius: 8px;
+    margin-left: 208px;
+
+    transition: .3s;    
+}
+
+.box div#menu div#agenda:hover {
+    background: #585858;
 }
