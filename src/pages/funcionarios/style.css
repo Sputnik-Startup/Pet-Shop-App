@@ -10,7 +10,7 @@ html, body {
 }
 
 .centralize {
-    background: #E69240;
+    background: #EBB43C;
     justify-content: top;
     align-items: center;
     padding-top: 30px;
@@ -120,7 +120,6 @@ button#destroy:hover {
     opacity: 0;
     visibility: hidden;
 }
-
 div#loading img{
     width: 128px;
     height: 128px;

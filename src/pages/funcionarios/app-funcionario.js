@@ -7,7 +7,7 @@ let data = {}
 data = read(__dirname + "/../loginPage/db.json")
 db.loadJSON(data);
 
-const clientes = db.getCollection("clientes");
+const funcionarios = db.getCollection("funcionarios");
 
 setTimeout(function() {
     var element = document.getElementById('loading');
@@ -17,14 +17,14 @@ setTimeout(function() {
 new Vue({
     el: "#app",
     data: {
-        clientes: clientes.data,
+        funcionarios: funcionarios.data,
         mode: "",
         openModal: false,
-        cliente: {
+        funcionario: {
             nome: "",
-            email: "",
-            cpf: "",
-            telefone: "",
+            senha: "",
+            cargo: "",
+            nivelDeAcesso: "",
         }
     },
     methods: {
@@ -32,30 +32,30 @@ new Vue({
             this.openModal = false;
             window.location.reload()
         },
-        updateClient: function(client){
+        updateFun: function(fun){
             this.mode = "update"
-            this.cliente = client
+            this.funcionario = fun
             this.openModal = true
         },
-        destroyClient: function(client){
-            clientes.remove({'$loki': client.$loki})
+        destroyFun: function(fun){
+            funcionarios.remove({'$loki': fun.$loki})
             db.save()
         },
-        storeClient: function(){
+        storeFun: function(){
             this.mode = "store"
-            this.cliente = {
+            this.funcionario = {
                 nome: "",
-                email: "",
-                cpf: "",
-                telefone: "",
+                senha: "",
+                cargo: "",
+                nivelDeAcesso: "",
             }
             this.openModal = true
         },
-        clientStoreOrUpdate: function(){
-            if(typeof this.cliente.$loki != "undefined"){
-                clientes.update(this.cliente)
+        funStoreOrUpdate: function(){
+            if(typeof this.funcionario.$loki != "undefined"){
+                funcionarios.update(this.funcionario)
             }else{
-                clientes.insert(this.cliente)
+                funcionarios.insert(this.funcionario)
             }
             db.save()
             this.openModal = false;

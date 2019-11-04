@@ -5,9 +5,11 @@
     <title>Home</title>
     <link rel="stylesheet" href="../../../css/photon.css">
     <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.8/vue.js"></script>
   </head>
   <body>
     <div class="window" id="app">
+      <div id="loading"><img src="../../assets/logo_login.gif" alt="Loading logo"></div>
       <div class="window-content centralize">
         <div id="bg-image"></div>
         <div class="box">
@@ -20,29 +22,31 @@
                 <img src="../../assets/animal.svg" alt="Animal">
                 <span>Animais</span>
             </div></a>
-            <a href="../funcionarios/index.html"><div id="funcionarios">
-                <img src="../../assets/funcionario.svg" alt="Funcionários">
-                <span>Funcionários</span>
+            <a href="../agendamentos/index.html"><div id="agenda">
+                <img src="../../assets/agenda.svg" alt="Agendamentos">
+                <span>Agendamentos</span>
             </div></a>
-            <a href="../estoque/index.html"><div id="estoque">
+            <a href="../estoque/index.html" v-if="access=='Administrador'"><div id="estoque">
                 <img src="../../assets/estoque.svg" alt="Estoque">
                 <span>Estoque</span>
             </div></a>
-            <a href="../financiamentos/index.html"><div id="financeiro">
+            <a href="../financiamentos/index.html" v-if="access=='Administrador'"><div id="financeiro">
                 <img src="../../assets/financeiro.svg" alt="Financeiro">
                 <span>Financeiro</span>
             </div></a>
-            <a href="../serviços/index.html"><div id="servicos">
+            <a href="../serviços/index.html"  v-if="access=='Administrador'"><div id="servicos">
                 <img src="../../assets/serviço.svg" alt="Serviços">
                 <span>Serviços</span>
             </div></a>
-            <a href="../agendamentos/index.html"><div id="agenda">
-              <img src="../../assets/agenda.svg" alt="Agenda">
-              <span>Agendamentos</span>
+            <a href="../funcionarios/index.html"  v-if="access=='Administrador'"><div id="funcionarios">
+              <img src="../../assets/funcionario.svg" alt="Funcionario">
+              <span>Funcionários</span>
             </div></a>
           </div>
         </div>
       </div>
     </div>
+    <script src="app.js"></script>
   </body>
 </html>
+rgb(255, 255, 255)

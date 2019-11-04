@@ -42,10 +42,9 @@ new Vue({
             window.location.reload()
         },
         ownerInfo: function(ani){
-            this.infoOwnerModal = true
             const ownerInfo = clientes.find({'$loki': ani.dono})[0];
             this.owner = ownerInfo
-            console.log(this.owner)
+            this.infoOwnerModal = true
         },
         updateAnimal: function(animal){
             this.mode = "update"

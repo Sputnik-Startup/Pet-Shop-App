@@ -43,6 +43,7 @@ new Vue({
             const funcionario = funcionarios.find({'nome': this.login.nome})[0] || {nome: "vazio", senha: "vazio"};
 
             if(funcionario.nome === this.login.nome && funcionario.senha === this.login.senha){
+                localStorage.setItem('access', funcionario.nivelDeAcesso)
                 window.location.href = "../homePage/index.html"
             }else{
                 var text;

@@ -9,7 +9,7 @@
   </head>
   <body>
     <div class="window" id="app">
-      <div id="loading">Carregando...</div>
+      <div id="loading"><img src="../../assets/logo_login.gif" alt="Loading logo"></div>
       <div class="window-content centralize">
         <div style="flex-direction: row;">
             <button type="button" id="store" @click="storeAnimal()">Criar novo</button>
@@ -44,7 +44,7 @@
         <div id="modal" v-if="openModal">
           <div class="wrap">
             <form id="cadastro-produto" action="" class="pane-body">
-                <h3 v-if="mode=='update'">Editar dados de Clientes</h3>
+                <h3 v-if="mode=='update'">Editar dados do animal</h3>
                 <h3 v-if="mode=='store'">Adicionar Cliente</h3>
                 <div class="form-group">
                 <input type="text" class="form-control" id="nome" placeholder="Nome" v-model="animal.nome" required>

@@ -9,11 +9,15 @@
   </head>
   <body>
     <div class="window" id="app">
-      <div id="loading">Carregando...</div>
+      <div id="loading">
+        <img src="../../assets/logo_login.gif" alt="Loading logo">
+      </div>
       <div class="window-content centralize">
+          <div style="flex-direction: row;">
+              <button type="button" id="store" @click="storeClient()">Criar novo</button>
+              <a href="../homePage/index.html"><button>Home</button></a>
+            </div>
         <div class="corpo">
-          <button type="button" id="store" @click="storeClient()">Criar novo</button>
-          <a href="../homePage/index.html"><button>Home</button></a>
           <table class="table table-striped">
             <thead>
               <tr>
@@ -40,7 +44,7 @@
         <div id="modal" v-if="openModal">
         <div class="wrap">
             <form id="cadastro-produto" action="" class="pane-body">
-                <h3 v-if="mode=='update'">Editar dados de Clientes</h3>
+                <h3 v-if="mode=='update'">Editar dados do cliente</h3>
                 <h3 v-if="mode=='store'">Adicionar Cliente</h3>
                 <div class="form-group">
                 <input type="text" class="form-control" id="nome" placeholder="Nome" v-model="cliente.nome" required>
@@ -55,7 +59,7 @@
                     <input type="text" class="form-control" id="tel" placeholder="telefone" v-model="cliente.telefone" required>
                 </div>
                 <button type="button" id="salvar" class="btn btn-positive" @click="clientStoreOrUpdate()">Salvar</button>
-                <button type="button" id="cancelar" class="btn btn-negative" @click="openModal=false">Cancelar</button>
+                <button type="button" id="cancelar" class="btn btn-negative" @click="closeModal()">Cancelar</button>
             </form>
           </div>
         </div>
