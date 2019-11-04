@@ -21,6 +21,12 @@ if(fs.existsSync(__dirname + '/db.json')){
     db.addCollection('financiamentos')
     db.save()
 }
+
+setTimeout(function() {
+    var element = document.getElementById('loading');
+    element.classList += " hidden";
+}, 2000);
+
 var fun = {
     nome: "Maxwell Olliver",
     senha: "123456",
@@ -52,8 +58,7 @@ new Vue({
                 }
                 if(this.login.nome === "" || this.login.senha === ""){
                     text = "Por favor, preencha todos os campos."
-                } 
-                if(funcionario.nome === "vazio"){
+                } else if(funcionario.nome === "vazio"){
                     text = "Este usuário não existe."
                 }
                 let err = document.querySelector("div#err-msg");

@@ -21,6 +21,7 @@
   },
   "dependencies": {
     "lokijs": "^1.5.8",
+    "mongoose": "^5.7.7",
     "read-file-utf8": "^1.1.2",
     "vue": "^2.6.10"
   }

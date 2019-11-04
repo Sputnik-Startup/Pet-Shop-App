@@ -17,7 +17,6 @@ const clientes = db.getCollection("clientes");
 new Vue({
     el: "#app",
     data: {
-        ready: true,
         infoOwnerModal: false,
         clientes: clientes.data,
         animais: animais.data,

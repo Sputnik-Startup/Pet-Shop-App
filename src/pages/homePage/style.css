@@ -190,3 +190,33 @@ div#loading img{
     width: 128px;
     height: 128px;
 }
+
+a#signOut {
+    background: rgb(253, 65, 65);
+    padding:  10px 10px 3px 10px;
+    font-size: 16px;
+    color: white;
+    text-decoration: none;
+    position: fixed;
+    border-radius: 10px;
+    top: 0;
+    right: 5px;
+    cursor: pointer;
+    z-index: 300;
+}
+
+a#signOut img {
+    width: 25px;
+    height: 25px;
+    margin-right: 5px;
+    
+}
+
+
+
+a#signOut span{
+    letter-spacing: 1px;
+    font-weight: bold;
+    position: relative;
+    bottom: 7px
+}
