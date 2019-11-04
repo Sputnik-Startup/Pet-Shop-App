@@ -12,56 +12,77 @@ setTimeout(function() {
     element.classList += " hidden";
 }, 300);
 
-const estoquedb = db.getCollection("estoque")
+const servicos = db.getCollection("servicos");
+const clientes = db.getCollection("clientes")
 
 new Vue({
     el: "#app",
     data: {
-        estoqueAtivo: estoquedb.data,
+        infoClientModal: false,
+        servicos: servicos.data,
+        clientes: clientes.data,
         mode: "",
         openModal: false,
-        estoque: {
-            nomeProduto: "",
-            valorUnit: "",
-            qtd: "",
-            validade: "",
+        servico: {
+            tipoDeServico: "",
+            data: "",
+            precoFixo: "",
+            precoDesconto: "",
+            cliente: "",
+        },
+        cliente: {
+            nome: "",
+            email: "",
+            cpf: "",
+            telefone: "",
         }
     },
     methods: {
+        clientInfo: function(service){
+            const clientInfo = clientes.find({'$loki': service.cliente})[0];
+            this.cliente = clientInfo
+            this.infoClientModal = true
+        },
         closeModal: function(){
             this.openModal = false;
             if(this.mode === "update"){
                 window.location.reload()
             }
         },
-        updateEstoque: function(estoque){
+        updateServico: function(servico){
             this.mode = "update"
-            this.estoque = estoque
+            this.servico = servico
             this.openModal = true
+            // var data = new Date(this.servico.data);
+            // var options = { year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric', timeZone: "SouthAmerica/Brasilia" }
+
+            // console.log(data.toLocaleDateString("pt-BR", options))
+
         },
-        destroyEstoque: function(estoque){
-            estoquedb.remove({'$loki': estoque.$loki})
+        destroyServico: function(servico){
+            servicos.remove({'$loki': servico.$loki})
             db.save()
         },
-        storeEstoque: function(){
+        storeServico: function(){
             this.mode = "store"
-            this.estoque = {
-                nomeProduto: "",
-                valorUnit: "",
-                qtd: "",
-                validade: "",
+            this.servico = {
+                tipoDeServico: "",
+                data: "",
+                precoFixo: "",
+                precoDesconto: "",
+                cliente: "",
             }
             this.openModal = true
         },
-        estoqueStoreOrUpdate: function(){
-            let data = new Date(this.estoque.validade);
-            this.estoque.validade = data.toLocaleDateString("pt-BR", {timeZone: "UTC"});
-            
+        servicoStoreOrUpdate: function(){
+            // var slp = this.servico.data.split('T') || this.servico.data;
+            // slp[0] = new Date(slp[0]).toLocaleDateString("pt-BR", {timeZone: "UTC"})
+            // this.servico.data = slp
 
-            if(typeof this.estoque.$loki != "undefined"){
-                estoquedb.update(this.estoque)
+            if(typeof this.servico.$loki != "undefined"){
+                servicos.update(this.servico)
             }else{
-                estoquedb.insert(this.estoque)
+                servicos.insert(this.servico)
             }
             db.save()
             this.openModal = false;

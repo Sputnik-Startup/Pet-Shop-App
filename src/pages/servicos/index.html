@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Estoque</title>
+    <title>Serviços</title>
     <link rel="stylesheet" href="../../../css/photon.css">
     <link rel="stylesheet" href="style.css">
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.8/vue.js"></script>
@@ -13,7 +13,7 @@
       <div id="loading"><img src="../../assets/logo_login.gif" alt="Loading logo"></div>
       <div class="window-content centralize">
         <div style="flex-direction: row;">
-            <button type="button" id="store" @click="storeEstoque()">Criar novo</button>
+            <button type="button" id="store" @click="storeServico()">Criar novo</button>
             <a href="../homePage/index.html"><button>Home</button></a>
         </div>
 
@@ -22,22 +22,24 @@
           <table class="table table-striped">
             <thead>
               <tr>
-                <th>Nome do Produto</th>
-                <th>Valor Unit.</th>
-                <th>Qtd.</th>
-                <th>Validade</th>
+                <th>Tipo de Serviço</th>
+                <th>Data</th>
+                <th>Preço Fixo</th>
+                <th>Preço Desconto</th>
+                <th>Cliente</th>
                 <th></th>
                 <th></th>
               </tr>
             </thead>
             <tbody>
-              <tr v-for="est in estoqueAtivo">
-                <td>{{est.nomeProduto}}</td>
-                <td>{{Number(est.valorUnit).toLocaleString("pt-BR", {style: "currency", currency: "BRL"})}}</td>
-                <td>{{est.qtd}}</td>
-                <td>{{est.validade}}</td>
-                <td><button id="edit" type="button" @click="updateEstoque(est)">Editar</button></td>
-                <td><button id="destroy" type="button" @click="destroyEstoque(est)">Deletar</button></td>
+              <tr v-for="service in servicos">
+                <td>{{service.tipoDeServico}}</td>
+                <td>{{new Date(service.data.split("T")[0]).toLocaleDateString("pt-BR", {timeZone: "UTC"})}} às {{service.data.split("T")[1]}}</td>
+                <td>{{Number(service.valorFixo).toLocaleString("pt-BR",{style: "currency", currency: "BRL"})}}</td>
+                <td>{{service.valorDesconto}}</td>
+                <td><button id="infoBtn" type="button" @click="clientInfo(service)">Info.Cliente</button></td>
+                <td><button id="edit" type="button" @click="updateServico(service)">Editar</button></td>
+                <td><button id="destroy" type="button" @click="destroyServico(service)">Deletar</button></td>
               </tr>
             </tbody>
           </table>
@@ -45,40 +47,50 @@
         <div id="modal" v-if="openModal">
           <div class="wrap">
             <form id="cadastro-produto" action="" class="pane-body">
-                <h3 v-if="mode=='update'">Editar dados do estoque</h3>
-                <h3 v-if="mode=='store'">Adicionar Produto</h3>
+                <h3 v-if="mode=='update'">Editar dados do serviço</h3>
+                <h3 v-if="mode=='store'">Adicionar Serviço</h3>
                 <div class="form-group">
-                <input type="text" class="form-control" id="nomeProduto" placeholder="Nome do Produto" v-model="estoque.nomeProduto" required>
+                  <input type="text" class="form-control" id="tipoServico" placeholder="Tipo de Serviço" v-model="servico.tipoDeServico" required>
                 </div>
                 <div class="form-group">
-                <input type="text" class="form-control" id="Valor" placeholder="Valor unitário" v-model="estoque.valorUnit" required>
+                  <input type="datetime-local" class="form-control" id="Data" placeholder="Data do serviço" v-model="servico.data" required>
                 </div>
                 <div class="form-group">
-                    <input type="number" class="form-control" id="qtd" placeholder="Qtd." v-model="estoque.qtd" required>
+                    <input type="text" class="form-control" id="valorFixo" placeholder="Valor fixo" v-model="servico.valorFixo" required>
                 </div>
                 <div class="form-group">
-                    <input type="date" class="form-control" id="Validade" v-model="estoque.validade" required>
+                    <input type="text" class="form-control" id="valorDesconto" placeholder="Valor com Desconto" v-model="servico.valorDesconto" required>
                 </div>
-                <button type="button" id="salvar" class="btn btn-positive" @click="estoqueStoreOrUpdate()">Salvar</button>
+                <div class="form-group">
+                    <select name="cliente" id="cliente" v-model="servico.cliente" class="form-control">
+                        <option value="" disabled>Selecione o cliente</option>
+                        <option :value="client.$loki" v-for="client in clientes">{{client.nome}}</option>
+                    </select>
+                </div>
+                <button type="button" id="salvar" class="btn btn-positive" @click="servicoStoreOrUpdate()">Salvar</button>
                 <button type="button" id="cancelar" class="btn btn-negative" @click="closeModal()">Cancelar</button>
             </form>
           </div>
         </div>
       </div>
-        <!-- <footer class="toolbar toolbar-footer">
-            <div class="toolbar-actions">
-              <button class="btn btn-default">
-                Cancel
-              </button>
-          
-              <button class="btn btn-primary pull-right">
-                Save
-              </button>
+      <div id="modal" v-if="infoClientModal">
+          <div class="wrap">
+            <div id="info">
+                <span><strong>Nome:</strong> 
+                    <br>{{cliente.nome}}</span><br>
+                  <span><strong>E-mail:</strong>  
+                    <br>{{cliente.email}}</span><br>
+                  <span><strong>CPF:</strong>  
+                    <br>{{cliente.cpf}}</span><br>
+                  <span><strong>Telefone:</strong> 
+                    <br>{{cliente.telefone}}</span><br>
+                <button id="fechar" type="button" @click="infoClientModal = false">Fechar</button>
             </div>
-          </footer> -->
+          </div>
+        </div>
       </div>
     </div>
-    <script src="app-estoque.js"></script>
+    <script src="app-servico.js"></script>
   </body>
 </html>
 

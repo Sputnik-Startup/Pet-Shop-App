@@ -21,7 +21,6 @@ if(fs.existsSync(__dirname + '/db.json')){
     db.addCollection('financiamentos')
     db.save()
 }
-
 setTimeout(function() {
     var element = document.getElementById('loading');
     element.classList += " hidden";
