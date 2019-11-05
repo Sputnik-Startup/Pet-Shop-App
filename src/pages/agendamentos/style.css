@@ -9,7 +9,7 @@ html, body {
     font-size: 15px;
 }
 .centralize {
-    background: #3C8AD5;
+    background: #EBB43C;
     justify-content: top;
     align-items: center;
     padding-top: 30px;
@@ -19,10 +19,10 @@ html, body {
 th, td{
     font-size: 15px;
 }
-
 .table-striped tr:nth-child(even) {
-    background-color: rgb(215, 233, 250)
+    background-color: rgb(250, 234, 201)
 }
+
 .corpo {
     width: 90%;
     min-height: 90%;

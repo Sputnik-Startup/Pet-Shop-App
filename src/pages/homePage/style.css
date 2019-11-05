@@ -137,7 +137,7 @@ body {
 }
 
 .box div#menu div#financeiro:hover {
-    background: rgb(61, 144, 192)
+    background: rgb(57, 132, 175)
 }
 
 
@@ -198,11 +198,18 @@ a#signOut {
     color: white;
     text-decoration: none;
     position: fixed;
-    border-radius: 10px;
+    border-radius: 6px;
     top: 0;
     right: 5px;
     cursor: pointer;
     z-index: 300;
+
+    transition: .3s;
+}
+
+a#signOut:hover {
+    background: rgb(221, 57, 57);
+    color: rgb(236, 234, 234);
 }
 
 a#signOut img {
@@ -212,10 +219,7 @@ a#signOut img {
     
 }
 
-
-
 a#signOut span{
-    letter-spacing: 1px;
     font-weight: bold;
     position: relative;
     bottom: 7px

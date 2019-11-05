@@ -33,6 +33,10 @@ th, td {
     
 }
 
+.table-striped tr:nth-child(even) {
+    background-color: #d8d8d6;
+}
+
 button#store {
     background: hsl(123, 59%, 58%);
     color: white;
@@ -93,6 +97,7 @@ button#destroy:hover {
     min-height: 30%;
     margin-left: 20%;
     margin-top: 10%;
+    padding: 10px;
     background: #fff;
     border-radius: 4px;
 }

@@ -53,10 +53,6 @@ new Vue({
             this.mode = "update"
             this.servico = servico
             this.openModal = true
-            // var data = new Date(this.servico.data);
-            // var options = { year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric', timeZone: "SouthAmerica/Brasilia" }
-
-            // console.log(data.toLocaleDateString("pt-BR", options))
 
         },
         destroyServico: function(servico){

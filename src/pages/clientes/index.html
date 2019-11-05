@@ -14,11 +14,15 @@
         <img src="../../assets/logo_login.gif" alt="Loading logo">
       </div>
       <div class="window-content centralize">
-          <div style="flex-direction: row;">
-              <button type="button" id="store" @click="storeClient()">Criar novo</button>
-              <a href="../homePage/index.html"><button>Home</button></a>
-            </div>
         <div class="corpo">
+          <div id="topBar">
+            <button type="button" id="store" @click="storeClient()">Criar novo</button>
+            <a href="../homePage/index.html">Home</a>
+            <form>
+                <input class="form-control" type="text" name="searchBar" id="searchBar" placeholder="Pesquisar pelo CPF ou E-mail" v-model="search">
+                <button type="button" id="btn-search" @click="searchClient()"><span class="icon icon-search"></span></button>
+            </form>
+          </div>
           <table class="table table-striped">
             <thead>
               <tr>
@@ -48,34 +52,50 @@
                 <h3 v-if="mode=='update'">Editar dados do cliente</h3>
                 <h3 v-if="mode=='store'">Adicionar Cliente</h3>
                 <div class="form-group">
-                <input type="text" class="form-control" id="nome" placeholder="Nome" v-model="cliente.nome" required>
+                  <input type="text" class="form-control" id="nome" placeholder="Nome" v-model="cliente.nome" required>
                 </div>
                 <div class="form-group">
-                <input type="email" class="form-control" id="email" placeholder="email" v-model="cliente.email" required>
+                  <input type="email" class="form-control" id="email" placeholder="email" v-model="cliente.email" required>
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control" id="cpf" placeholder="CPF" v-model="cliente.cpf" required>
+                  <input type="text" class="form-control" id="cpf" placeholder="CPF" v-model="cliente.cpf" required>
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control" id="tel" placeholder="telefone" v-model="cliente.telefone" required>
+                  <input type="text" class="form-control" id="tel" placeholder="telefone" v-model="cliente.telefone" required>
                 </div>
                 <button type="button" id="salvar" class="btn btn-positive" @click="clientStoreOrUpdate()">Salvar</button>
                 <button type="button" id="cancelar" class="btn btn-negative" @click="closeModal()">Cancelar</button>
             </form>
           </div>
         </div>
-      </div>
-        <!-- <footer class="toolbar toolbar-footer">
-            <div class="toolbar-actions">
-              <button class="btn btn-default">
-                Cancel
-              </button>
-          
-              <button class="btn btn-primary pull-right">
-                Save
-              </button>
-            </div>
-          </footer> -->
+        <div id="modal"  v-if="searchModal">
+          <div id="search-modal">
+            <button id="close" @click="searchModal=false">Fechar</button>
+            <div v-if="searchErr" id="err-msg"><hr> Nenhum resultado encontrado</div>
+            <table class="table table-striped" v-if="!searchErr">
+              <thead>
+                <tr>
+                  <th>Nome</th>
+                  <th>E-mail</th>
+                  <th>CPF</th>
+                  <th>Telefone</th>
+                  <th></th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>{{searchResult.nome}}</td>
+                  <td>{{searchResult.email}}</td>
+                  <td>{{searchResult.cpf}}</td>
+                  <td>{{searchResult.telefone}}</td>
+                  <td><button id="edit" type="button" @click="updateClient(searchResult); searchModal = false">Editar</button></td>
+                  <td><button id="destroy" type="button" @click="destroyClient(searchResult); searchModal = false">Deletar</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
     </div>
     <script src="app-cliente.js"></script>

@@ -18,7 +18,7 @@ if(fs.existsSync(__dirname + '/db.json')){
     db.addCollection('servicos')
     db.addCollection('estoque')
     db.addCollection('agendamentos')
-    db.addCollection('financiamentos')
+    db.addCollection('financeiro')
     db.save()
 }
 setTimeout(function() {

@@ -28,9 +28,69 @@ html, body {
     overflow-x: scroll;
 }
 
+div#topBar {
+    margin: 10px 15px;
+    display: flex;
+    flex-direction: row;
+    }
+    div#topBar a{
+        background: rgb(150, 150, 150);
+        width: 60px;
+        text-decoration: none;
+        text-align: center;
+        padding:3px 5px;
+        color: white;
+        border-radius: 4px;
+        margin-left: 5px;
+        cursor: pointer;
+
+        transition: .3s;
+    }
+    div#topBar a:hover {
+        background: rgb(116, 116, 116);
+        color: rgb(194, 189, 189);
+    }
+    div#topBar form {
+        position: absolute;
+        right: 6%;
+    }
+    div#topBar input#searchBar{
+        width: 250px;
+        height: 30px;
+        border: 2px solid #dbdbdb;
+        padding: 5px;
+        border-radius: 4px;
+        cursor: text;
+    }
+    div#topBar form button {
+        height: 29px;
+        width: auto;
+        padding: 0 10px;
+        color: white;
+        border-radius: 4px;
+        background: #3C8AD5;
+        cursor: pointer ;
+
+        transition: .3s;
+    }
+
+    div#topBar form button:hover {
+        background: rgb(52, 119, 182);
+        color: rgb(208, 224, 255);
+    }
+    div#topBar form button span {
+        cursor: pointer;
+    }
+
+
+
 th, td {
     font-size: 15px;
     
+}
+
+.table-striped tr:nth-child(even) {
+    background-color: rgb(255, 236, 217);
 }
 
 button#store {
@@ -93,9 +153,46 @@ button#destroy:hover {
     min-height: 30%;
     margin-left: 20%;
     margin-top: 10%;
+    padding: 10px;
     background: #fff;
     border-radius: 4px;
 }
+#modal #search-modal {
+    width: 90%;
+    min-height: 30%;
+    margin-left: 5%;
+    margin-top: 5%;
+    padding-top: 3px;
+    background: #fff;
+    border-radius: 4px;
+    }
+    #modal #search-modal table{
+        margin-top: 8px;
+    }
+    #modal #search-modal div#err-msg{
+        font-size: 30px;
+        font-weight: bold;
+        color: rgb(37, 37, 37);
+        text-align: center;
+    }
+    #modal #search-modal div#err-msg hr{
+        margin: 10px 0 10px;
+    }
+    #modal #search-modal button#close {
+        height: 28px;
+        width: auto;
+        padding:0 5px 0;
+        color: white;
+        background: rgb(252, 75, 75);
+        border-radius: 4px;
+        transition: .3s;
+        margin: 5px 5px 0;
+        cursor: pointer;
+    }
+    #modal #search-modal button#close:hover {
+        background: rgb(226, 65, 65);
+        color: rgb(252, 188, 188);
+    }
 
 #modal .wrap input {
     cursor: text;

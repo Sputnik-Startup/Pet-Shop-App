@@ -17,6 +17,15 @@ setTimeout(function() {
 new Vue({
     el: "#app",
     data: {
+        searchModal: false,
+        searchResult: {
+            nome: "",
+            email: "",
+            cpf: "",
+            telefone: "",
+        },
+        search: "",
+        searchErr: false,
         clientes: clientes.data,
         mode: "",
         openModal: false,
@@ -28,6 +37,19 @@ new Vue({
         }
     },
     methods: {
+        searchClient: function(){
+            const result = clientes.find({'cpf': this.search})[0] || clientes.find({'email': this.search})[0];
+            console.log(result)
+            if(typeof result == "undefined"){
+                this.searchErr = true;
+            }else{
+                this.searchErr = false;
+                this.searchResult = result;
+            }
+            console.log(this.searchResult)
+            this.searchModal = true;
+
+        },
         closeModal: function(){
             this.openModal = false;
             window.location.reload()
