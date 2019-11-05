@@ -156,6 +156,17 @@ button#destroy:hover {
     padding: 10px;
     background: #fff;
     border-radius: 4px;
+    animation: fadeInAnimation ease .5s;
+    animation-iteration-count: 1; 
+    animation-fill-mode: forwards;
+}
+@keyframes fadeInAnimation { 
+    0% { 
+        opacity: 0; 
+    } 
+    100% { 
+        opacity: 1;
+    }
 }
 #modal #search-modal {
     width: 90%;
@@ -165,6 +176,9 @@ button#destroy:hover {
     padding-top: 3px;
     background: #fff;
     border-radius: 4px;
+    animation: fadeInAnimation ease .5s;
+    animation-iteration-count: 1; 
+    animation-fill-mode: forwards;
     }
     #modal #search-modal table{
         margin-top: 8px;
