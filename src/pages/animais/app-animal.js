@@ -12,11 +12,21 @@ setTimeout(function() {
     element.classList += " hidden";
 }, 300);
 
+
 const animais = db.getCollection("animais")
 const clientes = db.getCollection("clientes");
 new Vue({
     el: "#app",
     data: {
+        searchModal: false,
+        searchResult: {
+            nome: "",
+            tipo: "",
+            raca: "",
+            dono: "",
+        },
+        search: "",
+        searchErr: false,
         infoOwnerModal: false,
         clientes: clientes.data,
         animais: animais.data,
@@ -36,6 +46,29 @@ new Vue({
         }
     },
     methods: {
+        searchAnimal: function(){
+            const ownerResult = clientes.find({'cpf': this.search})[0]
+            if(typeof ownerResult != "undefined"){
+                const result = animais.find({'dono': ownerResult.$loki})[0]
+                if(typeof result == "undefined"){
+                    this.searchErr = true;
+                }else{
+                    this.searchErr = false;
+                    this.searchResult = result;
+                }
+            }else{
+                this.searchErr = true;
+            }
+            this.searchModal = true;
+
+            //434.660.310-60
+
+        },
+        copyWay: function(){
+            document.getElementById("copy").title = "CPF copiado!"
+            document.getElementById("text").select()
+            document.execCommand("copy")
+        },
         closeModal: function(){
             this.openModal = false;
             window.location.reload()
@@ -43,6 +76,7 @@ new Vue({
         ownerInfo: function(ani){
             const ownerInfo = clientes.find({'$loki': ani.dono})[0];
             this.owner = ownerInfo
+            this.searchModal = false;
             this.infoOwnerModal = true
         },
         updateAnimal: function(animal){

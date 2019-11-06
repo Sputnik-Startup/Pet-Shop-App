@@ -17,6 +17,7 @@ setTimeout(function() {
 new Vue({
     el: "#app",
     data: {
+        errorModal: false,
         searchModal: false,
         searchResult: {
             nome: "",
@@ -39,14 +40,13 @@ new Vue({
     methods: {
         searchClient: function(){
             const result = clientes.find({'cpf': this.search})[0] || clientes.find({'email': this.search})[0];
-            console.log(result)
+
             if(typeof result == "undefined"){
                 this.searchErr = true;
             }else{
                 this.searchErr = false;
                 this.searchResult = result;
             }
-            console.log(this.searchResult)
             this.searchModal = true;
 
         },
@@ -74,12 +74,16 @@ new Vue({
             this.openModal = true
         },
         clientStoreOrUpdate: function(){
-            if(typeof this.cliente.$loki != "undefined"){
-                clientes.update(this.cliente)
+            if(this.cliente.nome != "" && this.cliente.email != "" && this.cliente.cpf != "" && this.cliente.telefone != ""){
+                if(typeof this.cliente.$loki != "undefined"){
+                    clientes.update(this.cliente)
+                }else{
+                    clientes.insert(this.cliente)
+                }
+                db.save()
             }else{
-                clientes.insert(this.cliente)
+                this.errorModal = true
             }
-            db.save()
             this.openModal = false;
         }
     }

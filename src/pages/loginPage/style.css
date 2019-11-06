@@ -129,9 +129,25 @@ div#loading img{
         opacity: 1;
         width: 128px;
         height: 128px;
-        top: 19%;
-        /* Full Screen */
-        /* top: 32.6%;  */
+        top: 19%; 
         
+    }
+}
+
+@media (min-width: 1200px) and (min-height: 780px){
+    @keyframes SizeIn {
+        0%{
+            width: 650px;
+            height: 650px;
+            opacity: 0.3
+    
+        }
+        100%{
+            opacity: 1;
+            width: 128px;
+            height: 128px;
+            top: 32.6%; 
+            
+        }
     }
 }

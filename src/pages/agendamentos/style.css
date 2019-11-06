@@ -16,6 +16,40 @@ html, body {
     padding-bottom: 30px;
     flex-direction: column;
 }
+div#topBar {
+    margin: 10px 15px;
+    display: flex;
+    flex-direction: row;
+    }
+    div#topBar a{
+        background: rgb(150, 150, 150);
+        width: 60px;
+        text-decoration: none;
+        text-align: center;
+        padding:3px 5px;
+        color: white;
+        border-radius: 4px;
+        margin-left: 5px;
+        cursor: pointer;
+
+        transition: .3s;
+    }
+    div#topBar a:hover {
+        background: rgb(116, 116, 116);
+        color: rgb(194, 189, 189);
+    }
+    div#topBar input#searchBar{
+        width: 250px;
+        height: 30px;
+        border: 2px solid #dbdbdb;
+        padding: 5px;
+        border-radius: 4px;
+        cursor: text;
+    }
+
+.table-striped tr:nth-child(even) {
+    background-color: rgb(215, 233, 250)
+}
 th, td{
     font-size: 15px;
 }

@@ -58,7 +58,7 @@
                   <input type="email" class="form-control" id="email" placeholder="email" v-model="cliente.email" required>
                 </div>
                 <div class="form-group">
-                  <input type="text" class="form-control" id="cpf" placeholder="CPF" v-model="cliente.cpf" required>
+                  <input type="text" class="form-control" id="cpf" placeholder="CPF" v-model="cliente.cpf" maxlength="12" required>
                 </div>
                 <div class="form-group">
                   <input type="text" class="form-control" id="tel" placeholder="telefone" v-model="cliente.telefone" required>
@@ -66,6 +66,12 @@
                 <button type="button" id="salvar" class="btn btn-positive" @click="clientStoreOrUpdate()">Salvar</button>
                 <button type="button" id="cancelar" class="btn btn-negative" @click="closeModal()">Cancelar</button>
             </form>
+          </div>
+        </div>
+        <div id="modal" v-if="errorModal">
+          <div id="erroStore" class="wrap">
+            <button id="fechar" @click="errorModal=false">Fechar</button><hr>
+            <h4>Por favor, preencha todos os campos.</h4>
           </div>
         </div>
         <div id="modal"  v-if="searchModal">

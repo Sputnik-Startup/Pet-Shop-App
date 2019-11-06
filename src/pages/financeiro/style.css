@@ -9,7 +9,7 @@ html, body {
     font-size: 15px;
 }
 .centralize {
-    background: #60BCD1;
+    background: #45A0D4;
     justify-content: top;
     align-items: center;
     padding-top: 30px;
@@ -28,7 +28,36 @@ th, td{
     overflow-y: hidden;
     overflow-x: scroll;
 }
+div#topBar {
+    margin: 10px 15px;
+    display: flex;
+    flex-direction: row;
+    }
+    div#topBar a{
+        background: rgb(150, 150, 150);
+        width: 60px;
+        text-decoration: none;
+        text-align: center;
+        padding:3px 5px;
+        color: white;
+        border-radius: 4px;
+        margin-left: 5px;
+        cursor: pointer;
 
+        transition: .3s;
+    }
+    div#topBar a:hover {
+        background: rgb(116, 116, 116);
+        color: rgb(194, 189, 189);
+    }
+    div#topBar input#searchBar{
+        width: 250px;
+        height: 30px;
+        border: 2px solid #dbdbdb;
+        padding: 5px;
+        border-radius: 4px;
+        cursor: text;
+    }
 button#infoBtn {
     background: hsl(0, 0%, 39%);
     color: white;

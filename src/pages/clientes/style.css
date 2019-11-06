@@ -231,6 +231,33 @@ button#destroy:hover {
     opacity: 0;
     visibility: hidden;
 }
+button#fechar {
+    margin-top: 3px;
+    background: hsl(0, 100%, 64%);
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    padding: 2px 8px;
+
+    transition: .3s
+}
+#modal #erroStore{
+    min-height: 20%;
+}
+
+@media (min-width: 1380px), (min-height: 720px){
+    #modal #erroStore{
+        min-height: 10% !important;
+    }
+}
+button#fechar:hover {
+    background: hsl(0, 65%, 54%);
+    color: rgb(248, 213, 213);
+}
+
+hr {
+    margin: 10px 0 10px;
+}
 
 div#loading img{
     width: 128px;

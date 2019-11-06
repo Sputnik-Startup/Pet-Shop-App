@@ -12,13 +12,15 @@
     <div class="window" id="app">
       <div id="loading"><img src="../../assets/logo_login.gif" alt="Loading logo"></div>
       <div class="window-content centralize">
-        <div style="flex-direction: row;">
-            <button type="button" id="store" @click="storeAnimal()">Criar novo</button>
-            <a href="../homePage/index.html"><button>Home</button></a>
-        </div>
-
         <div class="corpo">
-          
+          <div id="topBar">
+            <button type="button" id="store" @click="storeClient()">Criar novo</button>
+            <a href="../homePage/index.html">Home</a>
+            <form>
+                <input class="form-control" type="text" name="searchBar" id="searchBar" placeholder="Pesquisar pelo CPF do dono" v-model="search">
+                <button type="button" id="btn-search" @click="searchAnimal()"><span class="icon icon-search"></span></button>
+            </form>
+          </div>
           <table class="table table-striped">
             <thead>
               <tr>
@@ -75,7 +77,7 @@
                   <span><strong>E-mail:</strong>  
                     <br>{{owner.email}}</span><br>
                   <span><strong>CPF:</strong>  
-                    <br>{{owner.cpf}}</span><br>
+                    <br><input type="text" :value="owner.cpf" id="text" readonly><button id="copy" @click="copyWay()" title="Copiar CPF"><span class="icon icon-doc-text"></span></button></span><br>
                   <span><strong>Telefone:</strong> 
                     <br>{{owner.telefone}}</span><br>
                 <button id="fechar" type="button" @click="infoOwnerModal = false">Fechar</button>
@@ -83,17 +85,34 @@
           </div>
         </div>
       </div>
-        <!-- <footer class="toolbar toolbar-footer">
-            <div class="toolbar-actions">
-              <button class="btn btn-default">
-                Cancel
-              </button>
-          
-              <button class="btn btn-primary pull-right">
-                Save
-              </button>
-            </div>
-          </footer> -->
+        <div id="modal"  v-if="searchModal">
+          <div id="search-modal">
+            <button id="close" @click="searchModal=false">Fechar</button>
+            <div v-if="searchErr" id="err-msg"><hr> Nenhum resultado encontrado</div>
+            <table class="table table-striped" v-if="!searchErr">
+              <thead>
+                <tr>
+                  <th>Nome</th>
+                  <th>Tipo</th>
+                  <th>Raça</th>
+                  <th>Dono</th>
+                  <th></th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>{{searchResult.nome}}</td>
+                  <td>{{searchResult.tipo}}</td>
+                  <td>{{searchResult.raca}}</td>
+                  <td><button id="infoBtn" type="button" @click="ownerInfo(searchResult)">Info.Dono</button></td>
+                  <td><button id="edit" type="button" @click="updateAnimal(searchResult); searchModal = false">Editar</button></td>
+                  <td><button id="destroy" type="button" @click="destroyAnimal(searchResult); searchModal = false">Deletar</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
     </div>
     <script src="app-animal.js"></script>

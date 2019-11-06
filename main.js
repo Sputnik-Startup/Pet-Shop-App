@@ -7,14 +7,16 @@ let mainWindow
 function createWindow () {
 
   mainWindow = new BrowserWindow({
+    show: false,
     width: 1000,
     height: 600,
+    minHeight: 400,
+    minWidth: 700,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
       nodeIntegration: true
     }
   })
-
 
   mainWindow.loadFile('./src/pages/loginPage/index.html')
 
@@ -22,6 +24,9 @@ function createWindow () {
   mainWindow.on('closed', function () {
     mainWindow = null
   })
+
+  mainWindow.maximize()
+  mainWindow.show()
 }
 
 app.on('ready', createWindow)
