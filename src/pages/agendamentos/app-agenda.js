@@ -19,6 +19,9 @@ const agendamentos = db.getCollection("agendamentos")
 new Vue({
     el: "#app",
     data: {
+        existsClient: false,
+        existsAnimal: false,
+        errorModal: false,
         infoClientModal: false,
         infoAnimalModal: false,
         clientes: clientes.data,
@@ -46,23 +49,41 @@ new Vue({
         openModal: false,
     },
     methods: {
+        copyText: function(){
+            document.getElementById("copy").title = "CPF copiado!"
+            document.getElementById("text").select()
+            document.execCommand("copy")
+        },
         closeModal: function(){
             this.openModal = false;
             window.location.reload()
         },
         clienteInfo: function(agenda){
             const clientInfo = clientes.find({'$loki': agenda.cliente})[0];
-            this.client = clientInfo
+            
+            if(typeof clientInfo != "undefined"){
+                this.client = clientInfo
+                this.existsClient = true
+            }else{
+                this.existsClient= false
+            }
+            this.searchModal = false;
             this.infoClientModal = true
         },
         animalInfo: function(agenda){
             const animalInfo = animais.find({'$loki': agenda.animal})[0];
-            const clientName = clientes.find({'$loki': animalInfo.dono})[0];
-            this.animal = {
-                nome: animalInfo.nome,
-                tipo: animalInfo.tipo,
-                raca: animalInfo.raca,
-                dono: clientName.nome,
+            if(typeof animalInfo != "undefined" ){
+                const clientName = clientes.find({'$loki': animalInfo.dono})[0] || {nome:"Cliente removido."};
+                console.log(clientName.nome)
+                this.animal = {
+                    nome: animalInfo.nome,
+                    tipo: animalInfo.tipo,
+                    raca: animalInfo.raca,
+                    dono: clientName.nome,
+                }
+                this.existsAnimal = true
+            }else{
+                this.existsAnimal = false
             }
             this.infoAnimalModal = true
         },
@@ -86,10 +107,14 @@ new Vue({
             this.openModal = true
         },
         agendaStoreOrUpdate: function(){
-            if(typeof this.agenda.$loki != "undefined"){
-                agendamentos.update(this.agenda);
+            if(this.agenda.cliente != "" && this.agenda.animal != "" && this.agenda.datetime != "" && this.agenda.tipoDeServico != ""){
+                if(typeof this.agenda.$loki != "undefined"){
+                    agendamentos.update(this.agenda);
+                }else{
+                    agendamentos.insert(this.agenda);
+                }
             }else{
-                agendamentos.insert(this.agenda);
+                this.errorModal = true
             }
             db.save();
             this.openModal = false;

@@ -14,7 +14,7 @@
       <div class="window-content centralize">
         <div class="corpo">
           <div id="topBar">
-            <button type="button" id="store" @click="storeClient()">Criar novo</button>
+            <button type="button" id="store" @click="storeServico()">Criar novo</button>
             <a href="../homePage/index.html">Home</a>
           </div>
           <table class="table table-striped">
@@ -35,12 +35,18 @@
                 <td>{{new Date(service.data.split("T")[0]).toLocaleDateString("pt-BR", {timeZone: "UTC"})}} às {{service.data.split("T")[1]}}</td>
                 <td>{{Number(service.valorFixo).toLocaleString("pt-BR",{style: "currency", currency: "BRL"})}}</td>
                 <td>{{service.valorDesconto}}</td>
-                <td :value="service.cliente"><button id="infoBtn" type="button" @click="clientInfo(service)">Info.Cliente</button></td>
+                <td :value="service.cliente"><button id="infoBtn" type="button" @click="clienteInfo(service)">Info.Cliente</button></td>
                 <td><button id="edit" type="button" @click="updateServico(service)">Editar</button></td>
                 <td><button id="destroy" type="button" @click="destroyServico(service)">Deletar</button></td>
               </tr>
             </tbody>
           </table>
+        </div>
+        <div id="modal" v-if="errorModal">
+          <div id="erroStore" class="wrap">
+            <button id="fechar" @click="errorModal=false">Fechar</button><hr>
+            <h4>Por favor, preencha todos os campos.</h4>
+          </div>
         </div>
         <div id="modal" v-if="openModal">
           <div class="wrap">
@@ -73,16 +79,18 @@
       </div>
       <div id="modal" v-if="infoClientModal">
           <div class="wrap">
-            <div id="info">
-                <span><strong>Nome:</strong> 
-                    <br>{{cliente.nome}}</span><br>
-                  <span><strong>E-mail:</strong>  
-                    <br>{{cliente.email}}</span><br>
-                  <span><strong>CPF:</strong>  
-                    <br>{{cliente.cpf}}</span><br>
-                  <span><strong>Telefone:</strong> 
-                    <br>{{cliente.telefone}}</span><br>
-                <button id="fechar" type="button" @click="infoClientModal = false">Fechar</button>
+            <button id="fechar" type="button" @click="infoClientModal = false">Fechar</button>
+            <hr>
+            <h4 v-if="!existsClient">Este cliente foi removido</h4>
+            <div id="info" v-if="existsClient">
+              <span><strong>Nome:</strong> 
+                <br>{{cliente.nome}}</span><br>
+              <span><strong>E-mail:</strong>  
+                <br>{{cliente.email}}</span><br>
+              <span><strong>CPF:</strong>  
+                <br><input type="text" :value="cliente.cpf" id="text" readonly><button id="copy" @click="copyText()" title="Copiar CPF"><span class="icon icon-doc-text"></span></button></span><br>
+              <span><strong>Telefone:</strong>
+                <br>{{cliente.telefone}}</span><br>
             </div>
           </div>
         </div>

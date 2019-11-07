@@ -17,17 +17,40 @@ setTimeout(function() {
 new Vue({
     el: "#app",
     data: {
+        searchModal: false,
+        searchResult: {
+            nome: "",
+            email: "",
+            cpf: "",
+            telefone: "",
+        },
+        search: "",
+        searchErr: false,
+        errorModal: false,
         funcionarios: funcionarios.data,
         mode: "",
         openModal: false,
         funcionario: {
             nome: "",
+            nomeDeUsuario: "",
             senha: "",
             cargo: "",
             nivelDeAcesso: "",
         }
     },
     methods: {
+        searchFun: function(){
+            const result = funcionarios.find({'nomeDeUsuario': this.search})[0];
+
+            if(typeof result == "undefined"){
+                this.searchErr = true;
+            }else{
+                this.searchErr = false;
+                this.searchResult = result;
+            }
+            this.searchModal = true;
+
+        },
         closeModal: function(){
             this.openModal = false;
             window.location.reload()
@@ -45,6 +68,7 @@ new Vue({
             this.mode = "store"
             this.funcionario = {
                 nome: "",
+                nomeDeUsuario: "",
                 senha: "",
                 cargo: "",
                 nivelDeAcesso: "",
@@ -52,12 +76,16 @@ new Vue({
             this.openModal = true
         },
         funStoreOrUpdate: function(){
-            if(typeof this.funcionario.$loki != "undefined"){
-                funcionarios.update(this.funcionario)
+            if(this.funcionario.nome != "" && this.funcionario.tipo != "" && this.funcionario.raca != "" && this.funcionario.dono != "" && this.funcionario.nomeDeUsuario != "undefined"){
+                if(typeof this.funcionario.$loki != "undefined"){
+                    funcionarios.update(this.funcionario)
+                }else{
+                    funcionarios.insert(this.funcionario)
+                }
+                db.save()
             }else{
-                funcionarios.insert(this.funcionario)
+                this.errorModal = true
             }
-            db.save()
             this.openModal = false;
         }
     }

@@ -13,16 +13,21 @@
       <div class="window-content centralize">
         <div class="corpo">
           <div id="topBar">
-            <button type="button" id="store" @click="storeClient()">Criar novo</button>
+            <button type="button" id="store" @click="storeFun()">Criar novo</button>
             <a href="../homePage/index.html">Home</a>
+            <form>
+                <input class="form-control" type="text" name="searchBar" id="searchBar" placeholder="Pesquisar pelo Nm.Usuario" v-model="search">
+                <button type="button" id="btn-search" @click="searchFun()"><span class="icon icon-search"></span></button>
+            </form>
           </div>
           <table class="table table-striped">
             <thead>
               <tr>
                 <th>Nome</th>
+                <th>Nm.Usuário</th>
                 <th>Senha</th>
                 <th>Cargo</th>
-                <th>Nível de acesso</th>
+                <th>Nv.Acesso</th>
                 <th></th>
                 <th></th>
               </tr>
@@ -30,6 +35,7 @@
             <tbody>
               <tr v-for="fun in funcionarios">
                 <td>{{fun.nome}}</td>
+                <td>{{fun.nomeDeUsuario}}</td>
                 <td>{{fun.senha}}</td>
                 <td>{{fun.cargo}}</td>
                 <td>{{fun.nivelDeAcesso}}</td>
@@ -39,16 +45,25 @@
             </tbody>
           </table>
         </div>
+        <div id="modal" v-if="errorModal">
+          <div id="erroStore" class="wrap">
+            <button id="fechar" @click="errorModal=false">Fechar</button><hr>
+            <h4>Por favor, preencha todos os campos.</h4>
+          </div>
+        </div>
         <div id="modal" v-if="openModal">
         <div class="wrap">
             <form action="" class="pane-body">
                 <h3 v-if="mode=='update'">Editar dados do funcionário</h3>
                 <h3 v-if="mode=='store'">Adicionar Funcionário</h3>
                 <div class="form-group">
-                <input type="text" class="form-control" id="nome" placeholder="Nome" v-model="funcionario.nome" required>
+                  <input type="text" class="form-control" id="nome" placeholder="Nome" v-model="funcionario.nome" required>
                 </div>
                 <div class="form-group">
-                <input type="text" class="form-control" id="senha" placeholder="Senha" v-model="funcionario.senha" required>
+                  <input type="text" class="form-control" id="nomeDeUsuario" placeholder="Nome de usuário" v-model="funcionario.nomeDeUsuario" maxlength="15" required>
+                </div>
+                <div class="form-group">
+                  <input type="text" class="form-control" id="senha" placeholder="Senha" v-model="funcionario.senha" required>
                 </div>
                 <div class="form-group">
                     <input type="text" class="form-control" id="cargo" placeholder="Cargo" v-model="funcionario.cargo" required>
@@ -66,17 +81,36 @@
           </div>
         </div>
       </div>
-        <!-- <footer class="toolbar toolbar-footer">
-            <div class="toolbar-actions">
-              <button class="btn btn-default">
-                Cancel
-              </button>
-          
-              <button class="btn btn-primary pull-right">
-                Save
-              </button>
-            </div>
-          </footer> -->
+      <div id="modal"  v-if="searchModal">
+          <div id="search-modal">
+            <button id="close" @click="searchModal=false">Fechar</button>
+            <div v-if="searchErr" id="err-msg"><hr> Nenhum resultado encontrado</div>
+            <table class="table table-striped" v-if="!searchErr">
+              <thead>
+                <tr>
+                  <th>Nome</th>
+                  <th>Nm.Usuario</th>
+                  <th>Senha</th>
+                  <th>Cargo</th>
+                  <th>Nv.Acesso</th>
+                  <th></th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>{{searchResult.nome}}</td>
+                  <td>{{searchResult.nomeDeUsuario}}</td>
+                  <td>{{searchResult.senha}}</td>
+                  <td>{{searchResult.cargo}}</td>
+                  <td>{{searchResult.nivelDeAcesso}}</td>
+                  <td><button id="edit" type="button" @click="updateFun(searchResult); searchModal = false">Editar</button></td>
+                  <td><button id="destroy" type="button" @click="destroyFun(searchResult); searchModal = false">Deletar</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
     </div>
     <script src="app-funcionario.js"></script>

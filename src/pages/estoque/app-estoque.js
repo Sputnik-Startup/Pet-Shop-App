@@ -17,6 +17,7 @@ const estoquedb = db.getCollection("estoque")
 new Vue({
     el: "#app",
     data: {
+        errorModal: false,
         estoqueAtivo: estoquedb.data,
         mode: "",
         openModal: false,
@@ -57,13 +58,17 @@ new Vue({
             let data = new Date(this.estoque.validade);
             this.estoque.validade = data.toLocaleDateString("pt-BR", {timeZone: "UTC"});
             
-
-            if(typeof this.estoque.$loki != "undefined"){
-                estoquedb.update(this.estoque)
+            if(this.estoque.nomeProduto != "" && this.estoque.valorUnit != "" && this.estoque.qtd != "" && this.estoque.validade != ""){
+                if(typeof this.estoque.$loki != "undefined"){
+                    estoquedb.update(this.estoque)
+                }else{
+                    estoquedb.insert(this.estoque)
+                }
+                db.save()
             }else{
-                estoquedb.insert(this.estoque)
+                this.errorModal = true
             }
-            db.save()
+
             this.openModal = false;
         }
     }

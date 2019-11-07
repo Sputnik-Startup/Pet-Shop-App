@@ -14,7 +14,7 @@
       <div class="window-content centralize">
         <div class="corpo">
           <div id="topBar">
-            <button type="button" id="store" @click="storeClient()">Criar novo</button>
+            <button type="button" id="store" @click="storeEstoque()">Criar novo</button>
             <a href="../homePage/index.html">Home</a>
           </div>
           <table class="table table-striped">
@@ -39,6 +39,12 @@
               </tr>
             </tbody>
           </table>
+        </div>
+        <div id="modal" v-if="errorModal">
+          <div id="erroStore" class="wrap">
+            <button id="fechar" @click="errorModal=false">Fechar</button><hr>
+            <h4>Por favor, preencha todos os campos.</h4>
+          </div>
         </div>
         <div id="modal" v-if="openModal">
           <div class="wrap">

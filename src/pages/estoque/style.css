@@ -170,7 +170,7 @@ button#destroy:hover {
 }
 
 button#fechar {
-    margin-top: 20px;
+    margin-top: 3px;
     background: hsl(0, 100%, 64%);
     color: white;
     border-radius: 4px;
@@ -209,4 +209,14 @@ button#fechar:hover {
 div#loading img{
     width: 128px;
     height: 128px;
+}
+
+#modal #erroStore{
+    min-height: 20%;
+}
+
+@media (min-width: 1380px), (min-height: 720px){
+    #modal #erroStore{
+        min-height: 10% !important;
+    }
 }

@@ -14,7 +14,7 @@
       <div class="window-content centralize">
         <div class="corpo">
           <div id="topBar">
-            <button type="button" id="store" @click="storeClient()">Criar novo</button>
+            <button type="button" id="store" @click="storeAgenda()">Criar novo</button>
             <a href="../homePage/index.html">Home</a>
           </div>
           <table class="table table-striped">
@@ -39,6 +39,12 @@
               </tr>
             </tbody>
           </table>
+        </div>
+        <div id="modal" v-if="errorModal">
+          <div id="erroStore" class="wrap">
+            <button id="fechar" @click="errorModal=false">Fechar</button><hr>
+            <h4>Por favor, preencha todos os campos.</h4>
+          </div>
         </div>
         <div id="modal" v-if="openModal">
           <div class="wrap">
@@ -70,7 +76,10 @@
         </div>
         <div id="modal" v-if="infoAnimalModal">
           <div class="wrap">
-            <div id="info">
+              <button id="fechar" type="button" @click="infoAnimalModal = false">Fechar</button>
+              <hr>
+              <h4 v-if="!existsAnimal">Este animal foi removido.</h4>
+            <div id="info" v-if="existsAnimal">
                 <span><strong>Nome:</strong> 
                 <br>{{animal.nome}}</span><br>
                 <span><strong>Tipo:</strong>  
@@ -79,22 +88,23 @@
                 <br>{{animal.raca}}</span><br>
                 <span><strong>Dono:</strong>
                 <br>{{animal.dono}}</span><br>
-                <button id="fechar" type="button" @click="infoAnimalModal = false">Fechar</button>
             </div>
           </div>
         </div>
         <div id="modal" v-if="infoClientModal">
             <div class="wrap">
-              <div id="info">
+             <button id="fechar" type="button" @click="infoClientModal = false">Fechar</button>
+              <hr>
+              <h4 v-if="!existsClient">Este cliente foi removido.</h4> 
+              <div id="info" v-if="existsClient">
                   <span><strong>Nome:</strong> 
                       <br>{{client.nome}}</span><br>
                     <span><strong>E-mail:</strong>  
                       <br>{{client.email}}</span><br>
                     <span><strong>CPF:</strong>  
-                      <br>{{client.cpf}}</span><br>
+                      <br><input type="text" :value="client.cpf" id="text" readonly><button id="copy" @click="copyText()" title="Copiar CPF"><span class="icon icon-doc-text"></span></button></span><br>
                     <span><strong>Telefone:</strong> 
                       <br>{{client.telefone}}</span><br>
-                  <button id="fechar" type="button" @click="infoClientModal = false">Fechar</button>
               </div>
             </div>
           </div>

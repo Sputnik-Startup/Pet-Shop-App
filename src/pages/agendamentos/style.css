@@ -46,10 +46,6 @@ div#topBar {
         border-radius: 4px;
         cursor: text;
     }
-
-.table-striped tr:nth-child(even) {
-    background-color: rgb(215, 233, 250)
-}
 th, td{
     font-size: 15px;
 }
@@ -140,7 +136,8 @@ button#destroy:hover {
 #modal .wrap {
     font-size: 15px;
     width: 60%;
-    min-height: 30%;
+    min-height: 10% !important;
+    height: auto;
     margin-left: 20%;
     margin-top: 10%;
     padding: 10px;
@@ -167,12 +164,11 @@ button#destroy:hover {
 #info {
     padding: 20px 40px;
     font-size: 18px;
-    border: 1px solid rgb(206, 206, 206);
     border-radius: 4px;
 }
 
 button#fechar {
-    margin-top: 20px;
+    margin-top: 3px;
     background: hsl(0, 100%, 64%);
     color: white;
     border-radius: 4px;
@@ -187,6 +183,9 @@ button#fechar:hover {
     color: rgb(248, 213, 213);
 }
 
+hr {
+    margin: 10px 0 10px;
+}
 
 #loading{
     padding-top: 20%;
@@ -212,3 +211,21 @@ div#loading img{
     width: 128px;
     height: 128px;
 }
+
+button#copy {
+    border: 1px solid #c7c7c7;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 30px;
+    position: relative;
+    right: 60px;
+
+    transition: .3s;
+}
+button#copy:hover{
+    background: rgb(201, 201, 201);
+}
+button#copy span {
+    cursor: pointer;
+}
+

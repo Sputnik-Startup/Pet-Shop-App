@@ -14,7 +14,7 @@
       <div class="window-content centralize">
         <div class="corpo">
           <div id="topBar">
-            <button type="button" id="store" @click="storeClient()">Criar novo</button>
+            <button type="button" id="store" @click="storeAnimal()">Criar novo</button>
             <a href="../homePage/index.html">Home</a>
             <form>
                 <input class="form-control" type="text" name="searchBar" id="searchBar" placeholder="Pesquisar pelo CPF do dono" v-model="search">
@@ -69,18 +69,26 @@
             </form>
           </div>
         </div>
+        <div id="modal" v-if="errorModal">
+          <div id="erroStore" class="wrap">
+            <button id="fechar" @click="errorModal=false">Fechar</button><hr>
+            <h4>Por favor, preencha todos os campos.</h4>
+          </div>
+        </div>
         <div id="modal" v-if="infoOwnerModal">
           <div class="wrap">
-            <div id="info">
+              <button id="fechar" type="button" @click="infoOwnerModal = false">Fechar</button>
+              <hr>
+              <h4 v-if="!existsOwner">Este cliente foi removido.</h4>
+            <div id="info" v-if="existsOwner">
                 <span><strong>Nome:</strong> 
                     <br>{{owner.nome}}</span><br>
                   <span><strong>E-mail:</strong>  
                     <br>{{owner.email}}</span><br>
                   <span><strong>CPF:</strong>  
-                    <br><input type="text" :value="owner.cpf" id="text" readonly><button id="copy" @click="copyWay()" title="Copiar CPF"><span class="icon icon-doc-text"></span></button></span><br>
+                    <br><input type="text" :value="owner.cpf" id="text" readonly><button id="copy" @click="copyText()" title="Copiar CPF"><span class="icon icon-doc-text"></span></button></span><br>
                   <span><strong>Telefone:</strong> 
                     <br>{{owner.telefone}}</span><br>
-                <button id="fechar" type="button" @click="infoOwnerModal = false">Fechar</button>
             </div>
           </div>
         </div>

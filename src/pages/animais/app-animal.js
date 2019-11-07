@@ -18,6 +18,8 @@ const clientes = db.getCollection("clientes");
 new Vue({
     el: "#app",
     data: {
+        existsOwner: false,
+        errorModal: false,
         searchModal: false,
         searchResult: {
             nome: "",
@@ -64,7 +66,7 @@ new Vue({
             //434.660.310-60
 
         },
-        copyWay: function(){
+        copyText: function(){
             document.getElementById("copy").title = "CPF copiado!"
             document.getElementById("text").select()
             document.execCommand("copy")
@@ -75,7 +77,13 @@ new Vue({
         },
         ownerInfo: function(ani){
             const ownerInfo = clientes.find({'$loki': ani.dono})[0];
-            this.owner = ownerInfo
+            
+            if(typeof ownerInfo != "undefined"){
+                this.owner = ownerInfo
+                this.existsOwner = true
+            }else{
+                this.existsOwner= false
+            }
             this.searchModal = false;
             this.infoOwnerModal = true
         },
@@ -99,12 +107,16 @@ new Vue({
             this.openModal = true
         },
         animalStoreOrUpdate: function(){
-            if(typeof this.animal.$loki != "undefined"){
-                animais.update(this.animal)
+            if(this.animal.nome != "" && this.animal.tipo != "" && this.animal.raca != "" && this.animal.dono != ""){
+                if(typeof this.animal.$loki != "undefined"){
+                    animais.update(this.animal)
+                }else{
+                    animais.insert(this.animal)
+                }
+                db.save()
             }else{
-                animais.insert(this.animal)
+                this.errorModal = true
             }
-            db.save()
             this.openModal = false;
         }
     }

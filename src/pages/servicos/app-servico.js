@@ -18,6 +18,8 @@ const clientes = db.getCollection("clientes")
 new Vue({
     el: "#app",
     data: {
+        errorModal: false,
+        existsClient: false,
         infoClientModal: false,
         servicos: servicos.data,
         clientes: clientes.data,
@@ -38,10 +40,22 @@ new Vue({
         }
     },
     methods: {
-        clientInfo: function(service){
-            const clientInfo = clientes.find({'$loki': service.cliente})[0];
-            this.cliente = clientInfo
+        clienteInfo: function(servico){
+            const clientInfo = clientes.find({'$loki': servico.cliente})[0];
+            
+            if(typeof clientInfo != "undefined"){
+                this.cliente = clientInfo
+                this.existsClient = true
+            }else{
+                this.existsClient= false
+            }
+            this.searchModal = false;
             this.infoClientModal = true
+        },
+        copyText: function(){
+            document.getElementById("copy").title = "CPF copiado!"
+            document.getElementById("text").select()
+            document.execCommand("copy")
         },
         closeModal: function(){
             this.openModal = false;
@@ -74,13 +88,16 @@ new Vue({
             // var slp = this.servico.data.split('T') || this.servico.data;
             // slp[0] = new Date(slp[0]).toLocaleDateString("pt-BR", {timeZone: "UTC"})
             // this.servico.data = slp
-
-            if(typeof this.servico.$loki != "undefined"){
-                servicos.update(this.servico)
+            if(this.servico.tipoDeServico != "" && this.servico.data != "" && this.servico.precoFixo!= "" && this.servico.precoDesconto != "" && this.servico.cliente != ""){
+                if(typeof this.servico.$loki != "undefined"){
+                    servicos.update(this.servico)
+                }else{
+                    servicos.insert(this.servico)
+                }
+                db.save()
             }else{
-                servicos.insert(this.servico)
+                this.errorModal = true
             }
-            db.save()
             this.openModal = false;
         }
     }

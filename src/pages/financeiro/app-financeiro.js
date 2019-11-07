@@ -17,6 +17,7 @@ const financeirodb = db.getCollection("financeiro");
 new Vue({
     el: "#app",
     data: {
+        errorModal: false,
         financeirodata: financeirodb.data,
         mode: "",
         openModal: false,
@@ -56,12 +57,16 @@ new Vue({
         },
         financeiroStoreOrUpdate: function(){
 
-            if(typeof this.financeiro.$loki != "undefined"){
-                financeirodb.update(this.financeiro)
+            if(this.financeiro.valorServico != "" && this.financeiro.gastosPet != "" && this.financeiro.gastosLocal != "" && this.financeiro.data != ""){
+                if(typeof this.financeiro.$loki != "undefined"){
+                    financeirodb.update(this.financeiro)
+                }else{
+                    financeirodb.insert(this.financeiro)
+                }
+                db.save()
             }else{
-                financeirodb.insert(this.financeiro)
+                this.errorModal = true
             }
-            db.save()
             this.openModal = false;
         }
     }

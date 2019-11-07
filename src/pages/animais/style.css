@@ -161,7 +161,8 @@ button#destroy:hover {
 #modal .wrap {
     font-size: 15px;
     width: 60%;
-    min-height: 30%;
+    min-height: 10% !important;
+    height: auto;
     margin-left: 20%;
     margin-top: 10%;
     padding: 10px;
@@ -228,7 +229,6 @@ button#destroy:hover {
 #info {
     padding: 20px 40px;
     font-size: 18px;
-    border: 1px solid rgb(206, 206, 206);
     border-radius: 4px;
 }
 
@@ -254,7 +254,7 @@ input#text {
 }
 
 button#fechar {
-    margin-top: 20px;
+    margin-top: 3px;
     background: hsl(0, 100%, 64%);
     color: white;
     border-radius: 4px;
@@ -285,6 +285,17 @@ button#fechar:hover {
     visibility: visible;
     text-align: center;
 }
+
+#modal #erroStore{
+    min-height: 20%;
+}
+
+@media (min-width: 1380px), (min-height: 720px){
+    #modal #erroStore{
+        min-height: 10% !important;
+    }
+}
+
 #loading.hidden{
     opacity: 0;
     visibility: hidden;
@@ -293,4 +304,8 @@ button#fechar:hover {
 div#loading img{
     width: 128px;
     height: 128px;
+}
+
+hr {
+    margin: 10px 0 10px;
 }
