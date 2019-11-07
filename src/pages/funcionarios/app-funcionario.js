@@ -53,7 +53,9 @@ new Vue({
         },
         closeModal: function(){
             this.openModal = false;
-            window.location.reload()
+            if(this.mode === "update"){
+                window.location.reload()
+            }
         },
         updateFun: function(fun){
             this.mode = "update"

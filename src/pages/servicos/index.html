@@ -34,7 +34,7 @@
                 <td>{{service.tipoDeServico}}</td>
                 <td>{{new Date(service.data.split("T")[0]).toLocaleDateString("pt-BR", {timeZone: "UTC"})}} às {{service.data.split("T")[1]}}</td>
                 <td>{{Number(service.valorFixo).toLocaleString("pt-BR",{style: "currency", currency: "BRL"})}}</td>
-                <td>{{service.valorDesconto}}</td>
+                <td>{{Number(service.valorDesconto).toLocaleString("pt-BR",{style: "currency", currency: "BRL"})}}</td>
                 <td :value="service.cliente"><button id="infoBtn" type="button" @click="clienteInfo(service)">Info.Cliente</button></td>
                 <td><button id="edit" type="button" @click="updateServico(service)">Editar</button></td>
                 <td><button id="destroy" type="button" @click="destroyServico(service)">Deletar</button></td>

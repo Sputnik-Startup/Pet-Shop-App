@@ -10,6 +10,24 @@ html, body {
     font-size: 15px;
 }
 
+.centralize {
+    justify-content: top;
+    align-items: center;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    flex-direction: column;
+}
+
+.corpo {
+    width: 90%;
+    min-height: 90%;
+    background: rgb(255, 255, 255);
+    border-radius: 4px;
+    padding-top: 3px;
+    overflow-y: hidden;
+    overflow-x: scroll;
+}
+
 /* Unique stylizations */
 #cliente {
     background: #E69240;
@@ -29,7 +47,7 @@ html, body {
     background: #EBB43C;
     }
     #agenda .table-striped tr:nth-child(even) {
-        background-color: rgb(250, 234, 201)
+        background-color: rgb(255, 233, 189)
     }
 
 #estoque {
@@ -59,19 +77,8 @@ html, body {
     #funcionario .table-striped tr:nth-child(even) {
         background-color: #d8d8d6;
     }
-    
-.centralize {
-    
-    justify-content: top;
-    align-items: center;
-    padding-top: 30px;
-    padding-bottom: 30px;
-    flex-direction: column;
-}
-th, td{
-    font-size: 15px;
-}
 
+/* Mini navbar */    
 div#topBar {
     margin: 10px 15px;
     display: flex;
@@ -125,19 +132,9 @@ div#topBar {
     div#topBar form button span {
         cursor: pointer;
     }
+    
 
-
-
-.corpo {
-    width: 90%;
-    min-height: 90%;
-    background: rgb(255, 255, 255);
-    border-radius: 4px;
-    padding-top: 3px;
-    overflow-y: hidden;
-    overflow-x: scroll;
-}
-
+/* Buttons */
 button#infoBtn {
     background: hsl(0, 0%, 39%);
     color: white;
@@ -198,6 +195,40 @@ button#destroy:hover {
     color: rgb(250, 209, 209);
 }
 
+button#fechar {
+    margin-top: 3px;
+    background: hsl(0, 100%, 64%);
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    padding: 2px 8px;
+
+    transition: .3s
+}
+
+button#fechar:hover {
+    background: hsl(0, 65%, 54%);
+    color: rgb(248, 213, 213);
+}
+
+button#copy {
+    border: 1px solid #c7c7c7;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 30px;
+    position: relative;
+    right: 60px;
+
+    transition: .3s;
+}
+button#copy:hover{
+    background: rgb(201, 201, 201);
+}
+button#copy span {
+    cursor: pointer;
+}
+
+/* Modals */
 #modal {
     position: fixed;
     width: 100%;
@@ -275,51 +306,23 @@ button#destroy:hover {
         background: rgb(226, 65, 65);
         color: rgb(252, 188, 188);
     }
-
-#info {
-    padding: 20px 40px;
-    font-size: 18px;
-    border-radius: 4px;
-}
-
-button#copy {
-    border: 1px solid #c7c7c7;
-    border-radius: 4px;
-    cursor: pointer;
-    width: 30px;
-    position: relative;
-    right: 60px;
-
-    transition: .3s;
-}
-button#copy:hover{
-    background: rgb(201, 201, 201);
-}
-button#copy span {
-    cursor: pointer;
-}
-
-input#text {
-    background: white;
-}
-
-button#fechar {
-    margin-top: 3px;
-    background: hsl(0, 100%, 64%);
-    color: white;
-    border-radius: 4px;
-    cursor: pointer;
-    padding: 2px 8px;
-
-    transition: .3s
-}
-
-button#fechar:hover {
-    background: hsl(0, 65%, 54%);
-    color: rgb(248, 213, 213);
-}
-
-
+    
+    #info {
+        padding: 20px 40px;
+        font-size: 18px;
+        border-radius: 4px;
+    }
+    #modal #erroStore{
+        min-height: 20%;
+    }
+    
+    @media (min-width: 1380px), (min-height: 720px){
+        #modal #erroStore{
+            min-height: 10% !important;
+        }
+    }
+    
+/* Load Screen */
 #loading{
     padding-top: 20%;
     position:fixed;
@@ -336,16 +339,6 @@ button#fechar:hover {
     text-align: center;
 }
 
-#modal #erroStore{
-    min-height: 20%;
-}
-
-@media (min-width: 1380px), (min-height: 720px){
-    #modal #erroStore{
-        min-height: 10% !important;
-    }
-}
-
 #loading.hidden{
     opacity: 0;
     visibility: hidden;
@@ -356,6 +349,17 @@ div#loading img{
     height: 128px;
 }
 
+/* hr margin customization */
 hr {
     margin: 10px 0 10px;
+}
+
+/* Text selection input customization */
+input#text {
+    background: white;
+}
+
+/* Table font size customization */
+th, td{
+    font-size: 15px;
 }
