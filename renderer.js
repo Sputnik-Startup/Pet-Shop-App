@@ -28,6 +28,7 @@ setTimeout(function() {
 
 var fun = {
     nome: "Maxwell Olliver",
+    nomeDeUsuario: "mo2019",
     senha: "123456",
     cargo: "Gerente",
     nivelDeAcesso: "admin"
@@ -39,25 +40,25 @@ new Vue({
     el: "#app",
     data: {
         login: {
-            nome: "",
+            nomeDeUsuario: "",
             senha: "",
         }
     },
     methods: {
         loginValidation: function(){
-            const funcionario = funcionarios.find({'nome': this.login.nome})[0] || {nome: "vazio", senha: "vazio"};
+            const funcionario = funcionarios.find({'nomeDeUsuario': this.login.nomeDeUsuario})[0] || {nomeDeUsuario: "vazio", senha: "vazio"};
 
-            if(funcionario.nome === this.login.nome && funcionario.senha === this.login.senha){
+            if(funcionario.nomeDeUsuario === this.login.nomeDeUsuario && funcionario.senha === this.login.senha){
                 localStorage.setItem('access', funcionario.nivelDeAcesso)
                 window.location.href = "../homePage/index.html"
             }else{
                 var text;
-                if(funcionario.nome === this.login.nome && funcionario.senha !== this.login.senha) {
+                if(funcionario.nomeDeUsuario === this.login.nomeDeUsuario && funcionario.senha !== this.login.senha) {
                     text = "A senha de usuário está incorreta."
                 }
-                if(this.login.nome === "" || this.login.senha === ""){
+                if(this.login.nomeDeUsuario === "" || this.login.senha === ""){
                     text = "Por favor, preencha todos os campos."
-                } else if(funcionario.nome === "vazio"){
+                } else if(funcionario.nomeDeUsuario === "vazio"){
                     text = "Este usuário não existe."
                 }
                 let err = document.querySelector("div#err-msg");

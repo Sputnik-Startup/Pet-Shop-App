@@ -4,20 +4,20 @@
     <meta charset="UTF-8">
     <title>Funcionários</title>
     <link rel="stylesheet" href="../../../css/photon.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../style.css">
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.8/vue.js"></script>
   </head>
   <body>
     <div class="window" id="app">
       <div id="loading"><img src="../../assets/logo_login.gif" alt="Loading logo"></div>
-      <div class="window-content centralize">
+      <div id="funcionario" class="window-content centralize">
         <div class="corpo">
           <div id="topBar">
             <button type="button" id="store" @click="storeFun()">Criar novo</button>
             <a href="../homePage/index.html">Home</a>
             <form>
-                <input class="form-control" type="text" name="searchBar" id="searchBar" placeholder="Pesquisar pelo Nm.Usuario" v-model="search">
-                <button type="button" id="btn-search" @click="searchFun()"><span class="icon icon-search"></span></button>
+              <input class="form-control" type="text" name="searchBar" id="searchBar" placeholder="Pesquisar pelo Nm.Usuario" v-model="search">
+              <button type="button" id="btn-search" @click="searchFun()"><span class="icon icon-search"></span></button>
             </form>
           </div>
           <table class="table table-striped">
@@ -70,9 +70,9 @@
                 </div>
                 <div class="form-group">
                     <select name="access" id="access" v-model="funcionario.nivelDeAcesso" class="form-control">
-                        <option value=""disabled selected>Selecione o nível de acesso</option>
-                        <option value="Padrão">Usuário Padrão</option>
-                        <option value="Administrador">Usuário Administrador</option>
+                      <option value=""disabled selected>Selecione o nível de acesso</option>
+                      <option value="Padrão">Usuário Padrão</option>
+                      <option value="Administrador">Usuário Administrador</option>
                     </select>
                 </div>
                 <button type="button" id="salvar" class="btn btn-positive" @click="funStoreOrUpdate()">Salvar</button>

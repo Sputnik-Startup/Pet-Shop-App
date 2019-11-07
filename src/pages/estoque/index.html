@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <title>Estoque</title>
     <link rel="stylesheet" href="../../../css/photon.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../style.css">
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.8/vue.js"></script>
     <script type="text/javascript" src="../../../node_modules/vue/dist/vue.js"></script>
   </head>
   <body>
     <div class="window" id="app">
       <div id="loading"><img src="../../assets/logo_login.gif" alt="Loading logo"></div>
-      <div class="window-content centralize">
+      <div class="window-content centralize" id="estoque">
         <div class="corpo">
           <div id="topBar">
             <button type="button" id="store" @click="storeEstoque()">Criar novo</button>
@@ -69,17 +69,6 @@
           </div>
         </div>
       </div>
-        <!-- <footer class="toolbar toolbar-footer">
-            <div class="toolbar-actions">
-              <button class="btn btn-default">
-                Cancel
-              </button>
-          
-              <button class="btn btn-primary pull-right">
-                Save
-              </button>
-            </div>
-          </footer> -->
       </div>
     </div>
     <script src="app-estoque.js"></script>

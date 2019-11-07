@@ -1,3 +1,4 @@
+/*Reset*/
 * {
     margin: 0;
     border: 0;
@@ -8,8 +9,59 @@
 html, body {
     font-size: 15px;
 }
-.centralize {
+
+/* Unique stylizations */
+#cliente {
+    background: #E69240;
+    }
+    #cliente .table-striped tr:nth-child(even) {
+        background-color: rgb(255, 236, 217);
+    }
+
+#animal {
+    background: #E8A23F;
+    }
+    #animal .table-striped tr:nth-child(even) {
+        background-color: rgb(255, 228, 190);
+    }
+
+#agenda {
+    background: #EBB43C;
+    }
+    #agenda .table-striped tr:nth-child(even) {
+        background-color: rgb(250, 234, 201)
+    }
+
+#estoque {
+    background: #3C8AD5;
+    }
+    #estoque .table-striped tr:nth-child(even) {
+        background-color: rgb(215, 233, 250)
+    }
+
+#financeiro {
     background: #45A0D4;
+    }
+    #financeiro .table-striped tr:nth-child(even) {
+        background-color: rgb(202, 235, 255);
+    }
+
+#servicos {
+    background: #60BCD1;
+    }
+    #servicos .table-striped tr:nth-child(even){
+        background-color: rgb(214, 248, 255);
+    }
+
+#funcionario {
+    background: #707070;
+    }
+    #funcionario .table-striped tr:nth-child(even) {
+        background-color: #d8d8d6;
+    }
+    
+.centralize {
+    
     justify-content: top;
     align-items: center;
     padding-top: 30px;
@@ -19,15 +71,7 @@ html, body {
 th, td{
     font-size: 15px;
 }
-.corpo {
-    width: 90%;
-    min-height: 90%;
-    background: rgb(255, 255, 255);
-    border-radius: 4px;
-    padding-top: 3px;
-    overflow-y: hidden;
-    overflow-x: scroll;
-}
+
 div#topBar {
     margin: 10px 15px;
     display: flex;
@@ -50,6 +94,10 @@ div#topBar {
         background: rgb(116, 116, 116);
         color: rgb(194, 189, 189);
     }
+    div#topBar form {
+        position: absolute;
+        right: 6%;
+    }
     div#topBar input#searchBar{
         width: 250px;
         height: 30px;
@@ -58,6 +106,38 @@ div#topBar {
         border-radius: 4px;
         cursor: text;
     }
+    div#topBar form button {
+        height: 29px;
+        width: auto;
+        padding: 0 10px;
+        color: white;
+        border-radius: 4px;
+        background: #3C8AD5;
+        cursor: pointer ;
+
+        transition: .3s;
+    }
+
+    div#topBar form button:hover {
+        background: rgb(52, 119, 182);
+        color: rgb(208, 224, 255);
+    }
+    div#topBar form button span {
+        cursor: pointer;
+    }
+
+
+
+.corpo {
+    width: 90%;
+    min-height: 90%;
+    background: rgb(255, 255, 255);
+    border-radius: 4px;
+    padding-top: 3px;
+    overflow-y: hidden;
+    overflow-x: scroll;
+}
+
 button#infoBtn {
     background: hsl(0, 0%, 39%);
     color: white;
@@ -131,7 +211,8 @@ button#destroy:hover {
 #modal .wrap {
     font-size: 15px;
     width: 60%;
-    min-height: 30%;
+    min-height: 10% !important;
+    height: auto;
     margin-left: 20%;
     margin-top: 10%;
     padding: 10px;
@@ -141,6 +222,7 @@ button#destroy:hover {
     animation-iteration-count: 1; 
     animation-fill-mode: forwards;
 }
+
 @keyframes fadeInAnimation { 
     0% { 
         opacity: 0; 
@@ -154,15 +236,75 @@ button#destroy:hover {
     cursor: text;
 }
 
+#modal #search-modal {
+    width: 90%;
+    min-height: 30%;
+    margin-left: 5%;
+    margin-top: 5%;
+    padding-top: 3px;
+    background: #fff;
+    border-radius: 4px;
+    animation: fadeInAnimation ease .5s;
+    animation-iteration-count: 1; 
+    animation-fill-mode: forwards;
+    }
+    #modal #search-modal table{
+        margin-top: 8px;
+    }
+    #modal #search-modal div#err-msg{
+        font-size: 30px;
+        font-weight: bold;
+        color: rgb(37, 37, 37);
+        text-align: center;
+    }
+    #modal #search-modal div#err-msg hr{
+        margin: 10px 0 10px;
+    }
+    #modal #search-modal button#close {
+        height: 28px;
+        width: auto;
+        padding:0 5px 0;
+        color: white;
+        background: rgb(252, 75, 75);
+        border-radius: 4px;
+        transition: .3s;
+        margin: 5px 5px 0;
+        cursor: pointer;
+    }
+    #modal #search-modal button#close:hover {
+        background: rgb(226, 65, 65);
+        color: rgb(252, 188, 188);
+    }
+
 #info {
     padding: 20px 40px;
     font-size: 18px;
-    border: 1px solid rgb(206, 206, 206);
     border-radius: 4px;
 }
 
+button#copy {
+    border: 1px solid #c7c7c7;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 30px;
+    position: relative;
+    right: 60px;
+
+    transition: .3s;
+}
+button#copy:hover{
+    background: rgb(201, 201, 201);
+}
+button#copy span {
+    cursor: pointer;
+}
+
+input#text {
+    background: white;
+}
+
 button#fechar {
-    margin-top: 20px;
+    margin-top: 3px;
     background: hsl(0, 100%, 64%);
     color: white;
     border-radius: 4px;
@@ -193,6 +335,17 @@ button#fechar:hover {
     visibility: visible;
     text-align: center;
 }
+
+#modal #erroStore{
+    min-height: 20%;
+}
+
+@media (min-width: 1380px), (min-height: 720px){
+    #modal #erroStore{
+        min-height: 10% !important;
+    }
+}
+
 #loading.hidden{
     opacity: 0;
     visibility: hidden;
@@ -201,4 +354,8 @@ button#fechar:hover {
 div#loading img{
     width: 128px;
     height: 128px;
+}
+
+hr {
+    margin: 10px 0 10px;
 }
