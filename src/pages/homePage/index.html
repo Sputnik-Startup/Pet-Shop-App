@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Home</title>
+    <title>Pet's Cão - Home</title>
     <link rel="stylesheet" href="../../../css/photon.css">
     <link rel="stylesheet" href="style.css">
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.8/vue.js"></script>
@@ -17,33 +17,34 @@
         <div class="box">
           <div id="menu">
             <a href="../clientes/index.html"><div id="clientes">
-                <img src="../../assets/cliente.svg" alt="Cliente">
-                <span>Clientes</span>
+              <img src="../../assets/cliente.svg" alt="Cliente">
+              <span>Clientes</span>
             </div></a>
             <a href="../animais/index.html"><div id="animais">
-                <img src="../../assets/animal.svg" alt="Animal">
-                <span>Animais</span>
+              <img src="../../assets/animal.svg" alt="Animal">
+              <span>Animais</span>
             </div></a>
             <a href="../agendamentos/index.html"><div id="agenda">
-                <img src="../../assets/agenda.svg" alt="Agendamentos">
-                <span>Agendamentos</span>
+              <img src="../../assets/agenda.svg" alt="Agendamentos">
+              <span>Agendamentos</span>
             </div></a>
             <a href="../estoque/index.html" v-if="access=='Administrador'"><div id="estoque">
-                <img src="../../assets/estoque.svg" alt="Estoque">
-                <span>Estoque</span>
+              <img src="../../assets/estoque.svg" alt="Estoque">
+              <span>Estoque</span>
             </div></a>
             <a href="../financeiro/index.html" v-if="access=='Administrador'"><div id="financeiro">
-                <img src="../../assets/financeiro.svg" alt="Financeiro">
-                <span>Financeiro</span>
+              <img src="../../assets/financeiro.svg" alt="Financeiro">
+              <span>Financeiro</span>
             </div></a>
             <a href="../servicos/index.html"  v-if="access=='Administrador'"><div id="servicos">
-                <img src="../../assets/serviço.svg" alt="Serviços">
-                <span>Serviços</span>
+              <img src="../../assets/serviço.svg" alt="Serviços">
+              <span>Serviços</span>
             </div></a>
             <a href="../funcionarios/index.html"  v-if="access=='Administrador'"><div id="funcionarios">
               <img src="../../assets/funcionario.svg" alt="Funcionario">
               <span>Funcionários</span>
-            </div></a>
+            </div>
+            </a>
           </div>
         </div>
       </div>
@@ -51,4 +52,3 @@
     <script src="app.js"></script>
   </body>
 </html>
-rgb(255, 255, 255)

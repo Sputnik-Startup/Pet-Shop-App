@@ -7,9 +7,7 @@
 }
 
 html, body {
-
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 18px;
 }
 
 .centralize {
@@ -23,8 +21,8 @@ html, body {
 }
 
 img {
-    width: 128px;
-    height: 128px;
+    width: 140px;
+    height: 140px;
     position: relative;
     top: 4.2rem;
     left: 0rem;
@@ -50,13 +48,17 @@ img {
     box-shadow: 0px 3px 6px #0000004B;
     border-radius: 4px;
     padding: 70px 20px 10px;
+    width: 400px;
+    height: 300px;
 }
 
 .centralize form div label {
     color: white;
+    font-size: 14.5px;
 }
 .centralize form div input {
     cursor: text;
+    font-size: 14px;
 }
 ::-webkit-input-placeholder {
     color: #349ED6;
@@ -82,7 +84,7 @@ img {
     font-weight: bold;
     border-radius: 4px;
     background: #EFB62E;
-    margin: 10px 0 10px 0;
+    margin: 10px 0 0 0;
     cursor: pointer;
 
     transition: .3s;
@@ -113,8 +115,6 @@ img {
 }
 
 div#loading img{
-    width: 128px;
-    height: 128px;
     animation: SizeIn 2s forwards;
 }
 
@@ -127,9 +127,9 @@ div#loading img{
     }
     100%{
         opacity: 1;
-        width: 128px;
-        height: 128px;
-        top: 19%; 
+        width: 140px;
+        height: 140px;
+        top: 15.6%; 
         
     }
 }
@@ -144,9 +144,9 @@ div#loading img{
         }
         100%{
             opacity: 1;
-            width: 128px;
-            height: 128px;
-            top: 32.6%; 
+            width: 140px;
+            height: 140px;
+            top: 30.6%; 
             
         }
     }

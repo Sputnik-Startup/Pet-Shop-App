@@ -1,17 +1,19 @@
 
-const {app, BrowserWindow} = require('electron')
+const {app, BrowserWindow, Tray} = require('electron')
 const path = require('path')
 
 let mainWindow
 
 function createWindow () {
-
+  const appIcon = new Tray(path.join(__dirname, 'src', 'assets', 'logo.ico'))
   mainWindow = new BrowserWindow({
     show: false,
     width: 1000,
     height: 600,
     minHeight: 400,
     minWidth: 700,
+    //autoHideMenuBar: true,
+    icon: path.join(__dirname, 'src', 'assets', 'logo.ico'),
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
       nodeIntegration: true
@@ -24,6 +26,9 @@ function createWindow () {
   mainWindow.on('closed', function () {
     mainWindow = null
   })
+
+  //mainWindow.webContents.openDevTools()
+
 
   mainWindow.maximize()
   mainWindow.show()

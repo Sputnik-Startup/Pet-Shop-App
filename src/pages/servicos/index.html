@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Serviços</title>
+    <title>Pet's Cão - Serviços</title>
     <link rel="stylesheet" href="../../../css/photon.css">
     <link rel="stylesheet" href="../style.css">
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.8/vue.js"></script>
@@ -51,28 +51,28 @@
         <div id="modal" v-if="openModal">
           <div class="wrap">
             <form id="cadastro-produto" action="" class="pane-body">
-                <h3 v-if="mode=='update'">Editar dados do serviço</h3>
-                <h3 v-if="mode=='store'">Adicionar Serviço</h3>
-                <div class="form-group">
-                  <input type="text" class="form-control" id="tipoServico" placeholder="Tipo de Serviço" v-model="servico.tipoDeServico" required>
-                </div>
-                <div class="form-group">
-                  <input type="datetime-local" class="form-control" id="Data" placeholder="Data do serviço" v-model="servico.data" required>
-                </div>
-                <div class="form-group">
-                    <input type="text" class="form-control" id="valorFixo" placeholder="Valor fixo" v-model="servico.valorFixo" required>
-                </div>
-                <div class="form-group">
-                    <input type="text" class="form-control" id="valorDesconto" placeholder="Valor com Desconto" v-model="servico.valorDesconto" required>
-                </div>
-                <div class="form-group">
-                    <select name="clienteSelect" id="clienteSelect" v-model="servico.cliente" class="form-control">
-                      <option value="" disabled>Selecione o cliente</option>
-                      <option :value="client.$loki" v-for="client in clientes">{{client.nome}}</option>
-                    </select>
-                </div>
-                <button type="button" id="salvar" class="btn btn-positive" @click="servicoStoreOrUpdate()">Salvar</button>
-                <button type="button" id="cancelar" class="btn btn-negative" @click="closeModal()">Cancelar</button>
+              <h3 v-if="mode=='update'">Editar dados do serviço</h3>
+              <h3 v-if="mode=='store'">Adicionar Serviço</h3>
+              <div class="form-group">
+                <input type="text" class="form-control" id="tipoServico" placeholder="Tipo de Serviço" v-model="servico.tipoDeServico" required>
+              </div>
+              <div class="form-group">
+                <input type="datetime-local" class="form-control" id="Data" placeholder="Data do serviço" v-model="servico.data" required>
+              </div>
+              <div class="form-group">
+                  <input type="text" class="form-control" id="valorFixo" placeholder="Valor fixo" v-model="servico.valorFixo" required>
+              </div>
+              <div class="form-group">
+                  <input type="text" class="form-control" id="valorDesconto" placeholder="Valor com Desconto" v-model="servico.valorDesconto" required>
+              </div>
+              <div class="form-group">
+                  <select name="clienteSelect" id="clienteSelect" v-model="servico.cliente" class="form-control">
+                    <option value="" disabled>Selecione o cliente</option>
+                    <option :value="client.$loki" v-for="client in clientes">{{client.nome}}</option>
+                  </select>
+              </div>
+              <button type="button" id="salvar" class="btn btn-positive" @click="servicoStoreOrUpdate()">Salvar</button>
+              <button type="button" id="cancelar" class="btn btn-negative" @click="closeModal()">Cancelar</button>
             </form>
           </div>
         </div>

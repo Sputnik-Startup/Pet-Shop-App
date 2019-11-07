@@ -85,7 +85,7 @@ div#topBar {
     flex-direction: row;
     }
     div#topBar a{
-        background: rgb(150, 150, 150);
+        background: #60BCD1;
         width: 60px;
         text-decoration: none;
         text-align: center;
@@ -98,8 +98,8 @@ div#topBar {
         transition: .3s;
     }
     div#topBar a:hover {
-        background: rgb(116, 116, 116);
-        color: rgb(194, 189, 189);
+        background: rgb(85, 166, 184);
+        color: rgb(222, 248, 253);
     }
     div#topBar form {
         position: absolute;
@@ -181,6 +181,7 @@ button#edit:hover {
 }
 
 button#destroy {
+    /*#E69240*/
     background: hsl(0, 100%, 64%);
     color: white;
     border-radius: 4px;
@@ -314,6 +315,12 @@ button#copy span {
     }
     #modal #erroStore{
         min-height: 20%;
+    }
+
+    @media (min-width: 1380px), (min-height: 720px){
+        #modal #search-modal{
+            min-height: 12%;
+        }
     }
     
     @media (min-width: 1380px), (min-height: 720px){

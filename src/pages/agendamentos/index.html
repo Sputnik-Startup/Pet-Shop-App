@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Agendamentos</title>
+    <title>Pet's Cão - Agendamentos</title>
     <link rel="stylesheet" href="../../../css/photon.css">
     <link rel="stylesheet" href="../style.css">
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.8/vue.js"></script>
@@ -53,14 +53,14 @@
                 <h3 v-if="mode=='store'">Adicionar Agedamento</h3>
                 <div class="form-group">
                     <select name="cliente" id="cliente" v-model="agenda.cliente" class="form-control">
-                        <option value="" disabled>Selecione o cliente</option>
-                        <option :value="client.$loki" v-for="client in clientes">{{client.nome}}</option>
+                      <option value="" disabled>Selecione o cliente</option>
+                      <option :value="client.$loki" v-for="client in clientes">{{client.nome}}</option>
                     </select>
                 </div>
                 <div class="form-group">
                     <select name="animal" id="animal" v-model="agenda.animal" class="form-control">
-                        <option value="" disabled>Selecione o animal</option>
-                        <option :value="ani.$loki" v-for="ani in animais">{{ani.nome}}</option>
+                      <option value="" disabled>Selecione o animal</option>
+                      <option :value="ani.$loki" v-for="ani in animais">{{ani.nome}}</option>
                     </select>
                 </div>
                 <div class="form-group">
@@ -80,13 +80,13 @@
               <hr>
               <h4 v-if="!existsAnimal">Este animal foi removido.</h4>
             <div id="info" v-if="existsAnimal">
-                <span><strong>Nome:</strong> 
+              <span><strong>Nome:</strong> 
                 <br>{{animal.nome}}</span><br>
-                <span><strong>Tipo:</strong>  
+              <span><strong>Tipo:</strong>  
                 <br>{{animal.tipo}}</span><br>
-                <span><strong>Raça:</strong>  
+              <span><strong>Raça:</strong>  
                 <br>{{animal.raca}}</span><br>
-                <span><strong>Dono:</strong>
+              <span><strong>Dono:</strong>
                 <br>{{animal.dono}}</span><br>
             </div>
           </div>
@@ -97,14 +97,14 @@
               <hr>
               <h4 v-if="!existsClient">Este cliente foi removido.</h4> 
               <div id="info" v-if="existsClient">
-                  <span><strong>Nome:</strong> 
-                      <br>{{client.nome}}</span><br>
-                    <span><strong>E-mail:</strong>  
-                      <br>{{client.email}}</span><br>
-                    <span><strong>CPF:</strong>  
-                      <br><input type="text" :value="client.cpf" id="text" readonly><button id="copy" @click="copyText()" title="Copiar CPF"><span class="icon icon-doc-text"></span></button></span><br>
-                    <span><strong>Telefone:</strong> 
-                      <br>{{client.telefone}}</span><br>
+                <span><strong>Nome:</strong> 
+                  <br>{{client.nome}}</span><br>
+                <span><strong>E-mail:</strong>  
+                  <br>{{client.email}}</span><br>
+                <span><strong>CPF:</strong>  
+                  <br><input type="text" :value="client.cpf" id="text" readonly><button id="copy" @click="copyText()" title="Copiar CPF"><span class="icon icon-doc-text"></span></button></span><br>
+                <span><strong>Telefone:</strong> 
+                  <br>{{client.telefone}}</span><br>
               </div>
             </div>
           </div>
