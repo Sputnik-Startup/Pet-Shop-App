@@ -4,7 +4,8 @@
   "description": "Aplicação desktop para gerenciamento de dados da empresa Pet's Cão",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "build": "node_modules/.bin/electron-builder main.js"
   },
   "repository": "https://github.com/MaxwellOlliver/Simple-app-to-Pet-Shop",
   "keywords": [
@@ -17,12 +18,25 @@
   "author": "MaxwellOlliver",
   "license": "CC0-1.0",
   "devDependencies": {
-    "electron": "^7.0.0"
+    "electron": "^7.0.0",
+    "electron-builder": "^22.1.0",
+    "electron-packager": "^14.1.0"
   },
   "dependencies": {
     "lokijs": "^1.5.8",
-    "mongoose": "^5.7.7",
     "read-file-utf8": "^1.1.2",
     "vue": "^2.6.10"
+  },
+  "build": {
+    "appId": "com.interdisciplinar.petscao",
+    "productName": "PetsCão",
+    "directories": {
+      "output": "dist"
+    },
+    "publish": null,
+    "win": {
+      "icon": "./src/assets/icon.ico",
+      "target": "nsis"
+    }
   }
 }

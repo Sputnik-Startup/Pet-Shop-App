@@ -24,6 +24,7 @@ new Vue({
             email: "",
             cpf: "",
             telefone: "",
+            status: "",
         },
         search: "",
         searchErr: false,
@@ -35,6 +36,7 @@ new Vue({
             email: "",
             cpf: "",
             telefone: "",
+            status: "",
         }
     },
     methods: {
@@ -61,10 +63,6 @@ new Vue({
             this.cliente = client
             this.openModal = true
         },
-        destroyClient: function(client){
-            clientes.remove({'$loki': client.$loki})
-            db.save()
-        },
         storeClient: function(){
             this.mode = "store"
             this.cliente = {
@@ -82,7 +80,7 @@ new Vue({
                 }else{
                     clientes.insert(this.cliente)
                 }
-                db.save()
+                db.saveDatabase()
             }else{
                 this.errorModal = true
             }

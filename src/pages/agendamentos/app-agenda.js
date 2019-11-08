@@ -14,7 +14,8 @@ setTimeout(function() {
 
 const animais = db.getCollection("animais")
 const clientes = db.getCollection("clientes");
-const agendamentos = db.getCollection("agendamentos")
+const agendamentos = db.getCollection("agendamentos");
+const servicos = db.getCollection("servicos")
 
 new Vue({
     el: "#app",
@@ -24,6 +25,7 @@ new Vue({
         errorModal: false,
         infoClientModal: false,
         infoAnimalModal: false,
+        servicos: servicos.data,
         clientes: clientes.data,
         animais: animais.data,
         agendamentos: agendamentos.data,
@@ -118,7 +120,7 @@ new Vue({
             }else{
                 this.errorModal = true
             }
-            db.save();
+            db.saveDatabase();
             this.openModal = false;
         }
     }

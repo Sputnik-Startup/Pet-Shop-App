@@ -16,26 +16,29 @@ setTimeout(function() {
 
 new Vue({
     el: "#app",
-    data: {
-        searchModal: false,
-        searchResult: {
-            nome: "",
-            email: "",
-            cpf: "",
-            telefone: "",
-        },
-        search: "",
-        searchErr: false,
-        errorModal: false,
-        funcionarios: funcionarios.data,
-        mode: "",
-        openModal: false,
-        funcionario: {
-            nome: "",
-            nomeDeUsuario: "",
-            senha: "",
-            cargo: "",
-            nivelDeAcesso: "",
+    data(){
+
+    return{
+            searchModal: false,
+            searchResult: {
+                nome: "",
+                email: "",
+                cpf: "",
+                telefone: "",
+            },
+            search: "",
+            searchErr: false,
+            errorModal: false,
+            funcionarios: funcionarios.data,
+            mode: "",
+            openModal: false,
+            funcionario: {
+                nome: "",
+                nomeDeUsuario: "",
+                senha: "",
+                cargo: "",
+                nivelDeAcesso: "Padrão",
+            }
         }
     },
     methods: {

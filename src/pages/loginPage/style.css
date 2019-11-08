@@ -134,7 +134,7 @@ div#loading img{
     }
 }
 
-@media (min-width: 1200px) and (min-height: 780px){
+@media (min-width: 1500px) and (min-height: 800px){
     @keyframes SizeIn {
         0%{
             width: 650px;
@@ -146,8 +146,23 @@ div#loading img{
             opacity: 1;
             width: 140px;
             height: 140px;
-            top: 30.6%; 
-            
+            top: 27%; 
+        }
+    }
+}
+@media (min-width: 1600px) and (min-height: 800px){
+    @keyframes SizeIn {
+        0%{
+            width: 650px;
+            height: 650px;
+            opacity: 0.3
+    
+        }
+        100%{
+            opacity: 1;
+            width: 140px;
+            height: 140px;
+            top: 32.6%; 
         }
     }
 }

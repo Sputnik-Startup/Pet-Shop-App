@@ -12,7 +12,7 @@ function createWindow () {
     height: 600,
     minHeight: 400,
     minWidth: 700,
-    //autoHideMenuBar: true,
+    autoHideMenuBar: false,
     icon: path.join(__dirname, 'src', 'assets', 'logo.ico'),
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),

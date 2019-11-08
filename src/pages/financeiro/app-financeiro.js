@@ -29,6 +29,9 @@ new Vue({
         },
     },
     methods: {
+        printReport: function(){
+            print();
+        },
         closeModal: function(){
             this.openModal = false;
             if(this.mode === "update"){

@@ -22,9 +22,9 @@ html, body {
     width: 90%;
     min-height: 90%;
     background: rgb(255, 255, 255);
-    border-radius: 4px;
+    border-radius: 8px;
     padding-top: 3px;
-    overflow-y: hidden;
+    overflow-y: scroll;
     overflow-x: scroll;
 }
 
@@ -135,6 +135,55 @@ div#topBar {
     
 
 /* Buttons */
+
+button#relatorio {
+    background: rgb(134, 134, 134);
+    border-radius: 4px;
+    height: 29px;
+    cursor: pointer;
+    color: white;
+    position: absolute;
+    padding: 0 10px;
+    right: 7%;
+
+    transition: .3s;
+}
+
+button#relatorio:hover{
+    background: rgb(87, 87, 87);
+}
+
+button#salvar {
+    background: hsl(123, 59%, 58%);
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    padding: 2px 8px;
+
+    transition: .3s;
+}
+
+button#salvar:hover {
+    background: hsl(123, 44%, 51%);
+    color: rgb(185, 245, 210);
+}
+
+button#cancelar {
+    /*#E69240*/
+    background: hsl(0, 100%, 64%);
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    padding: 2px 8px;
+
+    transition: .3s;
+}
+
+button#cancelar:hover {
+    background: hsl(0, 66%, 53%);
+    color: rgb(250, 209, 209);
+}
+
 button#infoBtn {
     background: hsl(0, 0%, 39%);
     color: white;
@@ -319,13 +368,13 @@ button#copy span {
 
     @media (min-width: 1380px), (min-height: 720px){
         #modal #search-modal{
-            min-height: 12%;
+            min-height: 15% !important;
         }
     }
     
     @media (min-width: 1380px), (min-height: 720px){
         #modal #erroStore{
-            min-height: 10% !important;
+            min-height: 15% !important;
         }
     }
     
@@ -354,6 +403,27 @@ button#copy span {
 div#loading img{
     width: 128px;
     height: 128px;
+}
+
+/* Scroll bar style */
+::-webkit-scrollbar{
+    border-radius: 8px;
+    background: rgb(255, 255, 255) ;
+}
+::-webkit-scrollbar-button{
+    display: none;
+}
+::-webkit-scrollbar-thumb{
+    border-radius: 8px;
+    background: rgb(212, 212, 212)
+}
+
+::-webkit-scrollbar-corner{
+    border-radius: 0 0 8px 0;
+}
+
+::-webkit-resizer{
+    border-radius: 0 0 8px 0;
 }
 
 /* hr margin customization */
