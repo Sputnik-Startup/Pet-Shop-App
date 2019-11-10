@@ -3,12 +3,12 @@
 This is a work to my school. Where I gotta do a simple desktop system to a Pet Shop company.
 
 If you have any suggestions for improvement, I am willing to hear it.
-Send your suggestion on my linkedin:
-[Maxwell Olliver](https://www.linkedin.com/in/maxwell-olliver-aa3491191/)
+
+Send your suggestion on my linkedin: [Go to Linkedin](https://www.linkedin.com/in/maxwell-olliver-aa3491191/)
 
 The design dont was made by me, a friend that do it.
 
-![](https://user-images.githubusercontent.com/54994420/68547761-0fb1b800-03c4-11ea-9b46-0cadf0cc8045.jpg)
+![LoginPage](https://user-images.githubusercontent.com/54994420/68547761-0fb1b800-03c4-11ea-9b46-0cadf0cc8045.jpg)
 
 # Get Started
 
@@ -22,7 +22,7 @@ Windows:
 
   ```npm run package-win```
   
-MAC:
+macOS:
 
   ```npm run package-mac```
   
