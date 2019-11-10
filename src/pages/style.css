@@ -289,6 +289,10 @@ button>span{
     cursor: pointer;
 }
 
+a>span {
+    cursor: pointer;
+}
+
 /* Modals */
 #modal {
     position: fixed;
