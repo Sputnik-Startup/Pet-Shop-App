@@ -13,8 +13,8 @@ Para começar digite os comandos abaixo no seu terminal com NPM:
 Para compilar a aplicação usando o electron-packager digite os seguintes scripts:
 
 Windows:
-  npm run package-win
+  ```npm run package-win```
   
 MAC:
-  npm run package-mac
+  ``````npm run package-mac```
   
