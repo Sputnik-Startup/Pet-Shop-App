@@ -1,7 +1,10 @@
 # Pet Shop app with Electron
 
 This is a work to my school. Where I gotta do a simple desktop system to a Pet Shop company.
-I'm still a newbie in programation world. This is my first project, so my code may be a little polluted.
+
+If you have any suggestions for improvement, I am willing to hear it.
+Send your suggestion on my linkedin:
+[Maxwell Olliver](https://www.linkedin.com/in/maxwell-olliver-aa3491191/)
 
 The design dont was made by me, a friend that do it.
 
