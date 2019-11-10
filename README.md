@@ -5,9 +5,9 @@ I'm still a newbie in programation world. This is my first project, so my code m
 
 The design dont was made by me, a friend that do it.
 
-![LoginPage](https://drive.google.com/open?id=1gWxH7txd3v-fb3wDTKtaE17ilmPygwij)
+![](https://user-images.githubusercontent.com/54994420/68547761-0fb1b800-03c4-11ea-9b46-0cadf0cc8045.jpg)
 
-### Get Started
+# Get Started
 
 To get started type the following commands into your NPM terminal:
 
