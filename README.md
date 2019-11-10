@@ -9,7 +9,7 @@ The design dont was made by me, a friend that do it.
 
 # Get Started
 
-To get started type the following commands into your NPM terminal:
+To get started, type the following NPM commands on your terminal:
 
   ```npm install && npm start```
   
