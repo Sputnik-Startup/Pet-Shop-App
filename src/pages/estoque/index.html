@@ -34,8 +34,8 @@
                 <td>{{Number(est.valorUnit).toLocaleString("pt-BR", {style: "currency", currency: "BRL"})}}</td>
                 <td>{{est.qtd}}</td>
                 <td>{{est.validade}}</td>
-                <td><button id="edit" type="button" @click="updateEstoque(est)">Editar</button></td>
-                <td><button id="destroy" type="button" @click="destroyEstoque(est)">Deletar</button></td>
+                <td><button id="edit" type="button" @click="updateEstoque(est)"><span class="icon icon-pencil"></span>&nbsp;&nbsp;Editar</button></td>
+                <td><button id="destroy" type="button" @click="destroyEstoque(est)"><span class="icon icon-trash"></span>&nbsp;&nbsp;Deletar</button></td>
               </tr>
             </tbody>
           </table>

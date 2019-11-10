@@ -285,6 +285,10 @@ button#copy span {
     cursor: pointer;
 }
 
+button>span{
+    cursor: pointer;
+}
+
 /* Modals */
 #modal {
     position: fixed;

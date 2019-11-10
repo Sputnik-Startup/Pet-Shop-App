@@ -30,12 +30,12 @@
             </thead>
             <tbody>
               <tr v-for="schedule in agendamentos">
-                <td><button id="infoBtn" type="button" @click="clienteInfo(schedule)">Info.Cliente</button></td>
-                <td><button id="infoBtn" type="button" @click="animalInfo(schedule)">Info.Animal</button></td>
+                <td><button id="infoBtn" type="button" @click="clienteInfo(schedule)"><span class="icon icon-info-circled"></span>&nbsp;&nbsp;Info.Cliente</button></td>
+                <td><button id="infoBtn" type="button" @click="animalInfo(schedule)"><span class="icon icon-info-circled"></span>&nbsp;&nbsp;Info.Animal</button></td>
                 <td>{{new Date(schedule.datetime.split("T")[0]).toLocaleDateString("pt-BR", {timeZone: "UTC"})}} às {{schedule.datetime.split("T")[1]}}</td>
                 <td>{{schedule.tipoDeServico}}</td>
-                <td><button id="edit" type="button" @click="updateAgenda(schedule)">Editar</button></td>
-                <td><button id="destroy" type="button" @click="destroyAgenda(schedule)">Deletar</button></td>
+                <td><button id="edit" type="button" @click="updateAgenda(schedule)"><span class="icon icon-pencil"></span>&nbsp;&nbsp;Editar</button></td>
+                <td><button id="destroy" type="button" @click="destroyAgenda(schedule)"><span class="icon icon-trash"></span>&nbsp;&nbsp;Deletar</button></td>
               </tr>
             </tbody>
           </table>

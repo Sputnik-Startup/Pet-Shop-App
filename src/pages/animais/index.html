@@ -37,9 +37,9 @@
                 <td>{{ani.nome}}</td>
                 <td>{{ani.tipo}}</td>
                 <td>{{ani.raca}}</td>
-                <td><button id="infoBtn" type="button" @click="ownerInfo(ani)">Info.Dono</button></td>
-                <td><button id="edit" type="button" @click="updateAnimal(ani)">Editar</button></td>
-                <td><button id="destroy" type="button" @click="destroyAnimal(ani)">Deletar</button></td>
+                <td><button id="infoBtn" type="button" @click="ownerInfo(ani)"><span class="icon icon-info-circled"></span>&nbsp;&nbsp;Info.Dono</button></td>
+                <td><button id="edit" type="button" @click="updateAnimal(ani)"><span class="icon icon-pencil"></span>&nbsp;&nbsp;Editar</button></td>
+                <td><button id="destroy" type="button" @click="destroyAnimal(ani)"><span class="icon icon-trash"></span>&nbsp;&nbsp;Deletar</button></td>
               </tr>
             </tbody>
           </table>
@@ -113,9 +113,9 @@
                   <td>{{searchResult.nome}}</td>
                   <td>{{searchResult.tipo}}</td>
                   <td>{{searchResult.raca}}</td>
-                  <td><button id="infoBtn" type="button" @click="ownerInfo(searchResult)">Info.Dono</button></td>
-                  <td><button id="edit" type="button" @click="updateAnimal(searchResult); searchModal = false">Editar</button></td>
-                  <td><button id="destroy" type="button" @click="destroyAnimal(searchResult); searchModal = false">Deletar</button></td>
+                  <td><button id="infoBtn" type="button" @click="ownerInfo(searchResult)"><span class="icon icon-info-circled"></span>&nbsp;&nbsp;Info.Dono</button></td>
+                  <td><button id="edit" type="button" @click="updateAnimal(searchResult); searchModal = false"><span class="icon icon-pencil"></span>&nbsp;&nbsp;Editar</button></td>
+                  <td><button id="destroy" type="button" @click="destroyAnimal(searchResult); searchModal = false"><span class="icon icon-trash"></span>&nbsp;&nbsp;Deletar</button></td>
                 </tr>
               </tbody>
             </table>

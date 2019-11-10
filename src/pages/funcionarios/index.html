@@ -39,8 +39,8 @@
                 <td>{{fun.senha}}</td>
                 <td>{{fun.cargo}}</td>
                 <td>{{fun.nivelDeAcesso}}</td>
-                <td><button id="edit" type="button" @click="updateFun(fun)">Editar</button></td>
-                <td><button id="destroy" type="button" @click="destroyFun(fun)">Deletar</button></td>
+                <td><button id="edit" type="button" @click="updateFun(fun)"><span class="icon icon-pencil"></span>&nbsp;&nbsp;Editar</button></td>
+                <td><button id="destroy" type="button" @click="destroyFun(fun)"><span class="icon icon-trash"></span>&nbsp;&nbsp;Deletar</button></td>
               </tr>
             </tbody>
           </table>
@@ -104,8 +104,8 @@
                   <td>{{searchResult.senha}}</td>
                   <td>{{searchResult.cargo}}</td>
                   <td>{{searchResult.nivelDeAcesso}}</td>
-                  <td><button id="edit" type="button" @click="updateFun(searchResult); searchModal = false">Editar</button></td>
-                  <td><button id="destroy" type="button" @click="destroyFun(searchResult); searchModal = false">Deletar</button></td>
+                  <td><button id="edit" type="button" @click="updateFun(searchResult); searchModal = false"><span class="icon icon-pencil"></span>&nbsp;&nbsp;Editar</button></td>
+                  <td><button id="destroy" type="button" @click="destroyFun(searchResult); searchModal = false"><span class="icon icon-trash"></span>&nbsp;&nbsp;Deletar</button></td>
                 </tr>
               </tbody>
             </table>

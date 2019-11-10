@@ -47,7 +47,7 @@
                 <td>{{client.cpf}}</td>
                 <td>{{client.telefone}}</td>
                 <td>{{client.status}}</td>
-                <td><button id="edit" type="button" @click="updateClient(client)">Editar</button></td>
+                <td><button id="edit" type="button" @click="updateClient(client)"><span class="icon icon-pencil"></span>&nbsp;&nbsp;Editar</button></td>
               </tr>
             </tbody>
           </table>
@@ -109,7 +109,7 @@
                   <td>{{searchResult.cpf}}</td>
                   <td>{{searchResult.telefone}}</td>
                   <td>{{searchResult.status}}</td>
-                  <td><button id="destroy" type="button" @click="destroyClient(searchResult); searchModal = false">Deletar</button></td>
+                  <td><button id="edit" type="button" @click="updateClient(client)"><span class="icon icon-pencil"></span>&nbsp;&nbsp;Editar</button>></td>
                 </tr>
               </tbody>
             </table>

@@ -28,8 +28,8 @@ new Vue({
         servico: {
             tipoDeServico: "",
             data: "",
-            precoFixo: "",
-            precoDesconto: "",
+            valorFixo: "",
+            valorDesconto: "",
             cliente: "",
         },
         cliente: {
@@ -64,6 +64,7 @@ new Vue({
             }
         },
         updateServico: function(servico){
+            console.log(servico)
             this.mode = "update"
             this.servico = servico
             this.openModal = true
@@ -78,23 +79,21 @@ new Vue({
             this.servico = {
                 tipoDeServico: "",
                 data: "",
-                precoFixo: "",
-                precoDesconto: "",
+                valorFixo: "",
+                valorDesconto: "",
                 cliente: "",
             }
             this.openModal = true
         },
         servicoStoreOrUpdate: function(){
-            // var slp = this.servico.data.split('T') || this.servico.data;
-            // slp[0] = new Date(slp[0]).toLocaleDateString("pt-BR", {timeZone: "UTC"})
-            // this.servico.data = slp
-            if(this.servico.tipoDeServico != "" && this.servico.data != "" && this.servico.precoFixo!= "" && this.servico.precoDesconto != "" && this.servico.cliente != ""){
+            if(this.servico.tipoDeServico != "" && this.servico.data != "" && this.servico.valorFixo!= "" && this.servico.valorDesconto != "" && this.servico.cliente != ""){
                 if(typeof this.servico.$loki != "undefined"){
+                    console.log(this.servico)
                     servicos.update(this.servico)
                 }else{
                     servicos.insert(this.servico)
                 }
-                db.save()
+                db.saveDatabase()
             }else{
                 this.errorModal = true
             }

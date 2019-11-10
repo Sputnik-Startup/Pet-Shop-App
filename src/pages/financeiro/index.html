@@ -35,8 +35,8 @@
                 <td>{{Number(fin.gastosPet).toLocaleString("pt-BR",{style: "currency", currency: "BRL"})}}</td>
                 <td>{{Number(fin.gastosLocal).toLocaleString("pt-BR",{style: "currency", currency: "BRL"})}}</td>
                 <td>{{new Date(fin.data).toLocaleDateString("pt-BR", {timeZone: "UTC"})}}</td>
-                <td><button id="edit" type="button" @click="updateFinanceiro(fin)">Editar</button></td>
-                <td><button id="destroy" type="button" @click="destroyFinanceiro(fin)">Deletar</button></td>
+                <td><button id="edit" type="button" @click="updateFinanceiro(fin)"><span class="icon icon-pencil"></span>&nbsp;&nbsp;Editar</button></td>
+                <td><button id="destroy" type="button" @click="destroyFinanceiro(fin)"><span class="icon icon-trash"></span>&nbsp;&nbsp;Deletar</button></td>
               </tr>
             </tbody>
           </table>
