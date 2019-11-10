@@ -10,7 +10,8 @@ The design dont was made by me, a friend that do it.
 ### Get Started
 
 Para começar digite os comandos abaixo no seu terminal com NPM:
-  npm install && npm start
+
+  ```npm install && npm start```
   
 Para compilar a aplicação usando o electron-packager digite os seguintes scripts:
 
