@@ -20,9 +20,6 @@ function createWindow () {
       nodeIntegration: true
     }
   })
-  setTimeout(()=>{
-    mainWindow.fullscreen = false;
-  }, 1500)
   mainWindow.loadFile('./src/pages/loginPage/index.html')
 
   //mainWindow.webContents.openDevTools()
