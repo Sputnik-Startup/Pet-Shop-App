@@ -58,9 +58,9 @@ new Vue({
         },
         closeModal: function(){
             this.openModal = false;
-            if(this.mode === "update"){
-                window.location.reload()
-            }
+            // if(this.mode === "update"){
+            //     window.location.reload()
+            // }
         },
         clienteInfo: function(agenda){
             const clientInfo = clientes.find({'$loki': agenda.cliente})[0];

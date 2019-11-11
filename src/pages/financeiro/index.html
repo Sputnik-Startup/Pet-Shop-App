@@ -64,8 +64,8 @@
               <div class="form-group">
                   <input type="date" class="form-control" id="data" v-model="financeiro.data" required>
               </div>
-              <button type="button" id="salvar" class="btn btn-positive" @click="financeiroStoreOrUpdate()">Salvar</button>
-              <button type="button" id="cancelar" class="btn btn-negative" @click="closeModal()">Cancelar</button>
+              <button type="button" id="salvar" @click="financeiroStoreOrUpdate()">Salvar</button>
+              <button type="button" id="cancelar" @click="closeModal()">Cancelar</button>
             </form>
           </div>
         </div>

@@ -25,4 +25,8 @@ Windows:
 macOS:
 
   ```npm run package-mac```
-  
+
+## License
+
+[CC0 1.0 (Public Domain)](LICENSE.md)
+

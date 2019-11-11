@@ -63,10 +63,10 @@
                   <input type="text" class="form-control" id="nomeDeUsuario" placeholder="Nome de usuário" v-model="funcionario.nomeDeUsuario" maxlength="15" required>
                 </div>
                 <div class="form-group">
-                  <input type="text" class="form-control" id="senha" placeholder="Senha" v-model="funcionario.senha" required>
+                  <input type="text" class="form-control" id="senha" placeholder="Senha" v-model="funcionario.senha" maxlength="25" required>
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control" id="cargo" placeholder="Cargo" v-model="funcionario.cargo" required>
+                    <input type="text" class="form-control" id="cargo" placeholder="Cargo" v-model="funcionario.cargo" maxlength="25" required>
                 </div>
                 <div class="form-group">
                     <select name="access" id="access" v-model="funcionario.nivelDeAcesso" class="form-control">
@@ -75,8 +75,8 @@
                       <option value="Administrador">Usuário Administrador</option>
                     </select>
                 </div>
-                <button type="button" id="salvar" class="btn btn-positive" @click="funStoreOrUpdate()">Salvar</button>
-                <button type="button" id="cancelar" class="btn btn-negative" @click="closeModal()">Cancelar</button>
+                <button type="button" id="salvar" @click="funStoreOrUpdate()">Salvar</button>
+                <button type="button" id="cancelar" @click="closeModal()">Cancelar</button>
             </form>
           </div>
         </div>

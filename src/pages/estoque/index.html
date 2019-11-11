@@ -63,8 +63,8 @@
               <div class="form-group">
                   <input type="date" class="form-control" id="Validade" v-model="estoque.validade" required>
               </div>
-              <button type="button" id="salvar" class="btn btn-positive" @click="estoqueStoreOrUpdate()">Salvar</button>
-              <button type="button" id="cancelar" class="btn btn-negative" @click="closeModal()">Cancelar</button>
+              <button type="button" id="salvar" @click="estoqueStoreOrUpdate()">Salvar</button>
+              <button type="button" id="cancelar" @click="closeModal()">Cancelar</button>
             </form>
           </div>
         </div>

@@ -31,9 +31,9 @@ new Vue({
     methods: {
         closeModal: function(){
             this.openModal = false;
-            if(this.mode === "update"){
-                window.location.reload()
-            }
+            // if(this.mode === "update"){
+            //     window.location.reload()
+            // }
         },
         updateEstoque: function(estoque){
             this.mode = "update"

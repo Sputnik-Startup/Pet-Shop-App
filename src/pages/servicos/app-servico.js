@@ -59,9 +59,9 @@ new Vue({
         },
         closeModal: function(){
             this.openModal = false;
-            if(this.mode === "update"){
-                window.location.reload()
-            }
+            // if(this.mode === "update"){
+            //     window.location.reload()
+            // }
         },
         updateServico: function(servico){
             console.log(servico)

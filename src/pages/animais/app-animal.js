@@ -73,9 +73,9 @@ new Vue({
         },
         closeModal: function(){
             this.openModal = false;
-            if(this.mode === "update"){
-                window.location.reload()
-            }
+            // if(this.mode === "update"){
+            //     window.location.reload()
+            // }
         },
         ownerInfo: function(ani){
             const ownerInfo = clientes.find({'$loki': ani.dono})[0];

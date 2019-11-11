@@ -7,7 +7,7 @@
     "start": "electron .",
     "build": "node_modules/.bin/electron-builder main.js",
     "package-win": "electron-packager . PetsCão --overwrite --platform=win32 --arch=x64 --icon=src/assets/logo.ico --out=dist --version-string.CompanyName=PetsCão --version-string.FileDescription=Aplicativo para gerenciamento de petsjop. --version-string.ProductName=\"Pet's Cão\"",
-    "package-mac": "electron-packager . PetsCão --overwrite --platform=darwin --arch=x64 --icon=assets/icons/mac/icon.icns --out=dist"
+    "package-mac": "electron-packager . PetsCão --overwrite --platform=darwin --arch=x64 --icon=src/assets/logo.ico --out=dist"
   },
   "repository": "https://github.com/MaxwellOlliver/Simple-app-to-Pet-Shop",
   "keywords": [
@@ -18,6 +18,7 @@
     "demo"
   ],
   "author": "MaxwellOlliver",
+  "license": "CC0-1.0",
   "devDependencies": {
     "electron": "^7.0.0",
     "electron-builder": "^22.1.0",
