@@ -81,6 +81,12 @@
             </form>
           </div>
         </div>
+        <div id="modal" v-if="!cpfValidate">
+          <div id="erroStore" class="wrap">
+            <button id="fechar" @click="cpfValidate=true">Fechar</button><hr>
+            <h4>Por favor, digite um CPF válido.</h4>
+          </div>
+        </div>
         <div id="modal" v-if="errorModal">
           <div id="erroStore" class="wrap">
             <button id="fechar" @click="errorModal=false">Fechar</button><hr>

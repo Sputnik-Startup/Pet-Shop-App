@@ -17,6 +17,7 @@ setTimeout(function() {
 new Vue({
     el: "#app",
     data: {
+        cpfValidate: true,
         errorModal: false,
         searchModal: false,
         searchResult: {
@@ -40,6 +41,26 @@ new Vue({
         }
     },
     methods: {
+        validarCPF: function(strCPF) {
+            var Soma;
+            var Resto;
+            Soma = 0;
+            if (strCPF == "00000000000") return false;
+             
+            for (i=1; i<=9; i++) Soma = Soma + parseInt(strCPF.substring(i-1, i)) * (11 - i);
+            Resto = (Soma * 10) % 11;
+           
+            if ((Resto == 10) || (Resto == 11))  Resto = 0;
+            if (Resto != parseInt(strCPF.substring(9, 10)) ) return false;
+           
+            Soma = 0;
+            for (i = 1; i <= 10; i++) Soma = Soma + parseInt(strCPF.substring(i-1, i)) * (12 - i);
+            Resto = (Soma * 10) % 11;
+           
+            if ((Resto == 10) || (Resto == 11))  Resto = 0;
+            if (Resto != parseInt(strCPF.substring(10, 11) ) ) return false;
+            return true;
+        },
         searchClient: function(){
             const result = clientes.find({'cpf': this.search})[0] || clientes.find({'email': this.search})[0];
 
@@ -74,13 +95,25 @@ new Vue({
             this.openModal = true
         },
         clientStoreOrUpdate: function(){
+            let cpf = this.cliente.cpf
+                .split('.')
+                .join("")
+                .split("-")
+                .join("")
+            let validate = this.validarCPF(cpf);
             if(this.cliente.nome != "" && this.cliente.email != "" && this.cliente.cpf != "" && this.cliente.telefone != "" && this.cliente.status != ""){
-                if(typeof this.cliente.$loki != "undefined"){
-                    clientes.update(this.cliente)
+                if(validate){
+                    if(typeof this.cliente.$loki != "undefined"){
+                        clientes.update(this.cliente);
+                    }else{
+                        clientes.insert(this.cliente);
+                    }
+                    db.saveDatabase()
                 }else{
-                    clientes.insert(this.cliente)
+                    this.cpfValidate = false;
                 }
-                db.saveDatabase()
+
+                
             }else{
                 this.errorModal = true
             }

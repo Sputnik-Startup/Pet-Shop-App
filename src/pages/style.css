@@ -107,10 +107,16 @@ div#topBar {
         left: 45%;
     }
 
-    @media(min-width: 1300px),(min-height: 850px){
+    @media(min-width: 1300px) and (min-height: 850px){
         div#topBar form {
             position: relative;
-            left: 68%;
+            left: 67% !important;
+        }
+    }
+    @media(max-height: 850px){
+        div#topBar form {
+            position: relative;
+            left: 60% !important;
         }
     }
     div#topBar input#searchBar{
