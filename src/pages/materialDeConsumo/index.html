@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Pet's Cão - Material de Consumo</title>
+    <link rel="stylesheet" href="../../../css/photon.css">
+    <link rel="stylesheet" href="../style.css">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.8/vue.js"></script>
+    <script type="text/javascript" src="../../../node_modules/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div class="window" id="app">
+      <div id="loading"><img src="../../assets/logo_login.gif" alt="Loading logo"></div>
+      <div class="window-content centralize" id="material">
+        <div class="corpo">
+          <div id="topBar">
+            <button type="button" id="store" @click="storeMaterial()"><span class="icon icon-plus"></span>&nbsp;&nbsp;Criar novo</button>
+            <a href="../homePage/index.html"><span class="icon icon-home"></span>&nbsp;&nbsp;Home</a>
+          </div>
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Nome do Produto</th>
+                <th>Valor Unit.</th>
+                <th>Qtd.</th>
+                <th>Validade</th>
+                <th></th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="mat in materiais">
+                <td>{{mat.nomeMaterial}}</td>
+                <td>{{Number(mat.valorUnit).toLocaleString("pt-BR", {style: "currency", currency: "BRL"})}}</td>
+                <td>{{mat.qtd}}</td>
+                <td>{{mat.validade}}</td>
+                <td><button id="edit" type="button" @click="updateMaterial(mat)"><span class="icon icon-pencil"></span>&nbsp;&nbsp;Editar</button></td>
+                <td><button id="destroy" type="button" @click="destroyMaterial(mat)"><span class="icon icon-trash"></span>&nbsp;&nbsp;Deletar</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div id="modal" v-if="errorModal">
+          <div id="erroStore" class="wrap">
+            <button id="fechar" @click="errorModal=false">Fechar</button><hr>
+            <h4>Por favor, preencha todos os campos.</h4>
+          </div>
+        </div>
+        <div id="modal" v-if="openModal">
+          <div class="wrap">
+            <form id="cadastro-produto" action="" class="pane-body">
+              <h3 v-if="mode=='update'">Editar dados do Produto</h3>
+              <h3 v-if="mode=='store'">Adicionar Produto</h3>
+              <div class="form-group">
+              <input type="text" class="form-control" id="nomeMaterial" placeholder="Nome do Material" v-model="material.nomeMaterial" maxlength="50" required>
+              </div>
+              <div class="form-group">
+              <input type="text" class="form-control" id="Valor" placeholder="Valor unitário" v-model="material.valorUnit" maxlength="10" required>
+              </div>
+              <div class="form-group">
+                  <input type="number" class="form-control" id="qtd" placeholder="Qtd." v-model="material.qtd" maxlength="10" required>
+              </div>
+              <div class="form-group">
+                  <input type="date" class="form-control" id="Validade" v-model="material.validade" required>
+              </div>
+              <button type="button" id="salvar" @click="materialStoreOrUpdate()">Salvar</button>
+              <button type="button" id="cancelar" @click="closeModal()">Cancelar</button>
+            </form>
+          </div>
+        </div>
+      </div>
+      </div>
+    </div>
+    <script src="app-mat.js"></script>
+  </body>
+</html>
+

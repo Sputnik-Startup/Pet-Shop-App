@@ -1,11 +1,10 @@
+const { app, BrowserWindow, Tray } = require("electron");
+const path = require("path");
 
-const {app, BrowserWindow, Tray} = require('electron')
-const path = require('path')
+let mainWindow;
 
-let mainWindow
-
-function createWindow () {
-  const appIcon = new Tray(path.join(__dirname, 'src', 'assets', 'logo.ico'))
+function createWindow() {
+  const appIcon = new Tray(path.join(__dirname, "src", "assets", "logo.ico"));
   mainWindow = new BrowserWindow({
     show: false,
     width: 1000,
@@ -13,28 +12,27 @@ function createWindow () {
     minHeight: 400,
     minWidth: 800,
     autoHideMenuBar: true,
-    icon: path.join(__dirname, 'src', 'assets', 'logo.ico'),
+    icon: path.join(__dirname, "src", "assets", "logo.ico"),
     webPreferences: {
-      devTools: false,
-      preload: path.join(__dirname, 'preload.js'),
+      devTools: true,
+      preload: path.join(__dirname, "preload.js"),
       nodeIntegration: true
     }
-  })
-  mainWindow.loadFile('./src/pages/loginPage/index.html')
+  });
+  mainWindow.loadFile("./src/pages/loginPage/index.html");
 
   //mainWindow.webContents.openDevTools()
 
-
-  mainWindow.maximize()
-  mainWindow.show()
+  mainWindow.maximize();
+  mainWindow.show();
 }
 
-app.on('ready', createWindow)
+app.on("ready", createWindow);
 
-app.on('window-all-closed', function () {
-  if (process.platform !== 'darwin') app.quit()
-})
+app.on("window-all-closed", function() {
+  if (process.platform !== "darwin") app.quit();
+});
 
-app.on('activate', function () {
-  if (mainWindow === null) createWindow()
-})
+app.on("activate", function() {
+  if (mainWindow === null) createWindow();
+});

@@ -1,226 +1,256 @@
 * {
-    margin: 0;
-    padding: 0;
-    outline: 0;
-    box-sizing: 0;
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  box-sizing: 0;
 }
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
-
-
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .centralize {
-    justify-content: center;
-    align-items: center;
-    background-image: url("../../assets/background_login-blur.jpg");
-    background-position: bottom;
-    background-size: cover;
-    
+  justify-content: center;
+  align-items: center;
+  background-image: url("../../assets/background_login.png");
+  background-position: bottom;
+  background-size: cover;
 }
 
-.box{
-    padding: 30px;
+.box {
+  padding: 30px;
 }
 
 .box div#menu {
-    width: 600px;
-    height: 400px;
+  width: 750px;
+  height: 400px;
 }
 
-
-.box div#menu div{
-    /* justify-content: center;
+.box div#menu div {
+  /* justify-content: center;
     align-items: center; */
-    width: 181px;   
-    height: 120px;
-    display: inline-block;
-    padding-top: 38px;
-    margin: 8px;
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: bold;
+  width: 200px;
+  height: 120px;
+  display: inline-block;
+  padding-top: 38px;
+  margin: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
 }
 
-.box dic#menu a div, span, img{
-    cursor: pointer;
+.box div#menu a div,
+span,
+img {
+  cursor: pointer;
 }
 
 /*Configurando svg e span*/
 .box div#menu div img {
-    width: 60px;
-    height: 60px;
-    position: relative;
-    bottom: 23px;
-    left: 60px;
+  width: 60px;
+  height: 60px;
+  position: relative;
+  bottom: 23px;
+  left: 70px;
 }
 
 .box div#menu div span {
-    color:white;
-    position: relative;
-    right: 4px;
+  color: white;
+  position: relative;
+  right: 4px;
 }
 
-
 /* Correções nos spans */
-.box div#menu div#funcionarios span{
-    right: 23px;
+.box div#menu div#funcionarios span {
+  right: 12px;
+}
+.box div#menu div#clientes span {
+  left: 5px;
+}
+.box div#menu div#animais span {
+  left: 5px;
 }
 
 .box div#menu div#agenda span {
-    right: 30px;
+  right: 20px;
 }
 
 .box div#menu div#financeiro span {
-    right: 14px;
+  right: 5px;
+}
+.box div#menu div#estoque span {
+  left: 5px;
 }
 
 .box div#menu div#servicos span {
-    right: 10px;
+  right: 0;
+}
+.box div#menu div#material span {
+  right: 30px;
+}
+.box div#menu div#vendas span {
+  left: 5px;
 }
 
 /*Personalização das Div's*/
 .box div#menu div#clientes {
-    background: #E69240 0% 0% no-repeat padding-box;
-    box-shadow: 0px 3px 6px #0000004B;
-    border-radius: 8px;
+  background: #e69240 0% 0% no-repeat padding-box;
+  box-shadow: 0px 3px 6px #0000004b;
+  border-radius: 8px;
 
-    transition: .3s;
+  transition: 0.3s;
 }
 
 .box div#menu div#clientes:hover {
-    background: rgb(206, 127, 48);
+  background: rgb(206, 127, 48);
 }
 
 .box div#menu div#animais {
-    background: #E8A23F 0% 0% no-repeat padding-box;
-    box-shadow: 0px 3px 6px #0000004B;
-    border-radius: 8px;
+  background: #e8a23f 0% 0% no-repeat padding-box;
+  box-shadow: 0px 3px 6px #0000004b;
+  border-radius: 8px;
 
-    transition: .3s;
+  transition: 0.3s;
 }
 
 .box div#menu div#animais:hover {
-    background: rgb(211, 149, 67);
+  background: rgb(211, 149, 67);
 }
 
-.box div#menu div#agenda{
-    background: #EBB43C 0% 0% no-repeat padding-box;
-    box-shadow: 0px 3px 6px #0000004B;
-    border-radius: 8px;
+.box div#menu div#agenda {
+  background: #ebb43c 0% 0% no-repeat padding-box;
+  box-shadow: 0px 3px 6px #0000004b;
+  border-radius: 8px;
 
-    transition: .3s;
+  transition: 0.3s;
 }
 .box div#menu div#agenda:hover {
-    background: rgb(211, 149, 67);
+  background: rgb(211, 149, 67);
 }
 
 .box div#menu div#estoque {
-    background: #3C8AD5 0% 0% no-repeat padding-box;
-    box-shadow: 0px 3px 6px #0000004B;
-    border-radius: 8px;
+  background: #3c8ad5 0% 0% no-repeat padding-box;
+  box-shadow: 0px 3px 6px #0000004b;
+  border-radius: 8px;
 
-    transition: .3s;
+  transition: 0.3s;
 }
 
 .box div#menu div#estoque:hover {
-    background: rgb(52, 118, 180)
+  background: rgb(52, 118, 180);
 }
 
 .box div#menu div#financeiro {
-    background: #45A0D4 0% 0% no-repeat padding-box;
-    box-shadow: 0px 3px 6px #0000004B;
-    border-radius: 8px;
+  background: #45a0d4 0% 0% no-repeat padding-box;
+  box-shadow: 0px 3px 6px #0000004b;
+  border-radius: 8px;
 
-    transition: .3s;
+  transition: 0.3s;
 }
 
 .box div#menu div#financeiro:hover {
-    background: rgb(57, 132, 175)
+  background: rgb(57, 132, 175);
 }
 
+.box div#menu div#servicos {
+  background: #60bcd1 0% 0% no-repeat padding-box;
+  box-shadow: 0px 3px 6px #0000004b;
+  border-radius: 8px;
 
-.box div#menu div#servicos{
-    background: #60BCD1 0% 0% no-repeat padding-box;
-    box-shadow: 0px 3px 6px #0000004B;
-    border-radius: 8px;
-
-    transition: .3s;
+  transition: 0.3s;
 }
 
 .box div#menu div#servicos:hover {
-    background: rgb(79, 157, 175)
+  background: rgb(79, 157, 175);
 }
 
 .box div#menu div#funcionarios {
-    background: #707070 0% 0% no-repeat padding-box;
-    box-shadow: 0px 3px 6px #0000004B;
-    border-radius: 8px;
-    margin-left: 208px;
+  background: #707070 0% 0% no-repeat padding-box;
+  box-shadow: 0px 3px 6px #0000004b;
+  border-radius: 8px;
 
-    transition: .3s;    
+  transition: 0.3s;
 }
-
 .box div#menu div#funcionarios:hover {
-    background: #585858;
+  background: #585858;
+}
+.box div#menu div#material {
+  background: #a5a5a5 0% 0% no-repeat padding-box;
+  box-shadow: 0px 3px 6px #0000004b;
+  border-radius: 8px;
+
+  transition: 0.3s;
 }
 
-#loading{
-    padding-top: 20%;
-    position:fixed;
-    top:0;
-    left:0;
-    right:0;
-    bottom:0;
-    background-color: rgb(255, 255, 255);
-    color: rgb(19, 19, 19);
-    opacity: 1;
-    transition: 0.5s;
-    z-index: 10000;;
-    visibility: visible;
-    text-align: center;
+.box div#menu div#material:hover {
+  background: #7c7b7b;
 }
-#loading.hidden{
-    opacity: 0;
-    visibility: hidden;
+.box div#menu div#vendas {
+  background: #525252 0% 0% no-repeat padding-box;
+  box-shadow: 0px 3px 6px #0000004b;
+  border-radius: 8px;
+
+  transition: 0.3s;
 }
 
-div#loading img{
-    width: 128px;
-    height: 128px;
+.box div#menu div#vendas:hover {
+  background: #353535;
+}
+
+#loading {
+  padding-top: 20%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgb(255, 255, 255);
+  color: rgb(19, 19, 19);
+  opacity: 1;
+  transition: 0.5s;
+  z-index: 10000;
+  visibility: visible;
+  text-align: center;
+}
+#loading.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+div#loading img {
+  width: 128px;
+  height: 128px;
 }
 
 a#signOut {
-    background: rgb(253, 65, 65);
-    padding:  10px 10px 3px 10px;
-    font-size: 16px;
-    color: white;
-    text-decoration: none;
-    position: fixed;
-    border-radius: 6px;
-    top: 0;
-    right: 5px;
-    cursor: pointer;
-    z-index: 300;
+  background: rgb(253, 65, 65);
+  padding: 10px 10px 3px 10px;
+  font-size: 16px;
+  color: white;
+  text-decoration: none;
+  position: fixed;
+  border-radius: 6px;
+  top: 0;
+  right: 5px;
+  cursor: pointer;
+  z-index: 300;
 
-    transition: .3s;
+  transition: 0.3s;
 }
 
 a#signOut:hover {
-    background: rgb(221, 57, 57);
-    color: rgb(236, 234, 234);
+  background: rgb(221, 57, 57);
+  color: rgb(236, 234, 234);
 }
 
 a#signOut img {
-    width: 25px;
-    height: 25px;
-    margin-right: 5px;
-    
+  width: 25px;
+  height: 25px;
+  margin-right: 5px;
 }
 
-a#signOut span{
-    font-weight: bold;
-    position: relative;
-    bottom: 7px
+a#signOut span {
+  font-weight: bold;
+  position: relative;
+  bottom: 7px;
 }

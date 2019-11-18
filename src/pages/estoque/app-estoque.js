@@ -57,6 +57,7 @@ new Vue({
         estoqueStoreOrUpdate: function(){
             let data = new Date(this.estoque.validade);
             this.estoque.validade = data.toLocaleDateString("pt-BR", {timeZone: "UTC"});
+            this.estoque.nomeProduto = this.estoque.nomeProduto.toUpperCase() 
             
             if(this.estoque.nomeProduto != "" && this.estoque.valorUnit != "" && this.estoque.qtd != "" && this.estoque.validade != ""){
                 if(typeof this.estoque.$loki != "undefined"){
