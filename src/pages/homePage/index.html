@@ -19,9 +19,15 @@
       <div id="loading">
         <img src="../../assets/logo_login.gif" alt="Loading logo" />
       </div>
-      <a href="../loginPage/index.html" id="signOut"
-        ><img src="../../assets/logout.png" alt="Sair" /><span>Sair</span></a
-      >
+      <div id="header">
+        <a href="../loginPage/index.html" id="signOut"
+          ><img src="../../assets/logout.png" alt="Sair" /><span>Sair</span></a
+        >
+        <button id="pendentes">
+          <img src="../../assets/agenda.svg" alt="Logo">
+          Pedidos pendentes
+        </button>
+      </div>
       <div class="window-content centralize">
         <div id="bg-image"></div>
         <div class="box">
@@ -64,7 +70,7 @@
             >
             <a href="../vendas/index.html" v-if="access=='Administrador'"
               ><div id="vendas">
-                <img src="../../assets/financeiro.svg" alt="Vendas" />
+                <img src="../../assets/vendas.svg" alt="Vendas" />
                 <span>Vendas</span>
               </div></a
             >
@@ -79,7 +85,7 @@
               v-if="access=='Administrador'"
               ><div id="material">
                 <img
-                  src="../../assets/estoque.svg"
+                  src="../../assets/material.svg"
                   alt="Material de consumo"
                 />
                 <span>Mat. de Consumo</span>
@@ -89,6 +95,13 @@
         </div>
       </div>
     </div>
+    <!-- <div class="modal-container">
+      <div class="modal">
+        <ul>
+          <li>teste</li>
+        </ul>
+      </div>
+    </div> -->
     <script src="app.js"></script>
   </body>
 </html>
