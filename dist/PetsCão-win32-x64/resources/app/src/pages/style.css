@@ -1,0 +1,514 @@
+/*Reset*/
+* {
+	margin: 0;
+	border: 0;
+	outline: 0;
+	box-sizing: border-box;
+}
+
+html,
+body {
+	font-size: 15px;
+}
+
+.centralize {
+	justify-content: top;
+	align-items: center;
+	padding-top: 30px;
+	padding-bottom: 30px;
+	flex-direction: column;
+}
+
+.corpo {
+	width: 90%;
+	min-height: 90%;
+	background: rgb(255, 255, 255);
+	border-radius: 8px;
+	padding-top: 3px;
+	overflow-y: scroll;
+	overflow-x: scroll;
+}
+
+/* Unique stylizations */
+#cliente {
+	background: #e69240;
+}
+#cliente .table-striped tr:nth-child(even) {
+	background-color: rgb(255, 236, 217);
+}
+
+#animal {
+	background: #e8a23f;
+}
+#animal .table-striped tr:nth-child(even) {
+	background-color: rgb(255, 228, 190);
+}
+
+#agenda {
+	background: #ebb43c;
+}
+#agenda .table-striped tr:nth-child(even) {
+	background-color: rgb(255, 233, 189);
+}
+
+#estoque {
+	background: #3c8ad5;
+}
+#estoque .table-striped tr:nth-child(even) {
+	background-color: rgb(215, 233, 250);
+}
+
+#financeiro {
+	background: #45a0d4;
+}
+#financeiro .table-striped tr:nth-child(even) {
+	background-color: rgb(202, 235, 255);
+}
+
+#servicos {
+	background: #60bcd1;
+}
+#servicos .table-striped tr:nth-child(even) {
+	background-color: rgb(214, 248, 255);
+}
+
+#funcionario {
+	background: #707070;
+}
+#funcionario .table-striped tr:nth-child(even) {
+	background-color: #d8d8d6;
+}
+#material {
+	background: #a5a5a5;
+}
+#material .table-striped tr:nth-child(even) {
+	background-color: #d8d8d6;
+}
+#venda {
+	background: #525252;
+}
+#venda .table-striped tr:nth-child(even) {
+	background-color: #d8d8d6;
+}
+
+
+
+/* Mini navbar */
+div#topBar {
+	margin: 10px 15px;
+	display: flex;
+	flex-direction: row;
+}
+div#topBar a {
+	background: #60bcd1;
+	width: 80px;
+	text-decoration: none;
+	text-align: center;
+	padding: 3px 5px;
+	color: white;
+	border-radius: 4px;
+	margin-left: 5px;
+	cursor: pointer;
+
+	transition: 0.3s;
+}
+div#topBar a:hover {
+	background: rgb(85, 166, 184);
+	color: rgb(222, 248, 253);
+}
+div#topBar form {
+	position: relative;
+	left: 45%;
+}
+
+@media (min-width: 1300px) {
+	div#topBar form {
+		position: relative;
+		left: 67% !important;
+	}
+}
+@media (max-width: 1300px) {
+	div#topBar form {
+		position: relative;
+		left: 42% !important;
+	}
+}
+div#topBar input#searchBar {
+	width: 250px;
+	height: 30px;
+	border: 2px solid #dbdbdb;
+	padding: 5px;
+	border-radius: 4px;
+	cursor: text;
+}
+div#topBar form button {
+	height: 29px;
+	width: auto;
+	padding: 0 10px;
+	color: white;
+	border-radius: 4px;
+	background: #3c8ad5;
+	cursor: pointer;
+
+	transition: 0.3s;
+}
+
+div#topBar form button:hover {
+	background: rgb(52, 119, 182);
+	color: rgb(208, 224, 255);
+}
+div#topBar form button span {
+	cursor: pointer;
+}
+
+/* Buttons */
+
+button#relatorio {
+	background: rgb(134, 134, 134);
+	border-radius: 4px;
+	height: 29px;
+	cursor: pointer;
+	color: white;
+	position: absolute;
+	padding: 0 10px;
+	right: 7%;
+
+	transition: 0.3s;
+}
+
+button#relatorio:hover {
+	background: rgb(87, 87, 87);
+}
+
+button#salvar {
+	background: hsl(123, 59%, 58%);
+	color: white;
+	border-radius: 4px;
+	cursor: pointer;
+	padding: 2px 8px;
+
+	transition: 0.3s;
+}
+
+button#salvar:hover {
+	background: hsl(123, 44%, 51%);
+	color: rgb(185, 245, 210);
+}
+
+button#cancelar {
+	/*#E69240*/
+	background: hsl(0, 100%, 64%);
+	color: white;
+	border-radius: 4px;
+	cursor: pointer;
+	padding: 2px 8px;
+
+	transition: 0.3s;
+}
+
+button#cancelar:hover {
+	background: hsl(0, 66%, 53%);
+	color: rgb(250, 209, 209);
+}
+
+button#infoBtn {
+	background: hsl(0, 0%, 39%);
+	color: white;
+	border-radius: 4px;
+	cursor: pointer;
+	padding: 2px 8px;
+
+	transition: 0.3s;
+}
+
+button#infoBtn:hover {
+	background: hsl(0, 0%, 28%);
+	color: rgb(196, 191, 191);
+}
+
+button#store {
+	background: hsl(123, 59%, 58%);
+	color: white;
+	border-radius: 4px;
+	cursor: pointer;
+	padding: 2px 8px;
+
+	transition: 0.3s;
+}
+
+button#store:hover {
+	background: hsl(123, 44%, 51%);
+	color: rgb(185, 245, 210);
+}
+
+button#edit {
+	background: hsl(212, 100%, 64%);
+	color: white;
+	border-radius: 4px;
+	cursor: pointer;
+	padding: 2px 8px;
+
+	transition: 0.3s;
+}
+
+button#edit:hover {
+	background: hsl(212, 70%, 55%);
+	color: rgb(185, 213, 245);
+}
+
+button#destroy {
+	/*#E69240*/
+	background: hsl(0, 100%, 64%);
+	color: white;
+	border-radius: 4px;
+	cursor: pointer;
+	padding: 2px 8px;
+
+	transition: 0.3s;
+}
+
+button#destroy:hover {
+	background: hsl(0, 66%, 53%);
+	color: rgb(250, 209, 209);
+}
+
+button#fechar {
+	margin-top: 3px;
+	background: hsl(0, 100%, 64%);
+	color: white;
+	border-radius: 4px;
+	cursor: pointer;
+	padding: 2px 8px;
+
+	transition: 0.3s;
+}
+
+button#fechar:hover {
+	background: hsl(0, 65%, 54%);
+	color: rgb(248, 213, 213);
+}
+
+button#copy {
+	border: 1px solid #c7c7c7;
+	border-radius: 4px;
+	cursor: pointer;
+	width: 30px;
+	position: relative;
+	right: 60px;
+
+	transition: 0.3s;
+}
+button#copy:hover {
+	background: rgb(201, 201, 201);
+}
+button#copy span {
+	cursor: pointer;
+}
+
+button > span {
+	cursor: pointer;
+}
+
+a > span {
+	cursor: pointer;
+}
+
+/* Modals */
+#modal {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	left: 0;
+	top: 0;
+	background: rgb(0, 0, 0, 0.7);
+	z-index: 9000;
+}
+
+#modal .wrap {
+	font-size: 15px;
+	width: 60%;
+	min-height: 10% !important;
+	height: auto;
+	margin-left: 20%;
+	margin-top: 10%;
+	padding: 10px;
+	background: #fff;
+	border-radius: 4px;
+	animation: fadeInAnimation ease 0.5s;
+	animation-iteration-count: 1;
+	animation-fill-mode: forwards;
+}
+
+@keyframes fadeInAnimation {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+#modal .wrap input {
+	cursor: text;
+}
+
+#modal #search-modal {
+	width: 90%;
+	min-height: 30%;
+	margin-left: 5%;
+	margin-top: 5%;
+	padding-top: 3px;
+	background: #fff;
+	border-radius: 4px;
+	animation: fadeInAnimation ease 0.5s;
+	animation-iteration-count: 1;
+	animation-fill-mode: forwards;
+}
+#modal #search-modal table {
+	margin-top: 8px;
+}
+#modal #search-modal div#err-msg {
+	font-size: 30px;
+	font-weight: bold;
+	color: rgb(37, 37, 37);
+	text-align: center;
+}
+#modal #search-modal div#err-msg hr {
+	margin: 10px 0 10px;
+}
+#modal #search-modal button#close {
+	height: 28px;
+	width: auto;
+	padding: 0 5px 0;
+	color: white;
+	background: rgb(252, 75, 75);
+	border-radius: 4px;
+	transition: 0.3s;
+	margin: 5px 5px 0;
+	cursor: pointer;
+}
+#modal #search-modal button#close:hover {
+	background: rgb(226, 65, 65);
+	color: rgb(252, 188, 188);
+}
+
+#info {
+	padding: 20px 40px;
+	font-size: 18px;
+	border-radius: 4px;
+}
+#modal #erroStore {
+	min-height: 20%;
+}
+
+@media (min-width: 1380px), (min-height: 720px) {
+	#modal #search-modal {
+		min-height: 15% !important;
+	}
+}
+
+@media (min-width: 1380px), (min-height: 720px) {
+	#modal #erroStore {
+		min-height: 15% !important;
+	}
+}
+
+/* Load Screen */
+#loading {
+	padding-top: 20%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: rgb(255, 255, 255);
+	color: rgb(19, 19, 19);
+	opacity: 1;
+	transition: 0.5s;
+	z-index: 10000;
+	visibility: visible;
+	text-align: center;
+}
+
+#loading.hidden {
+	opacity: 0;
+	visibility: hidden;
+}
+
+div#loading img {
+	width: 128px;
+	height: 128px;
+}
+
+/* Scroll bar style */
+::-webkit-scrollbar {
+	border-radius: 8px;
+	background: rgb(255, 255, 255);
+	width: 11px;
+}
+::-webkit-scrollbar-button {
+	display: none;
+}
+::-webkit-scrollbar-thumb {
+	border-radius: 8px;
+	background: rgb(212, 212, 212);
+}
+
+::-webkit-scrollbar-corner {
+	border-radius: 0 0 8px 0;
+}
+
+::-webkit-resizer {
+	border-radius: 0 0 8px 0;
+}
+
+/* hr margin customization */
+hr {
+	margin: 10px 0 10px;
+}
+
+/* Text selection input customization */
+input#text {
+	background: white;
+}
+
+/* Table font size customization */
+th,
+td {
+	font-size: 15px;
+}
+
+
+div.form-group ul {
+	width: 100%;
+	height: auto;
+	max-height: 150px;
+	border: 1px solid #ccc;
+	margin: 10px 0;
+	padding: 5px 10px;
+	border-radius: 8px;
+	overflow-y: scroll;
+}
+
+div.form-group ul li {
+	text-decoration: none;
+	cursor: pointer;
+	color: rgb(32, 32, 32);
+	font-weight: 500;
+	font-size: 14px;
+	margin-bottom: 3px;
+	padding: 0 5px;
+}
+div.form-group ul li:last-child{
+	margin-bottom: 0;
+}
+div.form-group ul li:first-child{
+	font-weight: 400;
+	font-size: 16px
+}
+
+div.form-group ul li:active {
+	color: white;
+	border-radius: 6px;
+	background-color: rgb(167, 167, 167);
+}

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Pet's Cão - Clientes</title>
+    <link rel="stylesheet" href="../../../css/photon.css">
+    <link rel="stylesheet" href="../style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.8/vue.js"></script>
+    <script src="../../../node_modules/vue/dist/vue.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script> -->
+    <script src="../../../public/jquery-3.4.1.min.js"></script>
+    <script src="../../../public/jquery-3.4.1.slim.min.js"></script>
+    <script src="../../../public/jquery.mask.min.js"></script>
+  </head>
+  <body>
+    <div class="window" id="app">
+      <div id="loading">
+        <img src="../../assets/logo_login.gif" alt="Loading logo">
+      </div>
+      <div id="cliente" class="window-content centralize">
+        <div class="corpo">
+          <div id="topBar">
+            <button type="button" id="store" @click="storeClient()"><span class="icon icon-plus"></span>&nbsp;&nbsp;Criar novo</button>
+            <a href="../homePage/index.html"><span class="icon icon-home"></span>&nbsp;&nbsp;Home</a>
+            <form>
+              <input class="form-control" type="text" name="searchBar" id="searchBar" placeholder="Pesquisar pelo CPF ou E-mail" v-model="search">
+              <button type="button" id="btn-search" @click="searchClient()"><span class="icon icon-search"></span></button>
+            </form>
+          </div>
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Nome</th>
+                <th>E-mail</th>
+                <th>CPF</th>
+                <th>Telefone</th>
+                <th>Status</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="client in clientes">
+                <td>{{client.nome}}</td>
+                <td>{{client.email}}</td>
+                <td>{{client.cpf}}</td>
+                <td>{{client.telefone}}</td>
+                <td>{{client.status}}</td>
+                <td><button id="edit" type="button" @click="updateClient(client)"><span class="icon icon-pencil"></span>&nbsp;&nbsp;Editar</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div id="modal" v-if="openModal">
+        <div class="wrap">
+            <form id="cadastro-produto" action="" class="pane-body">
+              <h3 v-if="mode=='update'">Editar dados do cliente</h3>
+              <h3 v-if="mode=='store'">Adicionar Cliente</h3>
+              <div class="form-group">
+                <input type="text" class="form-control" name="nome" id="nome" placeholder="Nome" v-model="cliente.nome" maxlength="45">
+              </div>
+              <div class="form-group">
+                <input type="email" class="form-control" id="email" placeholder="E-mail" v-model="cliente.email" maxlength="40" required>
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-control" id="cpf" name="cpf" placeholder="CPF" onkeypress="$(this).mask('000.000.000-00');" v-model="cliente.cpf">
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-control" id="tel" placeholder="Telefone" onkeypress="$(this).mask('(00) 0000-00009')" v-model="cliente.telefone" required>
+              </div>
+              <div class="form-group">
+                <select name="status" id="status" v-model="cliente.status" class="form-control">
+                  <option value="" disabled>Selecione o Status</option>
+                  <option value="Ativo">Ativo</option>
+                  <option value="Inativo">Inativo</option>
+                </select>
+              </div>
+              <button type="button" id="salvar"  @click="clientStoreOrUpdate()">Salvar</button>
+              <button type="button" id="cancelar" @click="closeModal()">Cancelar</button>
+            </form>
+          </div>
+        </div>
+        <div id="modal" v-if="!cpfValidate">
+          <div id="erroStore" class="wrap">
+            <button id="fechar" @click="cpfValidate=true">Fechar</button><hr>
+            <h4>Por favor, digite um CPF válido.</h4>
+          </div>
+        </div>
+        <div id="modal" v-if="errorModal">
+          <div id="erroStore" class="wrap">
+            <button id="fechar" @click="errorModal=false">Fechar</button><hr>
+            <h4>Por favor, preencha todos os campos.</h4>
+          </div>
+        </div>
+        <div id="modal"  v-if="searchModal">
+          <div id="search-modal">
+            <button id="close" @click="searchModal=false">Fechar</button>
+            <div v-if="searchErr" id="err-msg"><hr> Nenhum resultado encontrado</div>
+            <table class="table table-striped" v-if="!searchErr">
+              <thead>
+                <tr>
+                  <th>Nome</th>
+                  <th>E-mail</th>
+                  <th>CPF</th>
+                  <th>Telefone</th>
+                  <th>Status</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>{{searchResult.nome}}</td>
+                  <td>{{searchResult.email}}</td>
+                  <td>{{searchResult.cpf}}</td>
+                  <td>{{searchResult.telefone}}</td>
+                  <td>{{searchResult.status}}</td>
+                  <td><button id="edit" type="button" @click="updateClient(client)"><span class="icon icon-pencil"></span>&nbsp;&nbsp;Editar</button>></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="app-cliente.js"></script>
+  </body>
+</html>

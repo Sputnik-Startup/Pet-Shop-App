@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Pet's Cão - Financeiro</title>
+    <link rel="stylesheet" href="../../../css/photon.css">
+    <link rel="stylesheet" href="../style.css">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.8/vue.js"></script>
+    <script type="text/javascript" src="../../../node_modules/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div class="window" id="app">
+      <div id="loading"><img src="../../assets/logo_login.gif" alt="Loading logo"></div>
+      <div id="financeiro" class="window-content centralize">
+        <div class="corpo">
+          <div id="topBar">
+            <button type="button" id="store" @click="storeFinanceiro()"><span class="icon icon-plus"></span>&nbsp;&nbsp;Criar novo</button>
+            <a href="../homePage/index.html"><span class="icon icon-home"></span>&nbsp;&nbsp;Home</a>
+            <button id="relatorio" @click="printReport()"><span class="icon icon-print"></span>&nbsp;&nbsp;Imprimir relatório</button>
+          </div>
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Valor Serviço</th>
+                <th>Gastos Pet</th>
+                <th>Gastos de local</th>
+                <th>data</th>
+                <th></th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="fin in financeirodata">
+                <td>{{Number(fin.valorServico).toLocaleString("pt-BR",{style: "currency", currency: "BRL"})}}</td>
+                <td>{{Number(fin.gastosPet).toLocaleString("pt-BR",{style: "currency", currency: "BRL"})}}</td>
+                <td>{{Number(fin.gastosLocal).toLocaleString("pt-BR",{style: "currency", currency: "BRL"})}}</td>
+                <td>{{new Date(fin.data).toLocaleDateString("pt-BR", {timeZone: "UTC"})}}</td>
+                <td><button id="edit" type="button" @click="updateFinanceiro(fin)"><span class="icon icon-pencil"></span>&nbsp;&nbsp;Editar</button></td>
+                <td><button id="destroy" type="button" @click="destroyFinanceiro(fin)"><span class="icon icon-trash"></span>&nbsp;&nbsp;Deletar</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div id="modal" v-if="errorModal">
+          <div id="erroStore" class="wrap">
+            <button id="fechar" @click="errorModal=false">Fechar</button><hr>
+            <h4>Por favor, preencha todos os campos.</h4>
+          </div>
+        </div>
+        <div id="modal" v-if="openModal">
+          <div class="wrap">
+            <form id="cadastro-produto" action="" class="pane-body">
+              <h3 v-if="mode=='update'">Editar dados</h3>
+              <h3 v-if="mode=='store'">Adicionar novo</h3>
+              <div class="form-group">
+                <input type="text" class="form-control" id="valorServico" placeholder="Valor de Serviço" v-model="financeiro.valorServico" maxlength="20" required>
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-control" id="gastosPet" placeholder="Gastos Pet" v-model="financeiro.gastosPet" maxlength="20" required>
+              </div>
+              <div class="form-group">
+                  <input type="text" class="form-control" id="valorFixo" placeholder="Gastos local" v-model="financeiro.gastosLocal" maxlength="20" required>
+              </div>
+              <div class="form-group">
+                  <input type="date" class="form-control" id="data" v-model="financeiro.data" required>
+              </div>
+              <button type="button" id="salvar" @click="financeiroStoreOrUpdate()">Salvar</button>
+              <button type="button" id="cancelar" @click="closeModal()">Cancelar</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="app-financeiro.js"></script>
+  </body>
+</html>
+

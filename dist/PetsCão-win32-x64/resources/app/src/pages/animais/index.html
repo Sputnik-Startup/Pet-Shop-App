@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Pet's Cão - Animais</title>
+    <link rel="stylesheet" href="../../../css/photon.css">
+    <link rel="stylesheet" href="../style.css">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.8/vue.js"></script>
+    <script type="text/javascript" src="../../../node_modules/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div class="window" id="app">
+      <div id="loading"><img src="../../assets/logo_login.gif" alt="Loading logo"></div>
+      <div id="animal" class="window-content centralize">
+        <div class="corpo">
+          <div id="topBar">
+            <button type="button" id="store" @click="storeAnimal()"><span class="icon icon-plus"></span>&nbsp;&nbsp;Criar novo</button>
+            <a href="../homePage/index.html"><span class="icon icon-home"></span>&nbsp;&nbsp;Home</a>
+            <form>
+              <input class="form-control" type="text" name="searchBar" id="searchBar" placeholder="Pesquisar pelo CPF do dono" v-model="search">
+              <button type="button" id="btn-search" @click="searchAnimal()"><span class="icon icon-search"></span></button>
+            </form>
+          </div>
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Nome</th>
+                <th>Tipo</th>
+                <th>Raça</th>
+                <th>Dono</th>
+                <th></th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="ani in animais">
+                <td>{{ani.nome}}</td>
+                <td>{{ani.tipo}}</td>
+                <td>{{ani.raca}}</td>
+                <td><button id="infoBtn" type="button" @click="ownerInfo(ani)"><span class="icon icon-info-circled"></span>&nbsp;&nbsp;Info.Dono</button></td>
+                <td><button id="edit" type="button" @click="updateAnimal(ani)"><span class="icon icon-pencil"></span>&nbsp;&nbsp;Editar</button></td>
+                <td><button id="destroy" type="button" @click="destroyAnimal(ani)"><span class="icon icon-trash"></span>&nbsp;&nbsp;Deletar</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div id="modal" v-if="openModal">
+          <div class="wrap">
+            <form id="cadastro-produto" action="" class="pane-body">
+              <h3 v-if="mode=='update'">Editar dados do animal</h3>
+              <h3 v-if="mode=='store'">Adicionar Cliente</h3>
+              <div class="form-group">
+                <input type="text" class="form-control" id="nome" placeholder="Nome" v-model="animal.nome" maxlength="40" required>
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-control" id="tipo" placeholder="tipo" v-model="animal.tipo" maxlength="25" required>
+              </div>
+              <div class="form-group">
+                  <input type="text" class="form-control" id="raca" placeholder="raca" v-model="animal.raca" maxlength="25" required>
+              </div>
+              <div class="form-group">
+                <select name="dono" id="dono" v-model="animal.dono" class="form-control">
+                  <option value="" disabled>Selecione o dono</option>
+                  <option :value="client.$loki" v-for="client in clientes">{{client.nome}}</option>
+                </select>
+              </div>
+              <button type="button" id="salvar" @click="animalStoreOrUpdate()">Salvar</button>
+              <button type="button" id="cancelar" @click="closeModal()">Cancelar</button>
+            </form>
+          </div>
+        </div>
+        <div id="modal" v-if="errorModal">
+          <div id="erroStore" class="wrap">
+            <button id="fechar" @click="errorModal=false">Fechar</button><hr>
+            <h4>Por favor, preencha todos os campos.</h4>
+          </div>
+        </div>
+        <div id="modal" v-if="infoOwnerModal">
+          <div class="wrap">
+            <button id="fechar" type="button" @click="infoOwnerModal = false">Fechar</button>
+            <hr>
+            <h4 v-if="!existsOwner">Este cliente foi removido.</h4>
+            <div id="info" v-if="existsOwner">
+              <span><strong>Nome:</strong> 
+                <br>{{owner.nome}}</span><br>
+              <span><strong>E-mail:</strong>  
+                <br>{{owner.email}}</span><br>
+              <span><strong>CPF:</strong>  
+                <br><input type="text" :value="owner.cpf" id="text" readonly><button id="copy" @click="copyText()" title="Copiar CPF"><span class="icon icon-doc-text"></span></button></span><br>
+              <span><strong>Telefone:</strong> 
+                <br>{{owner.telefone}}</span><br>
+            </div>
+          </div>
+        </div>
+      </div>
+        <div id="modal"  v-if="searchModal">
+          <div id="search-modal">
+            <button id="close" @click="searchModal=false">Fechar</button>
+            <div v-if="searchErr" id="err-msg"><hr> Nenhum resultado encontrado</div>
+            <table class="table table-striped" v-if="!searchErr">
+              <thead>
+                <tr>
+                  <th>Nome</th>
+                  <th>Tipo</th>
+                  <th>Raça</th>
+                  <th>Dono</th>
+                  <th></th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>{{searchResult.nome}}</td>
+                  <td>{{searchResult.tipo}}</td>
+                  <td>{{searchResult.raca}}</td>
+                  <td><button id="infoBtn" type="button" @click="ownerInfo(searchResult)"><span class="icon icon-info-circled"></span>&nbsp;&nbsp;Info.Dono</button></td>
+                  <td><button id="edit" type="button" @click="updateAnimal(searchResult); searchModal = false"><span class="icon icon-pencil"></span>&nbsp;&nbsp;Editar</button></td>
+                  <td><button id="destroy" type="button" @click="destroyAnimal(searchResult); searchModal = false"><span class="icon icon-trash"></span>&nbsp;&nbsp;Deletar</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="app-animal.js"></script>
+  </body>
+</html>
+
