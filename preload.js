@@ -4,12 +4,6 @@
 const mongoose = require("mongoose");
 
 window.addEventListener('DOMContentLoaded', () => {
-  mongoose.connect("mongodb+srv://maxuser:maol963662339@omnistack-pqlxe.mongodb.net/PetsCao", {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  }).then((err)=>{
-    console.log("Conectado")
-  })
 
   const replaceText = (selector, text) => {
     const element = document.getElementById(selector)
