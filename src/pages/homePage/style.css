@@ -476,3 +476,7 @@ a#signOut span {
 ::-webkit-resizer {
 	border-radius: 0 0 12px 0;
 }
+
+.hidden {
+  display: none;
+}

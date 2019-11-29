@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    html {
+      font-family: Arial, Helvetica, sans-serif ;
+    }
+  </style>
+</head>
+<body>
+    <div style="display: flex; flex-direction: column; justify-content: center; width: 600px; align-items: center"><div style="display:flex;flex-direction: column; align-items: center;width: 550px; height: auto;padding: 15px;  background-color: #3c8ad5; color: white;"><img src="cid:unique@logo" style="width: 100px; height: 75px"/><div style="background-color: #e69240; width: 500px; padding: 15px 10px; margin-top: 30px; border-radius: 10px;"><h1>Olá ' + value.cliente.nome + '!</h1><br><span style="font-size: 16px;">Temos uma boa notícia! <br><strong>O SEU AGENDAMENTO FOI ACEITO</strong> EBAAA! <br><br>Segue abaixo as informações do agendamento: <br> <br> Pet: ' + value.animal.nome + ' <br>Data: ' + new Date(value.data).toLocaleDateString("pr-BR", {timeZone: "UTC"}) + ' às ' + value.hora + '<br>Serviço: '+ value.servico +'</span><hr style="background-color: #3c8ad5; width: 100%; border: 0; height: 2px; margin: 40px 0 20px;"><p style="text-align:center">Atenciosamente,<br>Equipe PetsCão.</p></span></div></div></div>
+</body>
+</html>

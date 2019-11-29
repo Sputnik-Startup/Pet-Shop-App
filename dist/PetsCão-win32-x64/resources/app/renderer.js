@@ -3,6 +3,18 @@ const db = new loki(__dirname + "/db.json");
 const read = require("read-file-utf8");
 const fs = require("fs");
 var data = {};
+const mongoose = require("mongoose")
+
+mongoose.connect("mongodb+srv://maxuser:maol963662339@omnistack-pqlxe.mongodb.net/PetsCao", {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+}).then((err)=>{
+  console.log("conectado")
+})
+
+const Pendente = require("../../models/Pendente");
+const Cliente = require("../../models/Cliente");
+const Animal = require("../../models/Animal");
 
 if (fs.existsSync(__dirname + "/db.json")) {
   data = read(__dirname + "/db.json");
@@ -21,6 +33,7 @@ if (fs.existsSync(__dirname + "/db.json")) {
   db.addCollection("financeiro");
   db.addCollection("materialDeConsumo");
   db.addCollection("vendas");
+  db.addCollection("pendentes");
   db.save();
 }
 setTimeout(function() {
@@ -37,6 +50,41 @@ var fun = {
 };
 
 var funcionarios = db.getCollection("funcionarios");
+var pendentesdb = db.getCollection("pendentes");
+
+window.addEventListener("DOMContentLoaded", async function(){
+  console.log("teste")
+
+  let pendentes = await Pendente.find().populate("cliente", Cliente).populate("animal", Animal);
+  console.log(pendentes[0])
+  for(let c = 0; c < pendentes.length; c++){
+    let pending = {
+      idMongo: pendentes[c]._id,
+      cliente: {
+        nome: pendentes[c].cliente.nome,
+        email: pendentes[c].cliente.email,
+        cpf: pendentes[c].cliente.cpf,
+        telefone: pendentes[c].cliente.telefone,
+      },
+      animal: {
+        nome: pendentes[c].animal.nome,
+        raca: pendentes[c].animal.raca,
+        tipo: pendentes[c].animal.tipo,
+      },
+      data: pendentes[c].data,
+      hora: pendentes[c].hora,
+      servico: pendentes[c].servico,
+    }
+    console.log(pending)
+    let alreadyExists;
+    
+    if(!alreadyExists){
+      pendentesdb.insert(pending);
+      db.save()
+    }
+  }
+
+})
 
 new Vue({
   el: "#app",
