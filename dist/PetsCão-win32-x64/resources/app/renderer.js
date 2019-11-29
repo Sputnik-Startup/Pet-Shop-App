@@ -3,9 +3,9 @@ const db = new loki(__dirname + "/db.json");
 const read = require("read-file-utf8");
 const fs = require("fs");
 var data = {};
-const mongoose = require("mongoose")
+const mongo = require("mongoose")
 
-mongoose.connect("mongodb+srv://maxuser:maol963662339@omnistack-pqlxe.mongodb.net/PetsCao", {
+mongo.connect("mongodb+srv://maxuser:maol963662339@omnistack-pqlxe.mongodb.net/PetsCao", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 }).then((err)=>{
@@ -53,13 +53,12 @@ var funcionarios = db.getCollection("funcionarios");
 var pendentesdb = db.getCollection("pendentes");
 
 window.addEventListener("DOMContentLoaded", async function(){
-  console.log("teste")
 
   let pendentes = await Pendente.find().populate("cliente", Cliente).populate("animal", Animal);
-  console.log(pendentes[0])
   for(let c = 0; c < pendentes.length; c++){
     let pending = {
-      idMongo: pendentes[c]._id,
+      // idAgenda: pendentes[c].idAgenda,
+      idMongo: pendentes[c].id,
       cliente: {
         nome: pendentes[c].cliente.nome,
         email: pendentes[c].cliente.email,
@@ -74,9 +73,10 @@ window.addEventListener("DOMContentLoaded", async function(){
       data: pendentes[c].data,
       hora: pendentes[c].hora,
       servico: pendentes[c].servico,
+      pending: true,
     }
-    console.log(pending)
-    let alreadyExists;
+    
+    let alreadyExists = pendentesdb.find({ 'idMongo': pendentes[c].id})[0];
     
     if(!alreadyExists){
       pendentesdb.insert(pending);
