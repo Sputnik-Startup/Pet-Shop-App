@@ -57,8 +57,8 @@ window.addEventListener("DOMContentLoaded", async function(){
   let pendentes = await Pendente.find().populate("cliente", Cliente).populate("animal", Animal);
   for(let c = 0; c < pendentes.length; c++){
     let pending = {
-      // idAgenda: pendentes[c].idAgenda,
       idMongo: pendentes[c].id,
+      agendamento: pendentes[c].agendamento,
       cliente: {
         nome: pendentes[c].cliente.nome,
         email: pendentes[c].cliente.email,
@@ -75,7 +75,7 @@ window.addEventListener("DOMContentLoaded", async function(){
       servico: pendentes[c].servico,
       pending: true,
     }
-    
+    console.log(pendentes)
     let alreadyExists = pendentesdb.find({ 'idMongo': pendentes[c].id})[0];
     
     if(!alreadyExists){

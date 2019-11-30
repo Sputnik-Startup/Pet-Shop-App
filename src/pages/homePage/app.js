@@ -4,6 +4,7 @@ const db = new loki(path.join(__dirname, '..', 'loginPage', 'db.json'));
 const read = require('read-file-utf8');
 let data = {}
 const nodemailer = require("nodemailer")
+const api = require("../../services/api");
 
 data = read(__dirname + "/../loginPage/db.json")
 db.loadJSON(data);
@@ -13,14 +14,11 @@ const animalLoki = db.getCollection("animais");
 const agendaLoki = db.getCollection("agendamentos");
 const pendente = db.getCollection("pendentes");
 
-console.log(pendente)
-
 setTimeout(function() {
     var element = document.getElementById('loading');
     element.classList += " hidden";
 }, 300);
 
-console.log(pendente.data)
 new Vue({
     el: '#app',
     data: {
@@ -92,33 +90,35 @@ new Vue({
                     this.errMsg = "Todos os dados foram registrados com sucesso!"
                 }
             }
-            pendente.findAndUpdate({ 'idMongo': value.idMongo }, { 'pending': false });
+            let pend = await pendente.find({'idMongo': value.idMongo})[0]
+
             document.getElementById(`${value.idMongo}`).classList.add("hidden");
+
+            pend.pending = false;
+            await pendente.update(pend);
             db.saveDatabase();
-
-            // let Agenda = require("../../models/Agenda");
-            // Agenda.findOneAndUpdate({ _id: value.idAgenda }, { status: true });
-
-            // let testAccount = nodemailer.createTestAccount();
-
-                            
-            // let transporter = nodemailer.createTransport({
-            //     host: 'smtp.gmail.com',
-            //     port: 587,
-            //     secure: false, 
-            //     auth: {
-            //         user: 'petscaocompany@gmail.com', 
-            //         pass: 'petscao2019'
-            //     }
-            // });
-
+            const response = await api.put(`/edit-schedule/${value.agendamento}`, { dataEdit: value.data, horaEdit: value.hora, servicoEdit: value.servico, status: true });
             
-            // let info = transporter.sendMail({
-            //     from: "'PetsCão' <petscaocompany@gmail.com>", 
-            //     to: value.cliente.email, 
-            //     subject: 'Status de agendamento - PetsCão',
-            //     html: '<div style="display: flex; flex-direction: column; justify-content: center; width: 600px; align-items: center"><div style="display:flex;flex-direction: column; align-items: center;width: 550px;padding: 15px;  background-color: #3c8ad5; color: white;"><div style="background-color: #e69240; width: 500px; padding: 15px 10px; margin-top: 30px; border-radius: 10px;"><h1>Olá ' + value.cliente.nome + '!</h1><br><span style="font-size: 16px;">Temos uma boa notícia! <br><strong>O SEU AGENDAMENTO FOI ACEITO</strong><br><br>Segue abaixo as informações do agendamento: <br> <br> Pet: ' + value.animal.nome + ' <br>Data: ' + new Date(value.data).toLocaleDateString("pr-BR", {timeZone: "UTC"}) + ' às ' + value.hora + '<br>Serviço: '+ value.servico +'<br><br>Agradecemos pela preferência! S2</span><hr style="background-color: #3c8ad5; width: 100%; border: 0; height: 2px; margin: 40px 0 20px;"><p style="text-align:center">Atenciosamente,<br>Equipe PetsCão.</p></span></div></div></div>'
-            // });
+            let testAccount = nodemailer.createTestAccount();
+
+
+            let transporter = nodemailer.createTransport({
+                host: 'smtp.gmail.com',
+                port: 587,
+                secure: false,
+                auth: {
+                    user: 'petscaocompany@gmail.com',
+                    pass: 'petscao2019'
+                }
+            });
+
+
+            let info = transporter.sendMail({
+                from: "'PetsCão' <petscaocompany@gmail.com>",
+                to: value.cliente.email,
+                subject: 'Status de agendamento - PetsCão',
+                html: '<div style="display: flex; flex-direction: column; justify-content: center; width: 600px; align-items: center"><div style="display:flex;flex-direction: column; align-items: center;width: 550px;padding: 15px;  background-color: #3c8ad5; color: white;"><div style="background-color: #e69240; width: 500px; padding: 15px 10px; margin-top: 30px; border-radius: 10px;"><h1>Olá ' + value.cliente.nome + '!</h1><br><span style="font-size: 16px;">Temos uma boa notícia! <br><strong>O SEU AGENDAMENTO FOI ACEITO</strong><br><br>Segue abaixo as informações do agendamento: <br> <br> Pet: ' + value.animal.nome + ' <br>Data: ' + new Date(value.data).toLocaleDateString("pr-BR", {timeZone: "UTC"}) + ' às ' + value.hora + '<br>Serviço: '+ value.servico +'<br><br>Agradecemos pela preferência! S2</span><hr style="background-color: #3c8ad5; width: 100%; border: 0; height: 2px; margin: 40px 0 20px;"><p style="text-align:center">Atenciosamente,<br>Equipe PetsCão.</p></span></div></div></div>'
+            });
 
         },
 
@@ -128,30 +128,30 @@ new Vue({
             pendente.update(value);
             db.saveDatabase();
 
-                        // let testAccount = nodemailer.createTestAccount();
+            let testAccount = nodemailer.createTestAccount();
 
-                            
-            // let transporter = nodemailer.createTransport({
-            //     host: 'smtp.gmail.com',
-            //     port: 587,
-            //     secure: false, 
-            //     auth: {
-            //         user: 'petscaocompany@gmail.com', 
-            //         pass: 'petscao2019'
-            //     }
-            // });
 
-            
-            // let info = transporter.sendMail({
-            //     from: "'PetsCão' <petscaocompany@gmail.com>", 
-            //     to: value.cliente.email, 
-            //     subject: 'Status de agendamento - PetsCão',
-            //     html: '<div style="display: flex; flex-direction: column; justify-content: center; width: 600px; align-items: center"><div style="display:flex;flex-direction: column; align-items: center;width: 550px;padding: 15px;  background-color: #3c8ad5; color: white;"><div style="background-color: #e69240; width: 500px; padding: 15px 10px; margin-top: 30px; border-radius: 10px;"><h1>Olá ' + value.cliente.nome + '!</h1><br><span style="font-size: 16px;">Temos uma má notícia! <br><strong>O SEU AGENDAMENTO FOI REJEITADO</strong><br><br>Segue abaixo as informações do agendamento: <br> <br> Pet: ' + value.animal.nome + ' <br>Data: ' + new Date(value.data).toLocaleDateString("pr-BR", {timeZone: "UTC"}) + ' às ' + value.hora + '<br>Serviço: '+ value.servico +'<br>Para informações sobre o motivo da rejeição, favor ligar no número abaixo: <br>(92) 2597-1288 <br>Agradecemos pela preferência! S2</span><hr style="background-color: #3c8ad5; width: 100%; border: 0; height: 2px; margin: 40px 0 20px;"><p style="text-align:center">Atenciosamente,<br>Equipe PetsCão.</p></span></div></div></div>'
-            // });
+            let transporter = nodemailer.createTransport({
+                host: 'smtp.gmail.com',
+                port: 587,
+                secure: false,
+                auth: {
+                    user: 'petscaocompany@gmail.com',
+                    pass: 'petscao2019'
+                }
+            });
+
+
+            let info = transporter.sendMail({
+                from: "'PetsCão' <petscaocompany@gmail.com>",
+                to: value.cliente.email,
+                subject: 'Status de agendamento - PetsCão',
+                html: '<div style="display: flex; flex-direction: column; justify-content: center; width: 600px; align-items: center"><div style="display:flex;flex-direction: column; align-items: center;width: 550px;padding: 15px;  background-color: #3c8ad5; color: white;"><div style="background-color: #e69240; width: 500px; padding: 15px 10px; margin-top: 30px; border-radius: 10px;"><h1>Olá ' + value.cliente.nome + '!</h1><br><span style="font-size: 16px;">Temos uma má notícia! <br><strong>O SEU AGENDAMENTO FOI REJEITADO</strong><br><br>Segue abaixo as informações do agendamento: <br> <br> Pet: ' + value.animal.nome + ' <br>Data: ' + new Date(value.data).toLocaleDateString("pr-BR", {timeZone: "UTC"}) + ' às ' + value.hora + '<br>Serviço: '+ value.servico +'<br><br>Para informações sobre o motivo da rejeição, favor ligar no número abaixo: <br>(92) 2597-1288 <br>Agradecemos pela preferência! S2</span><hr style="background-color: #3c8ad5; width: 100%; border: 0; height: 2px; margin: 40px 0 20px;"><p style="text-align:center">Atenciosamente,<br>Equipe PetsCão.</p></span></div></div></div>'
+            });
         },
         openModal: function(){
             let modal = document.querySelector("#modal-container");
-            modal.classList.add("mostrar");      
+            modal.classList.add("mostrar");
             let modalC = document.querySelector("#modal-container")
             modalC.addEventListener("click", (e)=>{
               if(e.target.id == "modal-container"){
