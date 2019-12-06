@@ -4,7 +4,7 @@ const path = require("path");
 let mainWindow;
 
 function createWindow() {
-  const appIcon = new Tray(path.join(__dirname, "src", "assets", "logo.ico"));
+  // const appIcon = new Tray(path.join(__dirname, "src", "assets", "logo.ico"));
   mainWindow = new BrowserWindow({
     show: false,
     width: 1000,
@@ -12,7 +12,7 @@ function createWindow() {
     minHeight: 400,
     minWidth: 800,
     autoHideMenuBar: true,
-    icon: path.join(__dirname, "src", "assets", "logo.ico"),
+    // icon: path.join(__dirname, "src", "assets", "logo.ico"),
     webPreferences: {
       devTools: true,
       preload: path.join(__dirname, "preload.js"),
