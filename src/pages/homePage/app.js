@@ -29,7 +29,6 @@ new Vue({
     methods: {
         acceptSchedule: async function(value){
             var cliente = clienteLoki.find({ cpf: value.cliente.cpf })[0];
-            var cliente_id = clienteLoki.find({ cpf: value.cliente.cpf })[0]
 
             var newAnimal = {
                 dono: "",
@@ -56,13 +55,13 @@ new Vue({
                 clienteLoki.insert(newCliente);
                 await db.save()
 
-                var animal = animalLoki.find({ dono: cliente_id.$loki })[0]
+                var animal = animalLoki.find({ dono: cliente.$loki })[0]
                 if(animal){
-                    newAnimal.dono = cliente_id.$loki;
+                    newAnimal.dono = cliente.$loki;
                     animalLoki.insert(newAnimal);
                 }
             }else{
-                var animal = animalLoki.find({ dono: cliente_id.$loki, nome: value.animal.nome, raca: value.animal.raca, tipo: value.animal.tipo })[0]
+                var animal = animalLoki.find({ dono: cliente.$loki, nome: value.animal.nome, raca: value.animal.raca, tipo: value.animal.tipo })[0]
                 if(!animal){
                     newAnimal.dono = cliente.$loki;
                     animalLoki.insert(newAnimal);
@@ -78,10 +77,10 @@ new Vue({
 
             var agenda = agendaLoki.find({ datetime: dateFormat})[0];
             if(!agenda){
-                var animal_id = animalLoki.find({ dono: cliente_id.$loki, nome: value.animal.nome, raca: value.animal.raca, tipo: value.animal.tipo})[0];
+                var animal_id = animalLoki.find({ dono: cliente.$loki, nome: value.animal.nome, raca: value.animal.raca, tipo: value.animal.tipo})[0];
 
                 if(animal_id){
-                    newAgenda.cliente = cliente_id.$loki;
+                    newAgenda.cliente = cliente.$loki;
                     newAgenda.animal = animal_id.$loki;
                     newAgenda.datetime = dateFormat;
 

@@ -67,7 +67,7 @@
                 <input type="text" class="form-control" id="cpf" name="cpf" placeholder="CPF" onkeypress="$(this).mask('000.000.000-00');" v-model="cliente.cpf">
               </div>
               <div class="form-group">
-                <input type="text" class="form-control" id="tel" placeholder="Telefone" onkeypress="$(this).mask('(00) 0000-00009')" v-model="cliente.telefone" required>
+                <input type="text" class="form-control" id="tel" placeholder="Telefone" v-model="cliente.telefone" required>
               </div>
               <div class="form-group">
                 <select name="status" id="status" v-model="cliente.status" class="form-control">
