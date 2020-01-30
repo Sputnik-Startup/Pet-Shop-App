@@ -16,15 +16,21 @@ To get started, type the following NPM commands on your terminal:
 
   ```npm install && npm start```
   
-To compile the application using electron-packager type the following scripts:
+  ```yarn add && yarn start```
+  
+Para compilar o aplicativo usando o empacotador de elétrons, digite os seguintes scripts:
 
 Windows:
 
   ```npm run package-win```
   
+  ```yarn package-win```
+  
 macOS:
 
   ```npm run package-mac```
+  
+  ```yarn package-mac```
 
 ## License
 
