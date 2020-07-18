@@ -6,7 +6,7 @@ If you have any suggestions for improvement, I am willing to hear it.
 
 Send your suggestion on my linkedin: [Go to Linkedin](https://www.linkedin.com/in/maxwell-olliver-aa3491191/)
 
-The design dont was made by me, a friend that do it.
+Designer made by Roberto Freitas. [Go to Linkedin](https://www.linkedin.com/in/robertofreitas1/)
 
 ![LoginPage](https://user-images.githubusercontent.com/54994420/68547761-0fb1b800-03c4-11ea-9b46-0cadf0cc8045.jpg)
 
